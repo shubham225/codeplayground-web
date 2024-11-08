@@ -18,14 +18,15 @@ export const columns: ColumnDef<Submission>[] = [
         <div className="flex flex-col gap-1">
           <h1
             className={cn("text-md font-medium", {
-              "text-teal-600": row.original.status === "accepted",
-              "text-red-600": row.original.status === "wrong answer",
+              "text-teal-600": row.original.status === "ACCEPTED",
+              "text-red-600": row.original.status === "WRONG_ANSWER",
+              "text-red-700": row.original.status === "TIME_LIMIT_EXCEEDED",
             })}
           >
-            {capitalizeFirstLetterOfEachWord(row.original.status)}
+            {capitalizeFirstLetterOfEachWord(row.original.status.replaceAll("_", " "))}
           </h1>
           <h1 className="text-xs font-normal">
-            {formatDate(row.original.date)}
+            {row.original.date}
           </h1>
         </div>
       );

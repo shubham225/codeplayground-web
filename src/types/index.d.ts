@@ -1,7 +1,7 @@
-export type DifficultyLevel = "easy" | "medium" | "hard";
-export type Status = "open" | "pending" | "solved";
-export type ResultStatus = "accepted" | "wrong answer" | "time limit exceeded";
-export type Language = "java" | "javascript";
+export type DifficultyLevel = "EASY" | "MEDIUM" | "HARD";
+export type Status = "OPEN" | "PENDING" | "SOLVED";
+export type ResultStatus = "IN_PROGRESS" | "COMPILED" | "ACCEPTED" | "WRONG_ANSWER" | "TIME_LIMIT_EXCEEDED";
+export type Language = "JAVA" | "JAVASCRIPT";
 export type ExecStatus =
   | "NO_ACTION"
   | "COMPILING"
@@ -13,14 +13,13 @@ export type ExecStatus =
 
 export type ProblemSummery = {
   id: string;
-  urlCode: string;
   title: string;
-  difficulty: DifficultyLevel;
+  urlCode: string;
   status: Status;
+  difficulty: DifficultyLevel;
 };
 
 export type Code = {
-  id: string;
   language: Language;
   code: string;
 };
@@ -28,7 +27,7 @@ export type Code = {
 export type Submission = {
   id: string;
   userProblemId: string;
-  date: Date;
+  date: string;
   status: ResultStatus;
   language: Language;
   runtime: number;
@@ -37,13 +36,14 @@ export type Submission = {
 
 export type Problem = {
   id: string;
+  userProblemId: string | null;
   urlCode: string;
   title: string;
   descriptionMd: string;
   difficulty: DifficultyLevel;
   status: Status;
   codeSnippets: Code[];
-  languages: Language[];
+  submissions: Submission[];
 };
 
 export type Result = {
@@ -69,4 +69,10 @@ export type CodeLangDetails = {
 export type TestExecution = {
   status: ExecStatus;
   message: string;
+};
+
+export type BackendResponse<T> = {
+  code: number;
+  message: string;
+  payload: T;
 };

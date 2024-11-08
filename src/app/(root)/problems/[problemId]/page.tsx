@@ -17,6 +17,7 @@ type Props = {};
 const ProblemPage = (props: Props) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const [problem, setProblem] = useState<Problem>(initProblemDetails);
+  // TODO: Currently selected language is defaulted to java change to use default language.
   const [codes, setCodes] = useState<CodeLangDetails>(initCodeLangDetails);
   const params = useParams();
 
@@ -32,6 +33,7 @@ const ProblemPage = (props: Props) => {
 
       const response = await fetchProblemsById(problemID);
       setProblem(response);
+      console.log("fetched problem", response)
     };
 
     fetchProblemByIdAsync();

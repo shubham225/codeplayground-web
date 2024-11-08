@@ -19,9 +19,9 @@ const ProblemDescription = ({ problem, ...props }: Props) => {
           <Badge
             variant="secondary"
             className={cn("font-normal", {
-              "text-teal-400": problem.difficulty === "easy",
-              "text-orange-400": problem.difficulty === "medium",
-              "text-red-500": problem.difficulty === "hard",
+              "text-teal-400": problem.difficulty === "EASY",
+              "text-orange-400": problem.difficulty === "MEDIUM",
+              "text-red-500": problem.difficulty === "HARD",
             })}
           >
             {capitalizeFirstLetterOfEachWord(problem.difficulty)}
@@ -29,13 +29,13 @@ const ProblemDescription = ({ problem, ...props }: Props) => {
           <Badge
             variant="secondary"
             className={cn("font-normal", {
-              "text-blue-400": problem.status === "open",
-              "text-teal-400": problem.status === "solved",
-              "text-orange-400": problem.status === "pending",
+              "text-blue-400": problem.status === "OPEN",
+              "text-teal-400": problem.status === "SOLVED",
+              "text-orange-400": problem.status === "PENDING",
             })}
           >
-            {problem.status === "solved" && <CircleCheckBig className="p-1" />}
-            {problem.status === "pending" && <Clock className="p-1" />}
+            {problem.status === "SOLVED" && <CircleCheckBig className="p-1" />}
+            {problem.status === "PENDING" && <Clock className="p-1" />}
             {capitalizeFirstLetterOfEachWord(problem.status)}
           </Badge>
         </div>

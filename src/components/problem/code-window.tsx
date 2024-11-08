@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { java } from "@codemirror/lang-java";
 import { vscodeDark, vscodeLight } from "@uiw/codemirror-theme-vscode";
@@ -16,7 +16,12 @@ import {
 } from "@/components/ui/select";
 import { CodeLangDetails, Language, Problem } from "@/types";
 import { Button } from "../ui/button";
-import { getCodeforLanguage, setCodeforLanguage } from "@/lib/utils";
+import {
+  capitalizeFirstLetterOfEachWord,
+  getCodeforLanguage,
+  setCodeforLanguage,
+} from "@/lib/utils";
+import { fetchCodeByUserProblemId } from "@/services/problemService";
 
 type Props = {
   problem: Problem;
@@ -27,14 +32,41 @@ type Props = {
 const CodeWindow = ({ problem, codeInfo, setCodeInfo, ...props }: Props) => {
   const { theme } = useTheme();
 
-  const initialCode =
-    getCodeforLanguage(codeInfo.codes, codeInfo.selLanguage) ||
-    getCodeforLanguage(problem.codeSnippets, codeInfo.selLanguage);
-
-  const [code, setCode] = React.useState<string>(initialCode);
+  const [isMounted, setIsMounted] = React.useState<boolean>(false);
+  const [code, setCode] = React.useState<string>("");
   const [selectedLang, setSelectedLang] = React.useState<Language>(
     codeInfo.selLanguage
   );
+  const [supportedLang, setSupportedLang] = React.useState<Language[]>([]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const fetchCodeByProblemAsync = async () => {
+      if (problem.userProblemId === null || problem.userProblemId === "") {
+        const code = getCodeforLanguage(
+          problem.codeSnippets,
+          codeInfo.selLanguage
+        );
+        setCode(code);
+        return;
+      }
+
+      const response = await fetchCodeByUserProblemId(problem.userProblemId);
+      const code =
+        getCodeforLanguage(response, codeInfo.selLanguage) ||
+        getCodeforLanguage(problem.codeSnippets, codeInfo.selLanguage);
+
+        setCodeInfo({ selLanguage: codeInfo.selLanguage, codes: response });
+        setCode(code);
+    };
+
+    const suppLang = problem.codeSnippets.map((c) => c.language);
+    setSupportedLang(suppLang);
+    fetchCodeByProblemAsync();
+  }, [problem]);
 
   const updateCodeInfoObject = React.useCallback(
     (language: Language, code: string) => {
@@ -61,15 +93,17 @@ const CodeWindow = ({ problem, codeInfo, setCodeInfo, ...props }: Props) => {
   );
 
   const onLangChange = React.useCallback((language: Language) => {
-    const code =
-      getCodeforLanguage(codeInfo.codes, language) ||
-      getCodeforLanguage(problem.codeSnippets, language);
+    const codeInfoCode = getCodeforLanguage(codeInfo.codes, language);
+    const codeSnippetCode = getCodeforLanguage(problem.codeSnippets, language);
+    const code = (codeInfoCode) ? codeInfoCode : codeSnippetCode;
 
     setSelectedLang(language);
     setCode(code);
-
-    updateCodeInfoObject(language, code);
   }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className="flex flex-col gap-1 h-full">
@@ -90,8 +124,13 @@ const CodeWindow = ({ problem, codeInfo, setCodeInfo, ...props }: Props) => {
           </SelectTrigger>
           <SelectContent>
             <SelectGroup>
-              <SelectItem value="java">Java</SelectItem>
-              <SelectItem value="javascript">Javascript</SelectItem>
+              {supportedLang.map((lang) => {
+                return (
+                  <SelectItem key={lang} value={lang}>
+                    {capitalizeFirstLetterOfEachWord(lang)}
+                  </SelectItem>
+                );
+              })}
             </SelectGroup>
           </SelectContent>
         </Select>

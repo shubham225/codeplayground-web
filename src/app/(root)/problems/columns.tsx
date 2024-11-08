@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { capitalizeFirstLetterOfEachWord } from "@/lib/utils";
 import { ProblemSummery } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { useRouter } from "next/navigation";
@@ -9,6 +10,7 @@ export const columns: ColumnDef<ProblemSummery>[] = [
   {
     accessorKey: "status",
     header: "Status",
+    cell: ({row}) => {return capitalizeFirstLetterOfEachWord(row.original.status)}
   },
   {
     accessorKey: "title",
@@ -17,6 +19,7 @@ export const columns: ColumnDef<ProblemSummery>[] = [
   {
     accessorKey: "difficulty",
     header: "Difficulty",
+    cell: ({row}) => {return capitalizeFirstLetterOfEachWord(row.original.difficulty)}
   },
   {
     accessorKey: "solve",
@@ -28,7 +31,7 @@ export const columns: ColumnDef<ProblemSummery>[] = [
           variant="default"
           size="sm"
           onClick={() => {
-            router.push(`problems/${row.original.urlCode}`);
+            router.push(`problems/${row.original.id}`);
           }}
         >
           Solve

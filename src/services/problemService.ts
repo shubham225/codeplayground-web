@@ -1,12 +1,14 @@
-import { Problem, ProblemSummery, Submission } from "@/types";
+import { BackendResponse, Code, Problem, ProblemSummery, Submission } from "@/types";
 import apiClient from "./apiClient";
 import { SubmitResponse } from "@/types/api";
 
 export async function fetchProblemsById(problemId: string): Promise<Problem> {
   try {
-    const response = await apiClient.get<Problem>(`/problems/${problemId}`);
+    const response = await apiClient.get<BackendResponse<Problem>>(
+      `/problems/${problemId}`
+    );
 
-    return response.data;
+    return response.data.payload;
   } catch (error) {
     console.error("Failed to fetch problem data:", error);
     throw error;
@@ -15,9 +17,24 @@ export async function fetchProblemsById(problemId: string): Promise<Problem> {
 
 export async function fetchAllProblems(): Promise<ProblemSummery[]> {
   try {
-    const response = await apiClient.get<ProblemSummery[]>("/problems");
+    const response = await apiClient.get<BackendResponse<ProblemSummery[]>>(
+      "/problems"
+    );
 
-    return response.data;
+    return response.data.payload;
+  } catch (error) {
+    console.error("Failed to fetch all problems:", error);
+    throw error;
+  }
+}
+
+export async function fetchCodeByUserProblemId(userProblemId: string): Promise<Code[]> {
+  try {
+    const response = await apiClient.get<BackendResponse<Code[]>>(
+      `/userProblems/${userProblemId}/code`
+    );
+
+    return response.data.payload;
   } catch (error) {
     console.error("Failed to fetch all problems:", error);
     throw error;
