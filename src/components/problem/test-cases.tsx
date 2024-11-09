@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { Check, Loader2, SquareCheck, X } from "lucide-react";
@@ -12,6 +12,7 @@ import {
   submitAndExecuteCode,
 } from "@/services/problemService";
 import { initTestExecution } from "@/constants/data";
+import { ExecReq, SubmitReq } from "@/types/api";
 
 type Props = { problem: Problem; codeInfo: CodeLangDetails };
 
@@ -47,11 +48,13 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
       return { ...prev, status: "COMPILING" };
     });
 
-    // TODO: Remove the delay after testing
-    await delay(5000);
-    const responseCompile = await submitAndCompileCode(problem.id);
+    const submitReq: SubmitReq = {
+      problemId: problem.id,
+      code: getCodeforLanguage(codeInfo.codes, codeInfo.selLanguage),
+      language: codeInfo.selLanguage,
+    };
 
-    console.log(responseCompile);
+    const responseCompile = await submitAndCompileCode(submitReq);
 
     if (responseCompile.status === "COMPILATION_FAILED") {
       setExecStatus(CodeStatus.COMPILATION_ERROR);
@@ -64,35 +67,36 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
     }
 
     setExecStatus(CodeStatus.RUNNING);
+    const execRequest: ExecReq = {
+      userProblemId: responseCompile.submission.userProblemId,
+    };
 
-    // TODO: Remove the delay after testing
-    await delay(5000);
-    const responseExec = await submitAndExecuteCode(problem.id);
+    const responseExec = await submitAndExecuteCode(execRequest);
 
     if (responseExec.status === "RUNTIME_ERROR") {
       setExecStatus(CodeStatus.RUNTIME_ERROR);
       setTestCaseExec({
-        status: responseExec.status,
+        status: "RUNTIME_ERROR",
         message: responseExec.message,
       });
       setDisableSubmit(false);
       return;
     }
 
-    if (responseExec.status === "TESTCASE_FAILED") {
+    if (responseExec.status === "WRONG_ANSWER" || "TIME_LIMIT_EXCEEDED") {
       setExecStatus(CodeStatus.TESTCASE_FAILED);
       setTestCaseExec({
-        status: responseExec.status,
+        status: "TESTCASE_FAILED",
         message: responseExec.message,
       });
       setDisableSubmit(false);
       return;
     }
 
-    if (responseExec.status === "SUCCESS") {
+    if (responseExec.status === "ACCEPTED") {
       setExecStatus(CodeStatus.SUCCESS);
       setTestCaseExec({
-        status: responseExec.status,
+        status: "SUCCESS",
         message: responseExec.message,
       });
     }

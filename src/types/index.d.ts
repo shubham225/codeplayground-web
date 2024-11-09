@@ -1,6 +1,13 @@
 export type DifficultyLevel = "EASY" | "MEDIUM" | "HARD";
 export type Status = "OPEN" | "PENDING" | "SOLVED";
-export type ResultStatus = "IN_PROGRESS" | "COMPILED" | "ACCEPTED" | "WRONG_ANSWER" | "TIME_LIMIT_EXCEEDED";
+export type ResultStatus =
+  | "IN_PROGRESS"
+  | "COMPILED"
+  | "COMPILATION_FAILED"
+  | "ACCEPTED"
+  | "RUNTIME_ERROR"
+  | "WRONG_ANSWER"
+  | "TIME_LIMIT_EXCEEDED";
 export type Language = "JAVA" | "JAVASCRIPT";
 export type ExecStatus =
   | "NO_ACTION"

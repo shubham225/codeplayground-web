@@ -59,8 +59,8 @@ const CodeWindow = ({ problem, codeInfo, setCodeInfo, ...props }: Props) => {
         getCodeforLanguage(response, codeInfo.selLanguage) ||
         getCodeforLanguage(problem.codeSnippets, codeInfo.selLanguage);
 
-        setCodeInfo({ selLanguage: codeInfo.selLanguage, codes: response });
-        setCode(code);
+      setCodeInfo({ selLanguage: codeInfo.selLanguage, codes: response });
+      setCode(code);
     };
 
     const suppLang = problem.codeSnippets.map((c) => c.language);
@@ -92,14 +92,20 @@ const CodeWindow = ({ problem, codeInfo, setCodeInfo, ...props }: Props) => {
     [selectedLang]
   );
 
-  const onLangChange = React.useCallback((language: Language) => {
-    const codeInfoCode = getCodeforLanguage(codeInfo.codes, language);
-    const codeSnippetCode = getCodeforLanguage(problem.codeSnippets, language);
-    const code = (codeInfoCode) ? codeInfoCode : codeSnippetCode;
+  const onLangChange = React.useCallback(
+    (language: Language) => {
+      const codeInfoCode = getCodeforLanguage(codeInfo.codes, language);
+      const codeSnippetCode = getCodeforLanguage(
+        problem.codeSnippets,
+        language
+      );
+      const code = codeInfoCode ? codeInfoCode : codeSnippetCode;
 
-    setSelectedLang(language);
-    setCode(code);
-  }, []);
+      setSelectedLang(language);
+      setCode(code);
+    },
+    [codeInfo, problem]
+  );
 
   if (!isMounted) {
     return null;

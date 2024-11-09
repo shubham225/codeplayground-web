@@ -12,7 +12,18 @@ const ProblemResult = ({ problem, ...props }: Props) => {
   const [data, setData] = useState<Submission[] | []>([]);
 
   useEffect(() => {
-    setData(problem.submissions);
+    const fetchSubmissionsByUserProblemIdAsync = async () => {
+      let submissions = problem.submissions;
+
+      if (problem.userProblemId) {
+        const response = await fetchAllSubmissions(problem.userProblemId);
+        submissions = response;
+      }
+
+      setData(submissions);
+    };
+    
+    fetchSubmissionsByUserProblemIdAsync();
   }, [problem]);
 
   return (

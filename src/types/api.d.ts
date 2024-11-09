@@ -1,14 +1,18 @@
-import { Submission } from ".";
+import { ResultStatus, Submission } from ".";
 
-export type SubmissionStatus =
-  | "COMPILATION_FAILED"
-  | "COMPILATION_SUCCESS"
-  | "RUNTIME_ERROR"
-  | "TESTCASE_FAILED"
-  | "SUCCESS";
+export type SubmitReq = {
+  problemId: string;
+  code: string;
+  language: Language;
+};
 
+export type ExecReq = {
+  userProblemId: string;
+};
+  
 export type SubmitResponse = {
-  submission: Submission | null;
-  status: SubmissionStatus;
+  submissionId: string
+  status: ResultStatus;
   message: string;
+  submission: Submission;
 };

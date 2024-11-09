@@ -1,6 +1,7 @@
 import { BackendResponse, Code, Problem, ProblemSummery, Submission } from "@/types";
 import apiClient from "./apiClient";
-import { SubmitResponse } from "@/types/api";
+import { ExecReq, SubmitReq, SubmitResponse } from "@/types/api";
+import { url } from "inspector";
 
 export async function fetchProblemsById(problemId: string): Promise<Problem> {
   try {
@@ -42,14 +43,14 @@ export async function fetchCodeByUserProblemId(userProblemId: string): Promise<C
 }
 
 export async function fetchAllSubmissions(
-  problemId: string
+  userProblemId: string
 ): Promise<Submission[]> {
   try {
-    const response = await apiClient.get<Submission[]>(
-      `/submissions/${problemId}`
+    const response = await apiClient.get<BackendResponse<Submission[]>>(
+      `/userProblems/${userProblemId}/submissions`
     );
 
-    return response.data;
+    return response.data.payload;
   } catch (error) {
     console.error("Failed to fetch all problems:", error);
     throw error;
@@ -58,14 +59,15 @@ export async function fetchAllSubmissions(
 
 // Test Case Submission
 export async function submitAndCompileCode(
-  problemId: string
+  submitRequest: SubmitReq
 ): Promise<SubmitResponse> {
   try {
-    const response = await apiClient.post<SubmitResponse>(
-      `/submissions/compile/${problemId}`
+    const response = await apiClient.post<BackendResponse<SubmitResponse>>(
+      `/actions/submit`,
+      submitRequest
     );
 
-    return response.data;
+    return response.data.payload;
   } catch (error) {
     console.error("Failed to fetch all problems:", error);
     throw error;
@@ -73,14 +75,15 @@ export async function submitAndCompileCode(
 }
 
 export async function submitAndExecuteCode(
-  problemId: string
+  execRequest: ExecReq
 ): Promise<SubmitResponse> {
   try {
-    const response = await apiClient.post<SubmitResponse>(
-      `/submissions/exec/${problemId}`
+    const response = await apiClient.post<BackendResponse<SubmitResponse>>(
+      `/actions/execute`,
+      execRequest
     );
 
-    return response.data;
+    return response.data.payload;
   } catch (error) {
     console.error("Failed to fetch all problems:", error);
     throw error;
