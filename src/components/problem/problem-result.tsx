@@ -14,15 +14,19 @@ const ProblemResult = ({ problem, ...props }: Props) => {
   useEffect(() => {
     const fetchSubmissionsByUserProblemIdAsync = async () => {
       let submissions = problem.submissions;
-
+  
       if (problem.userProblemId) {
-        const response = await fetchAllSubmissions(problem.userProblemId);
-        submissions = response;
+        try{
+          const response = await fetchAllSubmissions(problem.userProblemId);
+          submissions = response;
+        } catch(error) {
+          console.log("Error occured: ",error)
+        }
       }
-
+  
       setData(submissions);
-    };
-    
+    }
+
     fetchSubmissionsByUserProblemIdAsync();
   }, [problem]);
 

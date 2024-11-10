@@ -53,6 +53,8 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
       code: getCodeforLanguage(codeInfo.codes, codeInfo.selLanguage),
       language: codeInfo.selLanguage,
     };
+    
+    console.log(codeInfo, submitReq)
 
     const responseCompile = await submitAndCompileCode(submitReq);
 
@@ -73,6 +75,8 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
 
     const responseExec = await submitAndExecuteCode(execRequest);
 
+    console.log(responseExec);
+
     if (responseExec.status === "RUNTIME_ERROR") {
       setExecStatus(CodeStatus.RUNTIME_ERROR);
       setTestCaseExec({
@@ -83,7 +87,7 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
       return;
     }
 
-    if (responseExec.status === "WRONG_ANSWER" || "TIME_LIMIT_EXCEEDED") {
+    if (responseExec.status === "WRONG_ANSWER" || responseExec.status === "TIME_LIMIT_EXCEEDED") {
       setExecStatus(CodeStatus.TESTCASE_FAILED);
       setTestCaseExec({
         status: "TESTCASE_FAILED",
@@ -104,10 +108,8 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
   };
 
   const submitTheCode = React.useCallback(() => {
-    const code = getCodeforLanguage(codeInfo.codes, codeInfo.selLanguage);
-
     comileAndExecuteCodeAsync();
-  }, [problem, execStatus]);
+  }, [codeInfo, problem, execStatus]);
 
   return (
     <div className="flex flex-col h-full space-between">
