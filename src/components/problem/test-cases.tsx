@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { Check, Loader2, SquareCheck, X } from "lucide-react";
-import { Card } from "../ui/card";
+import { initTestExecution } from "@/constants/data";
 import { cn, getCodeforLanguage } from "@/lib/utils";
-import { Button } from "../ui/button";
-import { toast, ToastContainer } from "react-toastify";
-import { CodeLangDetails, Problem, TestExecution } from "@/types";
 import {
   submitAndCompileCode,
   submitAndExecuteCode,
 } from "@/services/problemService";
-import { initTestExecution } from "@/constants/data";
+import { CodeLangDetails, Problem, TestExecution } from "@/types";
 import { ExecReq, SubmitReq } from "@/types/api";
+import { Check, Loader2, SquareCheck, X } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import { Button } from "../ui/button";
+import { Card } from "../ui/card";
 
 type Props = { problem: Problem; codeInfo: CodeLangDetails };
 
@@ -53,29 +53,30 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
       code: getCodeforLanguage(codeInfo.codes, codeInfo.selLanguage),
       language: codeInfo.selLanguage,
     };
-    
-    console.log(codeInfo, submitReq)
+
+    console.log(codeInfo, submitReq);
 
     const responseCompile = await submitAndCompileCode(submitReq);
-
-    if (responseCompile.status === "COMPILATION_FAILED") {
-      setExecStatus(CodeStatus.COMPILATION_ERROR);
-      setTestCaseExec({
-        status: responseCompile.status,
-        message: responseCompile.message,
-      });
-      setDisableSubmit(false);
-      return;
-    }
 
     setExecStatus(CodeStatus.RUNNING);
     const execRequest: ExecReq = {
       userProblemId: responseCompile.submission.userProblemId,
+      language: codeInfo.selLanguage,
     };
 
     const responseExec = await submitAndExecuteCode(execRequest);
 
     console.log(responseExec);
+
+    if (responseExec.status === "COMPILATION_FAILED") {
+      setExecStatus(CodeStatus.COMPILATION_ERROR);
+      setTestCaseExec({
+        status: responseExec.status,
+        message: responseExec.message,
+      });
+      setDisableSubmit(false);
+      return;
+    }
 
     if (responseExec.status === "RUNTIME_ERROR") {
       setExecStatus(CodeStatus.RUNTIME_ERROR);
@@ -87,7 +88,10 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
       return;
     }
 
-    if (responseExec.status === "WRONG_ANSWER" || responseExec.status === "TIME_LIMIT_EXCEEDED") {
+    if (
+      responseExec.status === "WRONG_ANSWER" ||
+      responseExec.status === "TIME_LIMIT_EXCEEDED"
+    ) {
       setExecStatus(CodeStatus.TESTCASE_FAILED);
       setTestCaseExec({
         status: "TESTCASE_FAILED",

@@ -1,4 +1,4 @@
-import { ResultStatus, Submission } from ".";
+import { Language, ResultStatus, Submission } from ".";
 
 export type SubmitReq = {
   problemId: string;
@@ -8,10 +8,11 @@ export type SubmitReq = {
 
 export type ExecReq = {
   userProblemId: string;
+  language: Language;
 };
-  
+
 export type SubmitResponse = {
-  submissionId: string
+  submissionId: string;
   status: ResultStatus;
   message: string;
   submission: Submission;

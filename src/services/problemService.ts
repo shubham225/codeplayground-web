@@ -1,7 +1,6 @@
-import { BackendResponse, Code, Problem, ProblemSummery, Submission } from "@/types";
+import { BackendResponse, Code, Language, Problem, ProblemSummery, Submission } from "@/types";
 import apiClient from "./apiClient";
 import { ExecReq, SubmitReq, SubmitResponse } from "@/types/api";
-import { url } from "inspector";
 
 export async function fetchProblemsById(problemId: string): Promise<Problem> {
   try {
@@ -29,7 +28,7 @@ export async function fetchAllProblems(): Promise<ProblemSummery[]> {
   }
 }
 
-export async function fetchCodeByUserProblemId(userProblemId: string): Promise<Code[]> {
+export async function fetchCodeByUserProblemId(userProblemId: string, language: Language): Promise<Code[]> {
   try {
     const response = await apiClient.get<BackendResponse<Code[]>>(
       `/userProblems/${userProblemId}/code`

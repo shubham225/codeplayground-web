@@ -48,25 +48,27 @@ const CodeWindow = ({ problem, codeInfo, setCodeInfo, ...props }: Props) => {
       if (problem.userProblemId === null || problem.userProblemId === "") {
         const code = getCodeforLanguage(
           problem.codeSnippets,
-          codeInfo.selLanguage
+          selectedLang
         );
         setCode(code);
         return;
       }
 
-      const response = await fetchCodeByUserProblemId(problem.userProblemId);
+      const response = await fetchCodeByUserProblemId(problem.userProblemId, selectedLang);
       const code =
-        getCodeforLanguage(response, codeInfo.selLanguage) ||
-        getCodeforLanguage(problem.codeSnippets, codeInfo.selLanguage);
+        getCodeforLanguage(response, selectedLang) ||
+        getCodeforLanguage(problem.codeSnippets, selectedLang);
 
-      setCodeInfo({ selLanguage: codeInfo.selLanguage, codes: response });
+        console.log("Response and code", response, code);
+
+      setCodeInfo({ selLanguage: selectedLang, codes: response });
       setCode(code);
     };
 
     const suppLang = problem.codeSnippets.map((c) => c.language);
     setSupportedLang(suppLang);
     fetchCodeByProblemAsync();
-  }, [problem]);
+  }, [problem, selectedLang]);
 
   const updateCodeInfoObject = React.useCallback(
     (language: Language, code: string) => {

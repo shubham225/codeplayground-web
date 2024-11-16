@@ -19,6 +19,7 @@ const problems = (props: Props) => {
   useEffect(() => {
     const fetchAllProblemStatements = async () => {
       const response = await fetchAllProblems();
+      console.log("Fetched ", response);
       setData(response);
     };
 
