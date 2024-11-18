@@ -31,7 +31,7 @@ export const initSubmissionDetails: Submission[] = [
   {
     id: "",
     userProblemId: "",
-    date: new Date(),
+    date: "dummy date",
     status: "IN_PROGRESS",
     language: "JAVA",
     runtime: 0,

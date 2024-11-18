@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Coding Test Frontend
 
-## Getting Started
+This repository hosts the frontend for a **LeetCode-like coding test platform**, built with **Next.js**, **Tailwind CSS**, and **shadcn**. The platform provides a seamless user interface for solving coding problems, viewing problem statements, and executing code in real-time.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js Framework**: Fast, scalable, and optimized for server-side rendering and static site generation.
+- **Tailwind CSS**: Utility-first CSS framework for creating responsive and modern designs.
+- **shadcn**: A robust component library to speed up UI development with accessible and customizable components.
+- **Responsive Design**: Fully responsive and works seamlessly on all device sizes.
+- **Code Execution Support**: Real-time feedback and execution of user-submitted code.
+- **Secure Code Execution**: Utilizes **Docker** containers to execute user-submitted code in an isolated and secure environment, ensuring safety and preventing unauthorized access to system resources.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Component Library**: [shadcn](https://shadcn.dev/)
+- **Package Manager**: npm or yarn
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v14+ recommended)
+- npm (comes with Node.js) or yarn (optional)
 
-## Deploy on Vercel
+### Steps
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/shubham225/coding-test-frontend.git
+   cd coding-test-frontend
+   ```
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
+3. Run the development server:
+   ```bash
+   yarn dev
+   ```
+4. Open your browser and navigate to:
+   ```bash
+   http://localhost:3000
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Screenshots
+*Problem Window*
+![Login Page](./screenshots/problem-window.png)
+*Compiling Code*
+![Login Page](./screenshots/compiling-code.png)
+*Compilation Error*
+![Login Page](./screenshots/compilation-error.png)
+*Testcase Passed*
+![Login Page](./screenshots/testcase-passed.png)
+*Dark Mode*
+![Login Page](./screenshots/dark-mode.png)
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+
+
+### Acknowledgments
+
+- Built using [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [shadcn](https://shadcn.dev/).
+- Inspired by the simplicity and functionality of platforms like [LeetCode](https://leetcode.com/).

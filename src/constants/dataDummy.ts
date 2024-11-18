@@ -69,7 +69,7 @@ export const initSubmissionDetails: Submission[] = [
   {
     id: "dummySub",
     userProblemId: "dummy",
-    date: new Date("2022-03-04"),
+    date: "2022-03-04",
     status: "ACCEPTED",
     language: "JAVA",
     runtime: 12345,
@@ -121,7 +121,7 @@ export const dummyProblemSubmissions: Submission[] = [
   {
     id: "two-sum",
     userProblemId: "dummyID",
-    date: new Date("2020-01-09"),
+    date: "2020-01-09",
     status: "ACCEPTED",
     language: "JAVA",
     runtime: 13000,
@@ -130,7 +130,7 @@ export const dummyProblemSubmissions: Submission[] = [
   {
     id: "two-sum",
     userProblemId: "dummyID",
-    date: new Date("2022-01-09"),
+    date: "2022-01-09",
     status: "WRONG_ANSWER",
     language: "JAVA",
     runtime: 219000,

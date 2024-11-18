@@ -18,12 +18,13 @@ type Props = { problem: Problem; codeInfo: CodeLangDetails };
 
 enum CodeStatus {
   NO_ACTION = 0,
-  COMPILING = 1,
-  COMPILATION_ERROR = 2,
-  RUNNING = 3,
-  RUNTIME_ERROR = 4,
-  TESTCASE_FAILED = 5,
-  SUCCESS = 6,
+  UPLOADED = 1,
+  COMPILING = 2,
+  COMPILATION_ERROR = 3,
+  RUNNING = 4,
+  RUNTIME_ERROR = 5,
+  TESTCASE_FAILED = 6,
+  SUCCESS = 7,
 }
 
 const TestCases = ({ problem, codeInfo, ...props }: Props) => {
@@ -58,7 +59,7 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
 
     const responseCompile = await submitAndCompileCode(submitReq);
 
-    setExecStatus(CodeStatus.RUNNING);
+    setExecStatus(CodeStatus.UPLOADED);
     const execRequest: ExecReq = {
       userProblemId: responseCompile.submission.userProblemId,
       language: codeInfo.selLanguage,
@@ -129,12 +130,27 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
             hidden: execStatus === CodeStatus.NO_ACTION,
           })}
         >
+          {/* Upload */}
+          <div className="flex gap-2">
+            {execStatus < CodeStatus.UPLOADED && (
+              <>
+                <Loader2 className="animate-spin text-teal-400" />
+                <h1 className="text-sm font-medium">Uploading Code...</h1>
+              </>
+            )}
+            {execStatus >= CodeStatus.UPLOADED && (
+              <>
+                <Check className="text-green-500" />
+                <h1 className="text-sm font-medium">Upload Successful</h1>
+              </>
+            )}
+          </div>
           {/* Compilation  */}
           <div className="flex gap-2">
             {execStatus <= CodeStatus.COMPILING && (
               <>
                 <Loader2 className="animate-spin text-teal-400" />
-                <h1 className="text-sm font-medium">Compiling...</h1>
+                <h1 className="text-sm font-medium">Compiling Code...</h1>
               </>
             )}{" "}
             {execStatus === CodeStatus.COMPILATION_ERROR && (
@@ -155,7 +171,7 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
               hidden: execStatus === CodeStatus.COMPILATION_ERROR,
             })}
           >
-            {execStatus <= CodeStatus.RUNNING && (
+            {execStatus == CodeStatus.RUNNING && (
               <>
                 <Loader2 className="animate-spin text-teal-400" />
                 <h1 className="text-sm font-medium">Validating Testcases...</h1>
@@ -181,14 +197,17 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
             )}
           </div>
           <Card
-            className={cn("p-1 text-xs leading-4 font-mono", {
-              hidden:
-                execStatus !== CodeStatus.COMPILATION_ERROR &&
-                execStatus !== CodeStatus.RUNTIME_ERROR &&
-                execStatus !== CodeStatus.TESTCASE_FAILED,
-            })}
+            className={cn(
+              "px-1 text-xs leading-4 font-mono whitespace-pre-wrap",
+              {
+                hidden:
+                  execStatus !== CodeStatus.COMPILATION_ERROR &&
+                  execStatus !== CodeStatus.RUNTIME_ERROR &&
+                  execStatus !== CodeStatus.TESTCASE_FAILED,
+              }
+            )}
           >
-            {testCaseExec.message}
+            {testCaseExec.message.replaceAll("\n", "\n")}
           </Card>
         </div>
       </div>
