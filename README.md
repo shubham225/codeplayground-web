@@ -67,7 +67,7 @@ This repository hosts the frontend for a **LeetCode-like coding test platform**,
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
 
-### Acknowledgments
+## Acknowledgments
 
 - Built using [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [shadcn](https://shadcn.dev/).
 - Inspired by the simplicity and functionality of platforms like [LeetCode](https://leetcode.com/).

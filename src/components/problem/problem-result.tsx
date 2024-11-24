@@ -31,7 +31,7 @@ const ProblemResult = ({ problem, ...props }: Props) => {
   }, [problem]);
 
   return (
-    <div className="h-[845px] overflow-auto">
+    <div className="h-[800px] overflow-auto">
       <DataTable columns={columns} data={data} />
     </div>
   );
