@@ -5,6 +5,8 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 import { ChevronsLeftRightEllipsis } from "lucide-react";
 import Link from "next/link";
+import SwitchDemo from "@/components/toggle-mode";
+import ToggleMode from "@/components/toggle-mode";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -35,7 +37,7 @@ export default function RootLayout({
                   <h1 className="text-xl font-bold">AppName</h1>
                 </div>
               </Link>
-              <ModeToggle />
+              <ToggleMode />
             </div>
             {children}
           </div>
