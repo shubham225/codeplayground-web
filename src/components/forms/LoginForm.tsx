@@ -6,12 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import InputField from "../custom-ui/InputField";
-import { Loader2 } from "lucide-react";
+import InputFormField from "../custom-ui/InputField";
+import { Loader2, Mail } from "lucide-react";
+import PassowrdInput from "../custom-ui/input/PasswordInput";
+import { Input } from "../ui/input";
+import SimpleInput from "../custom-ui/input/SimpleInput";
 
 export const loginFormSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  email: z.string().min(5, {
+    message: "Username must be at least 5 characters.",
   }),
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
@@ -22,18 +25,15 @@ export default function LoginForm() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
 
-  // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof loginFormSchema>) {
-    // Do something with the form values.
     setIsLoading(true);
     console.log(values);
     setIsLoading(false);
@@ -42,18 +42,19 @@ export default function LoginForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <InputField
-          control={form.control}
-          name="username"
+        <SimpleInput
+          id="email"
           label="Email"
-          placeholder="Enter your email"
+          message={form.formState.errors.email?.message}
+          placeholder="Enter email address"
+          {...form.register("email")}
         />
-        <InputField
-          control={form.control}
-          name="password"
+        <PassowrdInput
+          id="password"
           label="Password"
-          placeholder="Enter your password"
-          type="password"
+          message={form.formState.errors.password?.message}
+          placeholder="Enter Password"
+          {...form.register("password")}
         />
         <div className="flex flex-col gap-3 pt-2">
           <Button type="submit" disabled={isLoading}>

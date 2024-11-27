@@ -15,7 +15,7 @@ export default function AuthLayout({
         </section>
 
       {/* Image and Background from leftside */}
-      <div className="h-full w-full p-10 max-lg:hidden">
+      <div className="h-full w-full p-4 max-lg:hidden">
         <div className="size-full bg-sky-1 rounded-3xl">
           <div className="relative h-full w-full items-center">
             <Image

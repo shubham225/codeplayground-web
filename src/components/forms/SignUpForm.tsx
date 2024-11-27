@@ -6,8 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import InputField from "../custom-ui/InputField";
+import InputFormField from "../custom-ui/InputField";
 import { Loader2 } from "lucide-react";
+import SimpleInput from "../custom-ui/input/SimpleInput";
+import PassowrdInput from "../custom-ui/input/PasswordInput";
+import DateInputField from "../custom-ui/input/DateInputField";
 
 export const signUpFormSchema = z.object({
   firstname: z.string().min(2),
@@ -46,59 +49,60 @@ export default function SignUpForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex justify-between gap-2">
-          <InputField
-            control={form.control}
-            name="firstname"
+          <SimpleInput
+            id="firstname"
             label="Firstname"
             placeholder="ex. John"
+            {...form.register("firstname")}
           />
-          <InputField
-            control={form.control}
-            name="lastname"
+
+          <SimpleInput
+            id="lastname"
             label="Lastname"
             placeholder="ex. Doe"
+            {...form.register("lastname")}
           />
         </div>
-        <InputField
-          control={form.control}
-          name="address"
+        <SimpleInput
+          id="address"
           label="Address"
-          placeholder="Enter your address"
+          placeholder="Enter Address"
+          {...form.register("address")}
         />
         <div className="flex justify-between gap-2">
-          <InputField
-            control={form.control}
-            name="state"
+          <SimpleInput
+            id="state"
             label="State"
             placeholder="ex. MH"
+            {...form.register("state")}
           />
-          <InputField
-            control={form.control}
-            name="postalCode"
+          <SimpleInput
+            id="postalCode"
             label="Postal Code"
             placeholder="ex. 123456"
+            {...form.register("postalCode")}
           />
         </div>
         <div className="flex justify-between gap-2">
-          <InputField
-            control={form.control}
-            name="username"
+          <SimpleInput
+            id="username"
             label="Email"
-            placeholder="Enter your email"
+            placeholder="Enter email"
+            {...form.register("username")}
           />
-          <InputField
-            control={form.control}
-            name="dob"
+          <SimpleInput
+            id="dob"
             label="Date of Birth"
             placeholder="DD-MM-YYYY"
+            {...form.register("dob")}
           />
         </div>
-        <InputField
-          control={form.control}
-          name="password"
+        <PassowrdInput
+          id="password"
           label="Password"
-          placeholder="Create a password"
-          type="password"
+          message={form.formState.errors.password?.message}
+          placeholder="Enter Password"
+          {...form.register("password")}
         />
         <div className="flex flex-col gap-2">
           <Button type="submit" className="form-btn" disabled={isLoading}>
