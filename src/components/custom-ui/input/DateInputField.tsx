@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { getLocalTimeZone, today } from "@internationalized/date";
 import { CalendarIcon, ChevronLeft, ChevronRight } from "lucide-react";
+import { Label } from "@/components/ui/label";
 import {
   Button,
   Calendar,
@@ -17,18 +18,29 @@ import {
   Dialog,
   Group,
   Heading,
-  Label,
   Popover,
 } from "react-aria-components";
 
-export default function DateInputField() {
+type Props = {
+  id: string;
+  label: string;
+  message?: string | undefined;
+  placeholder?: string;
+};
+
+export default function DateInputField({
+  id,
+  label,
+  message,
+  placeholder,
+  ...props
+}: Props) {
   const now = today(getLocalTimeZone());
 
   return (
     <div className="space-y-1 flex-grow">
-      <DatePicker>
-        
-      <Label >Date of Birth</Label>
+      <Label htmlFor={id}>{label}</Label>
+      <DatePicker id={id} {...props}>
         <div className="flex">
           <Group className="inline-flex h-9 w-full items-center overflow-hidden whitespace-nowrap rounded-lg border border-input bg-background px-3 py-2 pe-9 text-sm shadow-sm shadow-black/5 transition-shadow data-[focus-within]:border-ring data-[disabled]:opacity-50 data-[focus-within]:outline-none data-[focus-within]:ring-[3px] data-[focus-within]:ring-ring/20">
             <DateInput>
@@ -90,6 +102,13 @@ export default function DateInputField() {
           </Dialog>
         </Popover>
       </DatePicker>
+      <p
+        className="mt-2 text-xs text-destructive"
+        role="alert"
+        aria-live="polite"
+      >
+        {message}
+      </p>
     </div>
   );
 }

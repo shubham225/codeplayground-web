@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import InputFormField from "../custom-ui/InputField";
-import { Loader2, Mail } from "lucide-react";
+import { KeyRound, Loader2, Mail } from "lucide-react";
 import PassowrdInput from "../custom-ui/input/PasswordInput";
 import { Input } from "../ui/input";
 import SimpleInput from "../custom-ui/input/SimpleInput";
@@ -45,15 +45,17 @@ export default function LoginForm() {
         <SimpleInput
           id="email"
           label="Email"
-          message={form.formState.errors.email?.message}
           placeholder="Enter email address"
+          Icon={Mail}
+          message={form.formState.errors.email?.message}
           {...form.register("email")}
         />
         <PassowrdInput
           id="password"
           label="Password"
-          message={form.formState.errors.password?.message}
           placeholder="Enter Password"
+          Icon={KeyRound}
+          message={form.formState.errors.password?.message}
           {...form.register("password")}
         />
         <div className="flex flex-col gap-3 pt-2">

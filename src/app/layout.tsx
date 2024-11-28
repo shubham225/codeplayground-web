@@ -7,6 +7,8 @@ import { ChevronsLeftRightEllipsis } from "lucide-react";
 import Link from "next/link";
 import SwitchDemo from "@/components/toggle-mode";
 import ToggleMode from "@/components/toggle-mode";
+import GridPattern from "@/components/ui/grid-pattern";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -30,7 +32,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex flex-col size-full">
-            <div className="flex flex-row justify-between p-2 dark:bg-[#1e1e1e] bg-gray-50">
+            <div className="flex flex-row justify-between p-2 dark:bg-[#1e1e1e] bg-gray-100/15">
               <Link href={"/"}>
                 <div className="flex gap-2 items-center">
                   <ChevronsLeftRightEllipsis className="text-orange-400 font-bold w-8 h-8" />
@@ -39,7 +41,7 @@ export default function RootLayout({
               </Link>
               <ToggleMode />
             </div>
-            {children}
+              {children}
           </div>
         </ThemeProvider>
       </body>

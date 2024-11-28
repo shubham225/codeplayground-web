@@ -144,6 +144,9 @@ body {
   .text-36 {
     @apply text-[36px] leading-[44px];
   }
+
+  /* Animations */
+  
 }
 
 /* React-Split Gutter */

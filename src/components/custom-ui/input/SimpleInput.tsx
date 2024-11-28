@@ -29,15 +29,15 @@ export default function SimpleInput({
       <div className="relative">
         <Input
           id={id}
-          className={cn("pe-9 dark:border-gray-500", {
+          className={cn("peer pe-9 dark:border-gray-500", {
             "border-destructive/80 text-destructive focus-visible:border-destructive/80 focus-visible:ring-destructive/20":
               message,
-          })}
+          }, {"ps-9" : Icon})}
           placeholder={placeholder}
           type="text"
           {...props}
         />
-        <div className="pointer-events-none absolute inset-y-0 end-0 flex items-center justify-center pe-3 text-muted-foreground/80 peer-disabled:opacity-50">
+        <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-muted-foreground/80 peer-disabled:opacity-50">
           {Icon && <Icon size={16} strokeWidth={2} aria-hidden="true" />}
         </div>
       </div>

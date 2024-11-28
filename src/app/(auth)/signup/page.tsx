@@ -7,7 +7,7 @@ export default function SignUp() {
     <>
       <header className="flex flex-col gap-5 md:gap-6 pb-2">
         <div className="flex flex-col gap-1 md:gap-3">
-          <h1 className="text-22 lg:text-30 font-medium text-gray-900 dark:text-gray-100">
+          <h1 className="text-22 lg:text-30 text-24 font-medium text-gray-900 dark:text-gray-100">
             Create account
             <p className="text-16 font-normal text-gray-600 dark:text-gray-300">
               Enter your details to get started.

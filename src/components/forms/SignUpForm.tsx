@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import InputFormField from "../custom-ui/InputField";
-import { Loader2 } from "lucide-react";
+import { Loader2, LockKeyhole, Mail, MapPinHouse } from "lucide-react";
 import SimpleInput from "../custom-ui/input/SimpleInput";
 import PassowrdInput from "../custom-ui/input/PasswordInput";
 import DateInputField from "../custom-ui/input/DateInputField";
@@ -18,8 +18,8 @@ export const signUpFormSchema = z.object({
   address: z.string().max(50),
   state: z.string().min(2),
   postalCode: z.string().max(6),
-  dob: z.string().length(10),
-  username: z.string().email(),
+  email: z.string().email(),
+  dob: z.string(),
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
   }),
@@ -33,7 +33,7 @@ export default function SignUpForm() {
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
-      username: "",
+      email: "",
     },
   });
 
@@ -53,6 +53,7 @@ export default function SignUpForm() {
             id="firstname"
             label="Firstname"
             placeholder="ex. John"
+            message={form.formState.errors.firstname?.message}
             {...form.register("firstname")}
           />
 
@@ -60,6 +61,7 @@ export default function SignUpForm() {
             id="lastname"
             label="Lastname"
             placeholder="ex. Doe"
+            message={form.formState.errors.lastname?.message}
             {...form.register("lastname")}
           />
         </div>
@@ -67,6 +69,8 @@ export default function SignUpForm() {
           id="address"
           label="Address"
           placeholder="Enter Address"
+          Icon={MapPinHouse}
+          message={form.formState.errors.address?.message}
           {...form.register("address")}
         />
         <div className="flex justify-between gap-2">
@@ -74,34 +78,40 @@ export default function SignUpForm() {
             id="state"
             label="State"
             placeholder="ex. MH"
+            message={form.formState.errors.state?.message}
             {...form.register("state")}
           />
           <SimpleInput
             id="postalCode"
             label="Postal Code"
             placeholder="ex. 123456"
+            message={form.formState.errors.postalCode?.message}
             {...form.register("postalCode")}
           />
         </div>
         <div className="flex justify-between gap-2">
           <SimpleInput
-            id="username"
+            id="email"
             label="Email"
             placeholder="Enter email"
-            {...form.register("username")}
+            Icon={Mail}
+            message={form.formState.errors.email?.message}
+            {...form.register("email")}
           />
-          <SimpleInput
+          <DateInputField
             id="dob"
             label="Date of Birth"
             placeholder="DD-MM-YYYY"
+            message={form.formState.errors.dob?.message}
             {...form.register("dob")}
           />
         </div>
         <PassowrdInput
           id="password"
           label="Password"
-          message={form.formState.errors.password?.message}
           placeholder="Enter Password"
+          Icon={LockKeyhole}
+          message={form.formState.errors.password?.message}
           {...form.register("password")}
         />
         <div className="flex flex-col gap-2">
