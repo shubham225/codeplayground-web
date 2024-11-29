@@ -23,7 +23,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { signUpFormSchema } from "@/components/forms/SignUpForm";
+import { signUpFormSchema } from "@/components/forms/signup-form";
 import { Label } from "@/components/ui/label";
 
 type Props = {

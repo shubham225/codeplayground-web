@@ -31,9 +31,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col size-full">
-              {children}
-          </div>
+          {children}
         </ThemeProvider>
       </body>
     </html>

@@ -29,7 +29,7 @@ export default function SimpleInput({
       <div className="relative">
         <Input
           id={id}
-          className={cn("peer pe-9 dark:border-gray-500", {
+          className={cn("peer pe-5 dark:border-gray-500", {
             "border-destructive/80 text-destructive focus-visible:border-destructive/80 focus-visible:ring-destructive/20":
               message,
           }, {"ps-9" : Icon})}

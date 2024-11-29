@@ -1,6 +1,6 @@
 "use client";
 
-import LoginForm from "@/components/forms/LoginForm";
+import LoginForm from "@/components/forms/login-form";
 import Link from "next/link";
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
