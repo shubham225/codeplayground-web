@@ -6,7 +6,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import InputFormField from "../custom-ui/InputField";
 import { Loader2, LockKeyhole, Mail, MapPinHouse } from "lucide-react";
 import SimpleInput from "../custom-ui/input/SimpleInput";
 import PassowrdInput from "../custom-ui/input/PasswordInput";
@@ -15,9 +14,9 @@ import DateInputField from "../custom-ui/input/DateInputField";
 export const signUpFormSchema = z.object({
   firstname: z.string().min(2),
   lastname: z.string().min(2),
-  address: z.string().max(50),
+  address: z.string().min(5).max(50),
   state: z.string().min(2),
-  postalCode: z.string().max(6),
+  postalCode: z.string().length(6, "Postal Code should be length 6"),
   email: z.string().email(),
   dob: z.string(),
   password: z.string().min(8, {
@@ -101,7 +100,6 @@ export default function SignUpForm() {
           <DateInputField
             id="dob"
             label="Date of Birth"
-            placeholder="DD-MM-YYYY"
             message={form.formState.errors.dob?.message}
             {...form.register("dob")}
           />

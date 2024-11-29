@@ -1,8 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import GridPattern from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
-import { Card } from "@/components/ui/card";
 
 export default function AuthLayout({
   children,
@@ -17,6 +15,7 @@ export default function AuthLayout({
           <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border bg-background md:shadow-xl">
             <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white"></p>
             <GridPattern
+              key="background-pattern"
               squares={[
                 [4, 4],
                 [5, 1],
@@ -47,6 +46,7 @@ export default function AuthLayout({
         </section>
       </main>
       <GridPattern
+        key="side-image-pattern"
         width={20}
         height={20}
         x={-1}

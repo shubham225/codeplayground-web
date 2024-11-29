@@ -1,3 +1,5 @@
+"use client"
+
 import SignUpForm from "@/components/forms/SignUpForm";
 import Link from "next/link";
 import React from "react";
@@ -20,7 +22,10 @@ export default function SignUp() {
         <p className="text-14 font-normal text-gray-600 dark:text-gray-400">
           Already have an account?
         </p>
-        <Link href="/login" className="text-14 cursor-pointer font-medium text-blue-500">
+        <Link
+          href="/login"
+          className="text-14 cursor-pointer font-medium text-blue-500"
+        >
           Log in
         </Link>
       </footer>
