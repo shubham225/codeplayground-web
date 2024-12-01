@@ -8,9 +8,7 @@ type Props = {};
 export default function page({}: Props) {
   const params = useParams();
 
-  console.log(params);
-
   return <div>
-    Profile Page 
+    Profile Page : <p>{params.profileId}</p>
   </div>;
 }

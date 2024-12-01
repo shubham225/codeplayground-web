@@ -1,4 +1,4 @@
-import Navigation from "@/components/custom-ui/navigation";
+import Navigation from "@/components/navigation";
 import ProfileMenu from "@/components/profile-menu";
 import ToggleMode from "@/components/toggle-mode";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
