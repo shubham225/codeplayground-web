@@ -21,12 +21,14 @@ export default function AuthLayout({
           </div>
         </Link>
         <Navigation />
-        <div className="flex gap-4 px-4">
-          <ProfileMenu />
+        <div className="gap-1 hidden md:inline-flex">
           <ToggleMode />
+          <ProfileMenu />
         </div>
       </div>
-      {children}
+      <div className="size-full p-6">
+        {children}
+      </div>
     </main>
   );
 }

@@ -23,13 +23,22 @@ export default function Login() {
       <header className="flex flex-col gap-5 md:gap-6 pb-2">
         <div className="flex flex-col gap-1 md:gap-2">
           <h1 className="text-22 lg:text-30 text-24 font-medium text-gray-900 dark:text-gray-100">
-            Login to Account
+            Login to your account
             <p className="text-16 font-normal text-gray-600 dark:text-gray-400">
               Fill the below form to login
             </p>
           </h1>
         </div>
       </header>
+
+      <LoginForm />
+
+      <div className="flex justify-center items-center gap-4 overflow-hidden mt-8 mb-6">
+        <Separator />
+        <Label className="font-medium">OR</Label>
+        <Separator />
+      </div>
+
       <div className="flex justify-evenly my-5">
         <Button
           className="flex gap-2"
@@ -50,12 +59,6 @@ export default function Login() {
           Sign in with Github
         </Button>
       </div>
-      <div className="flex justify-center items-center gap-4 overflow-hidden my-4">
-        <Separator />
-        <Label className="font-medium">OR</Label>
-        <Separator />
-      </div>
-      <LoginForm />
 
       <footer className="flex justify-center gap-1 pt-2">
         <p className="text-14 font-medium text-gray-600 dark:text-gray-400">

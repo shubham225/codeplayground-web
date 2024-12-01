@@ -14,14 +14,13 @@ import DateInputField from "../custom-ui/input/DateInputField";
 export const signUpFormSchema = z.object({
   firstname: z.string().min(2),
   lastname: z.string().min(2),
-  address: z.string().min(5).max(50),
-  state: z.string().min(2),
-  postalCode: z.string().length(6, "Postal Code should be length 6"),
   email: z.string().email(),
-  dob: z.string(),
   password: z.string().min(8, {
     message: "Password must be at least 8 characters.",
   }),
+  address: z.string().min(5).max(50),
+  state: z.string().min(2),
+  dob: z.string(),
 });
 
 export default function SignUpForm() {
@@ -65,6 +64,22 @@ export default function SignUpForm() {
           />
         </div>
         <SimpleInput
+          id="email"
+          label="Email"
+          placeholder="Enter email"
+          Icon={Mail}
+          message={form.formState.errors.email?.message}
+          {...form.register("email")}
+        />
+        <PassowrdInput
+          id="password"
+          label="Password"
+          placeholder="Enter Password"
+          Icon={LockKeyhole}
+          message={form.formState.errors.password?.message}
+          {...form.register("password")}
+        />
+        <SimpleInput
           id="address"
           label="Address"
           placeholder="Enter Address"
@@ -80,23 +95,6 @@ export default function SignUpForm() {
             message={form.formState.errors.state?.message}
             {...form.register("state")}
           />
-          <SimpleInput
-            id="postalCode"
-            label="Postal Code"
-            placeholder="ex. 123456"
-            message={form.formState.errors.postalCode?.message}
-            {...form.register("postalCode")}
-          />
-        </div>
-        <div className="flex justify-between gap-2">
-          <SimpleInput
-            id="email"
-            label="Email"
-            placeholder="Enter email"
-            Icon={Mail}
-            message={form.formState.errors.email?.message}
-            {...form.register("email")}
-          />
           <DateInputField
             id="dob"
             label="Date of Birth"
@@ -104,14 +102,6 @@ export default function SignUpForm() {
             {...form.register("dob")}
           />
         </div>
-        <PassowrdInput
-          id="password"
-          label="Password"
-          placeholder="Enter Password"
-          Icon={LockKeyhole}
-          message={form.formState.errors.password?.message}
-          {...form.register("password")}
-        />
         <div className="flex flex-col gap-2">
           <Button type="submit" className="form-btn" disabled={isLoading}>
             {isLoading ? (

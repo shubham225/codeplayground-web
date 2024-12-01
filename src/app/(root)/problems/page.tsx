@@ -5,6 +5,7 @@ import { DataTable } from "@/components/data-tables";
 import { columns } from "./columns";
 import { ProblemSummery } from "@/types";
 import { fetchAllProblems } from "@/services/problemService";
+import PageHeader from "@/components/page-header";
 
 type Props = {};
 
@@ -29,10 +30,16 @@ const problems = (props: Props) => {
   if (!isMounted) {
     return null;
   }
-  
+
   return (
-    <main className="size-full p-2">
-      <DataTable columns={columns} data={data} />
+    <main>
+      <PageHeader
+        title="Practice"
+        subtitle="Browse and solve coding problems to boost your skills!"
+      />
+      <div className="mt-14">
+        <DataTable columns={columns} data={data} />
+      </div>
     </main>
   );
 };
