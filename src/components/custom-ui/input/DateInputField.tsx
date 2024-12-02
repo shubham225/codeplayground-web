@@ -38,7 +38,7 @@ export default function DateInputField({
   const now = today(getLocalTimeZone());
 
   return (
-    <div className="space-y-1 flex-grow">
+    <div className="space-y-1 w-full">
       <Label htmlFor={id}>{label}</Label>
       <DatePicker id={id} {...props}>
         <div className="flex">

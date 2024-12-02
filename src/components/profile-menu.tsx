@@ -42,7 +42,7 @@ export default function ProfileMenu({}: Props) {
                 Shubham Shinde
               </p>
               <p className="text-xs leading-snug text-muted-foreground line-clamp-2 self-start">
-                shubhamshinde@gmail.com
+                @shubhamshinde225
               </p>
             </div>
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />

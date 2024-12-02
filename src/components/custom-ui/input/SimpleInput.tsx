@@ -25,7 +25,7 @@ export default function SimpleInput({
   ...props
 }: Props) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-1 w-full">
       <Label htmlFor={id}>{label}</Label>
       <div className="relative">
         <Input
