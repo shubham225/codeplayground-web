@@ -16,10 +16,13 @@ type Props = {};
 
 export default function page({}: Props) {
   return (
-    <div className="size-full p-5">
+    <div>
       <Tabs defaultValue="question-management">
         <div className="flex justify-between">
-          <PageHeader title="Admin Panal" subtitle="Centralized hub to manage challenges, users, and platform content" />
+          <PageHeader
+            title="Admin Panal"
+            subtitle="Centralized hub to manage challenges, users, and platform content"
+          />
           <TabsList>
             <TabsTrigger value="question-management">
               Question Management

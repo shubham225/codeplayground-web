@@ -1,24 +1,30 @@
+// Dependencies: pnpm install lucide-react
+
 "use client";
 
-import ProfileDialog from "@/components/dialogs/profile";
-import ProfileMenu from "@/components/profile-menu";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Check, ImagePlus, X } from "lucide-react";
-import { useParams } from "next/navigation";
-import React, { useState } from "react";
 import { useCharacterLimit } from "@/hooks/use-character-limit";
 import { useImageUpload } from "@/hooks/use-image-upload";
 import AvatarImg from "@/public/avatar-72-01.jpg";
 import ProfileBgImg from "@/public/profile-bg.jpg";
+import { Check, ImagePlus, X } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
+import { useState } from "react";
 
-type Props = {};
-
-export default function page({}: Props) {
-  const params = useParams();
-
+export default function ProfileDialog() {
   const maxLength = 180;
   const {
     value,
@@ -32,8 +38,20 @@ export default function page({}: Props) {
   });
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="overflow-y-auto">
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="outline">Edit profile</Button>
+      </DialogTrigger>
+      <DialogContent className="flex flex-col gap-0 overflow-y-visible p-0 sm:max-w-lg [&>button:last-child]:top-3.5">
+        <DialogHeader className="contents space-y-0 text-left">
+          <DialogTitle className="border-b border-border px-6 py-4 text-base">
+            Edit profile
+          </DialogTitle>
+        </DialogHeader>
+        <DialogDescription className="sr-only">
+          Make changes to your profile here. You can change your photo and set a username.
+        </DialogDescription>
+        <div className="overflow-y-auto">
           <ProfileBg defaultImage={ProfileBgImg} />
           <Avatar defaultImage={AvatarImg} />
           <div className="px-6 pb-6 pt-4">
@@ -118,8 +136,18 @@ export default function page({}: Props) {
             </form>
           </div>
         </div>
-      Profile Page : <p>{params.profileId}</p>
-    </div>
+        <DialogFooter className="border-t border-border px-6 py-4">
+          <DialogClose asChild>
+            <Button type="button" variant="outline">
+              Cancel
+            </Button>
+          </DialogClose>
+          <DialogClose asChild>
+            <Button type="button">Save changes</Button>
+          </DialogClose>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }
 

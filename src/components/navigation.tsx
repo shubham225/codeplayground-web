@@ -61,7 +61,14 @@ export default function Navigation() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-inherit">
+          <Link href="/exams" legacyBehavior passHref>
+            <NavigationMenuLink
+              className={cn(navigationMenuTriggerStyle(), "bg-inherit")}
+            >
+              Exams
+            </NavigationMenuLink>
+           </Link>
+          {/* <NavigationMenuTrigger className="bg-inherit">
             Exam
           </NavigationMenuTrigger>
           <NavigationMenuContent>
@@ -76,7 +83,7 @@ export default function Navigation() {
                 </ListItem>
               ))}
             </ul>
-          </NavigationMenuContent>
+          </NavigationMenuContent> */}
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link href="/about" legacyBehavior passHref>
