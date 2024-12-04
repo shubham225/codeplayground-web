@@ -1,18 +1,26 @@
+"use client"
+
+import React, { useState } from "react";
 import PageHeader from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import {
-  Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
-import React from "react";
+import ContributeQuestion from "@/components/dialogs/contribute-question";
 
 type Props = {};
 
 export default function page({}: Props) {
+  const [openDialog, setOpenDialog] = useState<boolean>(false);
+
+  const handleContributeCodingQues : React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+    setOpenDialog(true);
+  }
+
   return (
     <div>
       <PageHeader
@@ -22,7 +30,7 @@ export default function page({}: Props) {
       <div className="flex flex-col gap-4 mt-14">
         <Label className="font-bold text-xl">Select Question Type</Label>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-4">
-          <Button variant="outline" className="h-40">
+          <Button variant="outline" className="h-40" onClick={handleContributeCodingQues}>
             <CardHeader>
               <CardTitle className="self-start">Coding</CardTitle>
               <CardDescription className="self-start">
@@ -49,6 +57,9 @@ export default function page({}: Props) {
             </CardHeader>
           </Button>
         </div>
+      </div>
+      <div className="size-full">
+        <ContributeQuestion open={openDialog} onOpenChange={setOpenDialog}/>
       </div>
     </div>
   );
