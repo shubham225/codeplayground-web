@@ -9,9 +9,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SimpleInput from "@/components/custom-ui/input/SimpleInput";
 import { Separator } from "@/components/ui/separator";
 import MultiSelect from "@/components/custom-ui/input/multi-select";
-import { Card, CardContent, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ProfileBackground from "@/components/profile/profile-background";
 import ProfileAvatar from "@/components/profile/profile-avatar";
+import { FaAward } from "react-icons/fa";
+import { FcCircuit, FcStart, FcVip } from "react-icons/fc";
 
 type Props = {};
 
@@ -110,20 +112,34 @@ export default function page({}: Props) {
             </div>
             <div className="sm:grid sm:grid-cols-2 gap-10">
               <div className="flex flex-col gap-2 pb-6">
-                <Card className="h-52 p-2">
+                <Card className="h-52">
+                <CardHeader>
                   <CardTitle>Solved Graph</CardTitle>
+                  </CardHeader>
+                  <CardContent>Table of recent Problems</CardContent>
                 </Card>
               </div>
               <div className="flex flex-col gap-3">
-                <Card className="h-52 p-2">
+                <Card className="h-52">
+                  <CardHeader>
                   <CardTitle>Badges</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex gap-3">
+                    <FcStart className="h-20 w-20" />
+                    <FcVip className="h-20 w-20" />
+                    <FcCircuit className="h-20 w-20" />
+                    </div>
+                  </CardContent>
                 </Card>
               </div>
             </div>
           </TabsContent>
           <TabsContent value="user-activity">
-            <Card className="h-96 p-2">
+            <Card className="h-96">
+              <CardHeader>
               <CardTitle>Recent Problems</CardTitle>
+              </CardHeader>
               <CardContent>Table of recent Problems</CardContent>
             </Card>
           </TabsContent>
