@@ -1,6 +1,6 @@
-# Coding Test Frontend
+# Online Coding Platform Frontend
 
-This repository hosts the frontend for a **LeetCode-like coding test platform**, built with **Next.js**, **Tailwind CSS**, and **shadcn**. The platform provides a seamless user interface for solving coding problems, viewing problem statements, and executing code in real-time.
+This repository hosts the frontend for a **Online Coding Platform**, built with **Next.js**, **Tailwind CSS**, and **shadcn**. The platform provides a seamless user interface for solving coding problems, viewing problem statements, and executing code in real-time.
 
 ---
 
