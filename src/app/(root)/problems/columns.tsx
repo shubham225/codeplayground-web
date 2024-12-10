@@ -22,8 +22,8 @@ export const columns: ColumnDef<ProblemSummery>[] = [
     cell: ({row}) => {return capitalizeFirstLetterOfEachWord(row.original.difficulty)}
   },
   {
-    accessorKey: "solve",
-    header: "Solve",
+    accessorKey: "actions",
+    header: "Actions",
     cell: ({ row }) => {
       const router = useRouter();
       return (

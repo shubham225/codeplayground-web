@@ -13,6 +13,8 @@ import { FcFaq } from "react-icons/fc";
 import HomeBgDark from "@/public/home-bg-dark.jpg";
 import HomeBgLight from "@/public/home-bg-light.jpg";
 import Image from "next/image";
+import ButtonWithIcon from "@/components/custom-ui/button/ButtonWithIcon";
+import { ArrowBigLeft, Braces } from "lucide-react";
 
 export default function Home() {
   return (
@@ -42,8 +44,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col justify-center items-center py-4">
           <Link href="/problems">
-            <Button size="lg" className="rounded-3xl">
-              Start Coding...
+            <Button size="lg" className="font-semibold">Start Coding...
             </Button>
           </Link>
         </div>

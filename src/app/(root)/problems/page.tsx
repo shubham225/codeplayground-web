@@ -6,6 +6,10 @@ import { columns } from "./columns";
 import { ProblemSummery } from "@/types";
 import { fetchAllProblems } from "@/services/problemService";
 import PageHeader from "@/components/page-header";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Filter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import ProblemFilter from "@/components/custom-ui/filters/problem-filter";
 
 type Props = {};
 
@@ -37,8 +41,18 @@ const problems = (props: Props) => {
         title="Practice"
         subtitle="Browse and solve coding problems to boost your skills!"
       />
-      <div className="mt-14">
-        <DataTable columns={columns} data={data} />
+      <div className="mt-14 h-full">
+        <Card className="h-full">
+          <CardHeader>
+            <div className="flex justify-between">
+              <h1 className="text-xl">Select Problem</h1>
+              <ProblemFilter />
+            </div>
+          </CardHeader>
+          <CardContent>
+            <DataTable columns={columns} data={data} />
+          </CardContent>
+        </Card>
       </div>
     </main>
   );
