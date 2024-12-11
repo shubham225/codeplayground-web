@@ -15,6 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Separator } from "./ui/separator";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -32,9 +33,9 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="rounded-md m-2">
+    <div className="rounded-lg m-2 border">
       <Table>
-        <TableHeader className="[&_tr]:border-0 bg-accent rounded-lg ">
+        <TableHeader className="[&_tr]:border-0 bg-accent rounded-lg mb-3">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map((header) => {

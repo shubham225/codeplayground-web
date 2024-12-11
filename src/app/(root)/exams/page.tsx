@@ -2,6 +2,7 @@
 
 import ButtonWithDetails from "@/components/custom-ui/button/ButtonWithDetails";
 import ButtonWithIcon from "@/components/custom-ui/button/ButtonWithIcon";
+import ShareButton from "@/components/custom-ui/button/ShareButton";
 import { JoinExam } from "@/components/dialogs/join-exam";
 import PageHeader from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Laptop, Plus } from "lucide-react";
+import { Copy, Laptop, Plus } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 type Props = {};
@@ -81,8 +82,13 @@ export default function page({}: Props) {
         {examsList.map((exam) => (
           <Card>
             <CardHeader>
+              <div className="flex justify-between">
+              <div>
               <CardTitle>{exam.name}</CardTitle>
               <CardDescription>Exam for SDE-2</CardDescription>
+              </div>
+              <ShareButton />
+              </div>
             </CardHeader>
             <CardContent>
               <div className="flex flex-col gap-1">

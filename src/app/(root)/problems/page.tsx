@@ -41,18 +41,11 @@ const problems = (props: Props) => {
         title="Practice"
         subtitle="Browse and solve coding problems to boost your skills!"
       />
-      <div className="mt-14 h-full">
-        <Card className="h-full">
-          <CardHeader>
-            <div className="flex justify-between">
-              <h1 className="text-xl">Select Problem</h1>
-              <ProblemFilter />
-            </div>
-          </CardHeader>
-          <CardContent>
-            <DataTable columns={columns} data={data} />
-          </CardContent>
-        </Card>
+      <div className="h-full flex flex-col gap-2">
+        <div className="flex flex-row-reverse m-2">
+          <ProblemFilter />
+        </div>
+        <DataTable columns={columns} data={data} />
       </div>
     </main>
   );

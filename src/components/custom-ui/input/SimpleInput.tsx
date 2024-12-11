@@ -8,7 +8,7 @@ import { ChangeEventHandler, ReactElement, useState } from "react";
 
 type Props = {
   id: string;
-  label: string;
+  label?: string;
   message?: string | undefined;
   placeholder?: string;
   value?: any;
