@@ -19,7 +19,7 @@ type Props = {};
 
 export default function ContribMultipleChoice({}: Props) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 p-5">
       <h4 className="text-md">Add a Question</h4>
       <div className="flex flex-col gap-4 m-5">
         <SimpleInput id="question" label="Question" />

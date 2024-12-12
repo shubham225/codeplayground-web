@@ -35,7 +35,7 @@ const questionsData: ProblemSummery[] = [
 
 export default function page({}: Props) {
   return (
-    <div>
+    <div className="p-5">
       <Tabs defaultValue="question-management">
         <div className="flex justify-between">
           <PageHeader

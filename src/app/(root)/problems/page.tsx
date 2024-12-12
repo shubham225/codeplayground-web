@@ -36,7 +36,7 @@ const problems = (props: Props) => {
   }
 
   return (
-    <main>
+    <main className="p-5">
       <PageHeader
         title="Practice"
         subtitle="Browse and solve coding problems to boost your skills!"

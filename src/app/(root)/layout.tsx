@@ -26,7 +26,7 @@ export default function AuthLayout({
           <ProfileMenu />
         </div>
       </div>
-      <div className="size-full p-6">
+      <div className="size-full">
         {children}
       </div>
     </main>

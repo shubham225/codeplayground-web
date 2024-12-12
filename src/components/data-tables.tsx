@@ -34,7 +34,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="rounded-lg m-2 border">
-      <Table>
+      <Table className="h-full">
         <TableHeader className="[&_tr]:border-0 bg-accent rounded-lg mb-3">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>

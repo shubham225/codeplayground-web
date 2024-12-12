@@ -47,7 +47,7 @@ export default function page({}: Props) {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <div className="flex justify-between">
         <PageHeader
           title="Exam Management"

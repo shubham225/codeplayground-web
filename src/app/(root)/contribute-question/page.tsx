@@ -25,7 +25,7 @@ export default function page({}: Props) {
   };
 
   return (
-    <div>
+    <div className="p-5">
       <PageHeader
         title="Contribute Question"
         subtitle="Submit your own coding problems to the platform"

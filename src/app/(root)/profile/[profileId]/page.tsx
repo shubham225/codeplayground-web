@@ -21,7 +21,7 @@ export default function page({}: Props) {
   const params = useParams();
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 p-5">
       <div className="overflow-y-auto">
         <ProfileBackground defaultImage={ProfileBgImg} />
         <ProfileAvatar defaultImage={AvatarImg} profileId={params.profileId} />
