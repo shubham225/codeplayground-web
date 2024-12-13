@@ -25,7 +25,7 @@ export function useImageUpload({ onUpload }: UseImageUploadProps = {}) {
         onUpload?.(url);
       }
     },
-    [onUpload],
+    [onUpload]
   );
 
   const handleRemove = useCallback(() => {

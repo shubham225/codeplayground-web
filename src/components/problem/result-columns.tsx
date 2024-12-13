@@ -5,7 +5,6 @@ import {
   capitalizeFirstLetterOfEachWord,
   cn,
   formatBytes,
-  formatDate,
   formatMilliseconds,
 } from "@/lib/utils";
 
@@ -23,11 +22,11 @@ export const columns: ColumnDef<Submission>[] = [
               "text-red-700": row.original.status === "TIME_LIMIT_EXCEEDED",
             })}
           >
-            {capitalizeFirstLetterOfEachWord(row.original.status.replaceAll("_", " "))}
+            {capitalizeFirstLetterOfEachWord(
+              row.original.status.replaceAll("_", " ")
+            )}
           </h1>
-          <h1 className="text-xs font-normal">
-            {row.original.date}
-          </h1>
+          <h1 className="text-xs font-normal">{row.original.date}</h1>
         </div>
       );
     },

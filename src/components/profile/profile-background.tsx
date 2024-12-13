@@ -1,11 +1,15 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import { useImageUpload } from "@/hooks/use-image-upload";
 import Image, { StaticImageData } from "next/image";
 import { ImagePlus, X } from "lucide-react";
 
- export default function ProfileBackground({ defaultImage }: { defaultImage?: StaticImageData }) {
+export default function ProfileBackground({
+  defaultImage,
+}: {
+  defaultImage?: StaticImageData;
+}) {
   const [hideDefault, setHideDefault] = useState(false);
   const {
     previewUrl,

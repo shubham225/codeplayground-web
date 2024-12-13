@@ -1,29 +1,17 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
-import { Control, useForm } from "react-hook-form";
-import { z } from "zod";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { FormControl, FormField, FormItem } from "@/components/ui/form";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { signUpFormSchema } from "@/components/forms/signup-form";
 import { Label } from "@/components/ui/label";
 
 type Props = {
@@ -48,7 +36,8 @@ export function DatePicker({ id, label, message, ...props }: Props) {
                     variant={"outline"}
                     className={cn(
                       "w-[240px] pl-3 text-left font-normal",
-                      !field.value && "text-muted-foreground",{
+                      !field.value && "text-muted-foreground",
+                      {
                         "border-destructive/80 text-destructive hover:text-destructive focus-visible:border-destructive/80 focus-visible:ring-destructive/20":
                           message,
                       }

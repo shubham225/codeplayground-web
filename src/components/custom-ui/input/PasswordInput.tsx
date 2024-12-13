@@ -3,7 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { Eye, EyeOff, SquareAsterisk } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 
 type Props = {
@@ -32,10 +32,14 @@ export default function PassowrdInput({
       <div className="relative">
         <Input
           id={id}
-          className={cn("pe-9 dark:border-gray-500", {
-            "border-destructive/80 text-destructive focus-visible:border-destructive/80 focus-visible:ring-destructive/20":
-              message,
-          },{"ps-9" : Icon})}
+          className={cn(
+            "pe-9 dark:border-gray-500",
+            {
+              "border-destructive/80 text-destructive focus-visible:border-destructive/80 focus-visible:ring-destructive/20":
+                message,
+            },
+            { "ps-9": Icon }
+          )}
           placeholder={placeholder}
           type={isVisible ? "text" : "password"}
           {...props}

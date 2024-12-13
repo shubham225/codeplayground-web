@@ -3,8 +3,7 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
-import { Eye, EyeOff, Mail } from "lucide-react";
-import { ChangeEventHandler, ReactElement, useState } from "react";
+import { ChangeEventHandler } from "react";
 
 type Props = {
   id: string;

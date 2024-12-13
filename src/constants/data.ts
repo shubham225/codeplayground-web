@@ -2,7 +2,6 @@ import {
   Code,
   CodeLangDetails,
   Problem,
-  ProblemSummery,
   Submission,
   TestExecution,
   User,

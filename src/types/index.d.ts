@@ -85,7 +85,8 @@ export type BackendResponse<T> = {
 };
 
 // Interfaces
-declare interface InputFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
+declare interface InputFieldProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   control: Control<z.infer<typeof loginFormSchema>>;
   name: FieldPath<z.infer<typeof loginFormSchema>>;
   id?: string;

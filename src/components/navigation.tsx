@@ -6,14 +6,11 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { ChevronsLeftRightEllipsis } from "lucide-react";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -47,7 +44,7 @@ export default function Navigation() {
             <NavigationMenuLink
               className={cn(navigationMenuTriggerStyle(), "bg-inherit")}
             >
-              Admin 
+              Admin
             </NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
@@ -67,7 +64,7 @@ export default function Navigation() {
             >
               Exams
             </NavigationMenuLink>
-           </Link>
+          </Link>
           {/* <NavigationMenuTrigger className="bg-inherit">
             Exam
           </NavigationMenuTrigger>
