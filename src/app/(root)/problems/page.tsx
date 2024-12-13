@@ -6,9 +6,6 @@ import { columns } from "./columns";
 import { ProblemSummery } from "@/types";
 import { fetchAllProblems } from "@/services/problemService";
 import PageHeader from "@/components/page-header";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Filter } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import ProblemFilter from "@/components/custom-ui/filters/problem-filter";
 
 type Props = {};

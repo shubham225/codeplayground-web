@@ -2,9 +2,6 @@
 
 import BannerFooter from "@/components/banner-footer";
 import Link from "next/link";
-import HomeBgDark from "@/public/home-bg-dark.jpg";
-import HomeBgLight from "@/public/home-bg-light.jpg";
-import Image from "next/image";
 import { Highlight } from "@/components/ui/hero-highlight";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beam-with-collision";
 

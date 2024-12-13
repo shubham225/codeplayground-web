@@ -12,7 +12,6 @@ import MultiSelect from "@/components/custom-ui/input/multi-select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ProfileBackground from "@/components/profile/profile-background";
 import ProfileAvatar from "@/components/profile/profile-avatar";
-import { FaAward } from "react-icons/fa";
 import { FcCircuit, FcStart, FcVip } from "react-icons/fc";
 
 type Props = {};

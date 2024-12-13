@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { capitalizeFirstLetterOfEachWord } from "@/lib/utils";
 import { ProblemSummery } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
-import { Delete, DeleteIcon, Edit, Edit2, Trash2 } from "lucide-react";
+import { Edit2, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<ProblemSummery>[] = [

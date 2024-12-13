@@ -1,7 +1,5 @@
 "use client";
 
-import ButtonWithDetails from "@/components/custom-ui/button/ButtonWithDetails";
-import ButtonWithIcon from "@/components/custom-ui/button/ButtonWithIcon";
 import ShareButton from "@/components/custom-ui/button/ShareButton";
 import { JoinExam } from "@/components/dialogs/join-exam";
 import PageHeader from "@/components/page-header";
@@ -15,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Copy, Laptop, Plus } from "lucide-react";
+import { Laptop, Plus } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
 type Props = {};

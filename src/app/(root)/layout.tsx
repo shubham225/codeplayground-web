@@ -1,7 +1,6 @@
 import Navigation from "@/components/navigation";
 import ProfileMenu from "@/components/profile-menu";
 import ToggleMode from "@/components/toggle-mode";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { ChevronsLeftRightEllipsis } from "lucide-react";
 import Link from "next/link";
 import React from "react";

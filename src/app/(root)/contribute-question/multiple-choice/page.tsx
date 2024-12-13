@@ -1,19 +1,16 @@
-import NumberInput from "@/components/custom-ui/input/number-input";
 import SimpleInput from "@/components/custom-ui/input/SimpleInput";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardHeader,
-  CardTitle,
+  CardHeader
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { GripVertical, Plus, Radio, X } from "lucide-react";
+import { GripVertical, Plus, X } from "lucide-react";
 import React from "react";
-import { FcAddImage } from "react-icons/fc";
 
 type Props = {};
 
