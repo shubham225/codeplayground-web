@@ -46,7 +46,7 @@ const ProblemPage = (props: Props) => {
   return (
     <>
       <Split
-        className="flex size-full"
+        className="flex size-full p-3"
         sizes={[50, 50]}
         direction="horizontal"
         cursor="col-resize"

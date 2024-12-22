@@ -1,10 +1,10 @@
 import React from "react";
 import MarkdownPreview from "@uiw/react-markdown-preview";
 import { useTheme } from "next-themes";
-import { Badge } from "../ui/badge";
 import { CircleCheckBig, Clock } from "lucide-react";
 import { capitalizeFirstLetterOfEachWord, cn } from "@/lib/utils";
 import { Problem } from "@/types";
+import { Badge } from "@/components/ui/badge";
 
 type Props = { problem: Problem };
 
