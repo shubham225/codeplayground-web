@@ -1,20 +1,69 @@
+"use client";
+
 import SimpleInput from "@/components/custom-ui/input/SimpleInput";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardHeader
+  CardHeader,
 } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GripVertical, Plus, X } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 type Props = {};
 
+let optionsInit = [
+  {
+    id: "#12345",
+    text: "CPU",
+    isAnswer: false,
+  },
+  {
+    id: "#12346",
+    text: "LRU",
+    isAnswer: true,
+  },
+];
+
+function guidGenerator() {
+  var S4 = function () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  };
+  return (
+    S4() +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    S4() +
+    S4()
+  );
+}
+
 export default function ContribMultipleChoice({}: Props) {
+  const [options, setOptions] = useState(optionsInit);
+
+  const onAddNewOption = () => {
+    setOptions((options) => [
+      ...options,
+      { id: guidGenerator(), text: "", isAnswer: false },
+    ]);
+  };
+
+  const onRemoveOption = (id: string) => {
+    const updatedList = options.filter((option) => option.id != id);
+    setOptions(updatedList);
+  };
+
   return (
     <div className="flex flex-col gap-3 p-5">
       <h4 className="text-md">Add a Question</h4>
@@ -45,30 +94,34 @@ export default function ContribMultipleChoice({}: Props) {
                         "--ring": "238.7 83.5% 66.7%",
                       } as React.CSSProperties
                     }
+                    onValueChange={(e) => console.log(e)}
                   >
-                    <div className="flex items-center gap-2">
-                      <GripVertical size={18} />
-                      <div className="border w-9 h-9 hover:bg-accent rounded-lg flex items-center justify-center">
-                        <RadioGroupItem value="r1" id="radio-02-r1" />
-                      </div>
-                      <SimpleInput id="option-1" placeholder="Option 1" />
-                      <Button variant="ghost" size="icon" className="gap-2">
-                        <X size={18} />
-                      </Button>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <GripVertical size={18} />
-                      <div className="border w-9 h-9 hover:bg-accent rounded-lg flex items-center justify-center">
-                        <RadioGroupItem value="r2" id="radio-02-r2" />
-                      </div>
-                      <SimpleInput id="option-2" placeholder="Option 2" />
-                      <Button variant="ghost" size="icon" className="gap-2">
-                        <X size={18} />
-                      </Button>
-                    </div>
+                    {options.map((option) => {
+                      return (
+                        <div className="flex items-center gap-2">
+                          <GripVertical size={18} />
+                          <div className="border w-9 h-9 hover:bg-accent rounded-lg flex items-center justify-center">
+                            <RadioGroupItem value={option.id} id={option.id} />
+                          </div>
+                          <SimpleInput
+                            id="option-1"
+                            placeholder="Add text for option"
+                            value={option.text}
+                          />
+                          <Button variant="ghost" size="icon" className="gap-2" onClick={(e) => onRemoveOption(option.id)}>
+                            <X size={18} />
+                          </Button>
+                        </div>
+                      );
+                    })}
                     <div className="flex flex-row pt-4">
                       <div className="flex flex-row"></div>
-                      <Button variant="ghost" size="sm" className="gap-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="gap-2"
+                        onClick={onAddNewOption}
+                      >
                         <Plus size={18} /> Add option
                       </Button>
                       <div></div>
