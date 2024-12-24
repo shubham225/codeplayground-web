@@ -31,6 +31,15 @@ const questionsData: ProblemSummery[] = [
     title: "Four Sum",
     difficulty: "HARD",
   },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
 ];
 
 export default function page({}: Props) {
@@ -54,7 +63,7 @@ export default function page({}: Props) {
           </TabsList>
         </div>
         <TabsContent value="question-management">
-              <DataTable columns={columns} data={questionsData} />
+          <DataTable columns={columns} data={questionsData} />
         </TabsContent>
         <TabsContent value="user-activity">
           <div>User Activity</div>

@@ -1,5 +1,5 @@
-export type DifficultyLevel = "EASY" | "MEDIUM" | "HARD";
-export type Status = "OPEN" | "PENDING" | "SOLVED";
+export type DifficultyLevel = "EASY" | "MEDIUM" | "HARD" | "";
+export type Status = "OPEN" | "PENDING" | "SOLVED" | "";
 export type ResultStatus =
   | "IN_PROGRESS"
   | "COMPILED"
