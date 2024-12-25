@@ -108,7 +108,12 @@ export default function ContribMultipleChoice({}: Props) {
                             placeholder="Add text for option"
                             value={option.text}
                           />
-                          <Button variant="ghost" size="icon" className="gap-2" onClick={(e) => onRemoveOption(option.id)}>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="gap-2"
+                            onClick={(e) => onRemoveOption(option.id)}
+                          >
                             <X size={18} />
                           </Button>
                         </div>

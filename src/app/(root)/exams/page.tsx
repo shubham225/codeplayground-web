@@ -81,11 +81,11 @@ export default function page({}: Props) {
           <Card>
             <CardHeader>
               <div className="flex justify-between">
-              <div>
-              <CardTitle>{exam.name}</CardTitle>
-              <CardDescription>Exam for SDE-2</CardDescription>
-              </div>
-              <ShareButton />
+                <div>
+                  <CardTitle>{exam.name}</CardTitle>
+                  <CardDescription>Exam for SDE-2</CardDescription>
+                </div>
+                <ShareButton />
               </div>
             </CardHeader>
             <CardContent>
@@ -96,7 +96,9 @@ export default function page({}: Props) {
             <CardFooter>
               <div className="flex justify-between w-full">
                 <h1>Marks : 10/20</h1>
-                <Badge className="bg-green-400 hover:bg-green-400">{exam.status}</Badge>
+                <Badge className="bg-green-400 hover:bg-green-400">
+                  {exam.status}
+                </Badge>
               </div>
             </CardFooter>
           </Card>

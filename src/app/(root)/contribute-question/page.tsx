@@ -32,7 +32,6 @@ export default function page({}: Props) {
       <div className="flex flex-col gap-4 mt-14">
         <Label className="font-bold text-xl">Select Question Type</Label>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-4">
-
           <Link href="/contribute-question/coding">
             <Card className="h-40 bg-transparent hover:bg-accent">
               <CardHeader>
