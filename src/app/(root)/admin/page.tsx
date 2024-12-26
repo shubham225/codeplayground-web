@@ -6,6 +6,7 @@ import React from "react";
 import { columns } from "./questions-columns";
 import { ProblemSummery } from "@/types";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import PaginationTest from "@/components/custom-ui/pagination";
 
 type Props = {};
 
@@ -64,6 +65,7 @@ export default function page({}: Props) {
         </div>
         <TabsContent value="question-management">
           <DataTable columns={columns} data={questionsData} />
+          <PaginationTest currentPage={1} totalPages={20} />
         </TabsContent>
         <TabsContent value="user-activity">
           <div>User Activity</div>
