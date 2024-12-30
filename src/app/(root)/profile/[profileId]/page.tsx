@@ -112,8 +112,8 @@ export default function page({}: Props) {
             <div className="sm:grid sm:grid-cols-2 gap-10">
               <div className="flex flex-col gap-2 pb-6">
                 <Card className="h-52">
-                <CardHeader>
-                  <CardTitle>Solved Graph</CardTitle>
+                  <CardHeader>
+                    <CardTitle>Solved Graph</CardTitle>
                   </CardHeader>
                   <CardContent>Table of recent Problems</CardContent>
                 </Card>
@@ -121,13 +121,13 @@ export default function page({}: Props) {
               <div className="flex flex-col gap-3">
                 <Card className="h-52">
                   <CardHeader>
-                  <CardTitle>Badges</CardTitle>
+                    <CardTitle>Badges</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="flex gap-3">
-                    <FcStart className="h-20 w-20" />
-                    <FcVip className="h-20 w-20" />
-                    <FcCircuit className="h-20 w-20" />
+                      <FcStart className="h-20 w-20" />
+                      <FcVip className="h-20 w-20" />
+                      <FcCircuit className="h-20 w-20" />
                     </div>
                   </CardContent>
                 </Card>
@@ -137,7 +137,7 @@ export default function page({}: Props) {
           <TabsContent value="user-activity">
             <Card className="h-96">
               <CardHeader>
-              <CardTitle>Recent Problems</CardTitle>
+                <CardTitle>Recent Problems</CardTitle>
               </CardHeader>
               <CardContent>Table of recent Problems</CardContent>
             </Card>

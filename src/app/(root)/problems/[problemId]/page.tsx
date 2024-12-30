@@ -33,7 +33,7 @@ const ProblemPage = (props: Props) => {
 
       const response = await fetchProblemsById(problemID);
       setProblem(response);
-      console.log("fetched problem", response)
+      console.log("fetched problem", response);
     };
 
     fetchProblemByIdAsync();

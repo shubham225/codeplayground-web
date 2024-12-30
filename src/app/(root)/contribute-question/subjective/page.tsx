@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 export default function ContributeSubjective({}: Props) {
-  return (
-    <div>ContributeSubjective</div>
-  )
+  return <div>ContributeSubjective</div>;
 }

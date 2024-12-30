@@ -8,5 +8,9 @@ type Props = {};
 export default function Examination({}: Props) {
   const params = useParams();
 
-  return <div>Examination Started : <p>{params.examId}</p></div>;
+  return (
+    <div>
+      Examination Started : <p>{params.examId}</p>
+    </div>
+  );
 }

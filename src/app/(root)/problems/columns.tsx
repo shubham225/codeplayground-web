@@ -10,7 +10,14 @@ export const columns: ColumnDef<ProblemSummery>[] = [
   {
     accessorKey: "id",
     header: "# ID",
-    cell: ({row}) => {return <span> #{capitalizeFirstLetterOfEachWord(row.original.id).substring(0,6)}</span>}
+    cell: ({ row }) => {
+      return (
+        <span>
+          {" "}
+          #{capitalizeFirstLetterOfEachWord(row.original.id).substring(0, 6)}
+        </span>
+      );
+    },
   },
   {
     accessorKey: "title",
@@ -19,12 +26,16 @@ export const columns: ColumnDef<ProblemSummery>[] = [
   {
     accessorKey: "status",
     header: "Status",
-    cell: ({row}) => {return capitalizeFirstLetterOfEachWord(row.original.status)}
+    cell: ({ row }) => {
+      return capitalizeFirstLetterOfEachWord(row.original.status);
+    },
   },
   {
     accessorKey: "difficulty",
     header: "Difficulty",
-    cell: ({row}) => {return capitalizeFirstLetterOfEachWord(row.original.difficulty)}
+    cell: ({ row }) => {
+      return capitalizeFirstLetterOfEachWord(row.original.difficulty);
+    },
   },
   {
     accessorKey: "actions",
