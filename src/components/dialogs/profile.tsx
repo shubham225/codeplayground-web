@@ -49,7 +49,8 @@ export default function ProfileDialog() {
           </DialogTitle>
         </DialogHeader>
         <DialogDescription className="sr-only">
-          Make changes to your profile here. You can change your photo and set a username.
+          Make changes to your profile here. You can change your photo and set a
+          username.
         </DialogDescription>
         <div className="overflow-y-auto">
           <ProfileBg defaultImage={ProfileBgImg} />
@@ -130,7 +131,8 @@ export default function ProfileDialog() {
                   role="status"
                   aria-live="polite"
                 >
-                  <span className="tabular-nums">{limit - characterCount}</span> characters left
+                  <span className="tabular-nums">{limit - characterCount}</span>{" "}
+                  characters left
                 </p>
               </div>
             </form>
@@ -153,8 +155,13 @@ export default function ProfileDialog() {
 
 function ProfileBg({ defaultImage }: { defaultImage?: StaticImageData }) {
   const [hideDefault, setHideDefault] = useState(false);
-  const { previewUrl, fileInputRef, handleThumbnailClick, handleFileChange, handleRemove } =
-    useImageUpload();
+  const {
+    previewUrl,
+    fileInputRef,
+    handleThumbnailClick,
+    handleFileChange,
+    handleRemove,
+  } = useImageUpload();
 
   const currentImage = previewUrl || (!hideDefault ? defaultImage : null);
 
@@ -170,7 +177,11 @@ function ProfileBg({ defaultImage }: { defaultImage?: StaticImageData }) {
           <Image
             className="h-full w-full object-cover"
             src={currentImage}
-            alt={previewUrl ? "Preview of uploaded image" : "Default profile background"}
+            alt={
+              previewUrl
+                ? "Preview of uploaded image"
+                : "Default profile background"
+            }
             width={512}
             height={96}
           />
@@ -209,7 +220,8 @@ function ProfileBg({ defaultImage }: { defaultImage?: StaticImageData }) {
 }
 
 function Avatar({ defaultImage }: { defaultImage?: StaticImageData }) {
-  const { previewUrl, fileInputRef, handleThumbnailClick, handleFileChange } = useImageUpload();
+  const { previewUrl, fileInputRef, handleThumbnailClick, handleFileChange } =
+    useImageUpload();
 
   const currentImage = previewUrl || defaultImage;
 

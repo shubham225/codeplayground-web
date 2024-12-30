@@ -120,7 +120,7 @@ body {
 
 @layer utilities {
   /* Text Sizes */
-  
+
   .text-10 {
     @apply text-[10px] leading-[14px];
   }
@@ -162,7 +162,6 @@ body {
   }
 
   /* Animations */
-  
 }
 
 /* React-Split Gutter */
@@ -175,25 +174,25 @@ body {
 }
 
 .gutter-horizontal:hover {
-  background: #1A90FF;
+  background: #1a90ff;
   border-radius: 10px;
   border: 4px solid #ffffff;
 }
 
 .gutter-vertical:hover {
-  background: #1A90FF;
+  background: #1a90ff;
   border-radius: 10px;
   border: 4px solid #ffffff;
 }
 
 .dark .gutter-horizontal:hover {
-  background: #1A90FF;
+  background: #1a90ff;
   border-radius: 10px;
   border: 4px solid #171717;
 }
 
 .dark .gutter-vertical:hover {
-  background: #1A90FF;
+  background: #1a90ff;
   border-radius: 10px;
   border: 4px solid #171717;
 }

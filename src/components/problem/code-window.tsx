@@ -46,20 +46,20 @@ const CodeWindow = ({ problem, codeInfo, setCodeInfo, ...props }: Props) => {
   useEffect(() => {
     const fetchCodeByProblemAsync = async () => {
       if (problem.userProblemId === null || problem.userProblemId === "") {
-        const code = getCodeforLanguage(
-          problem.codeSnippets,
-          selectedLang
-        );
+        const code = getCodeforLanguage(problem.codeSnippets, selectedLang);
         setCode(code);
         return;
       }
 
-      const response = await fetchCodeByUserProblemId(problem.userProblemId, selectedLang);
+      const response = await fetchCodeByUserProblemId(
+        problem.userProblemId,
+        selectedLang
+      );
       const code =
         getCodeforLanguage(response, selectedLang) ||
         getCodeforLanguage(problem.codeSnippets, selectedLang);
 
-        console.log("Response and code", response, code);
+      console.log("Response and code", response, code);
 
       setCodeInfo({ selLanguage: selectedLang, codes: response });
       setCode(code);
