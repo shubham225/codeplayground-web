@@ -2,7 +2,8 @@ import { cn } from "@/lib/utils";
 import { ChevronDown } from "lucide-react";
 import * as React from "react";
 
-export interface SelectPropsNative extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectPropsNative
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
   children: React.ReactNode;
 }
 
@@ -16,7 +17,7 @@ const SelectNative = React.forwardRef<HTMLSelectElement, SelectPropsNative>(
             props.multiple
               ? "py-1 [&>*]:px-3 [&>*]:py-1 [&_option:checked]:bg-accent"
               : "h-9 pe-8 ps-3",
-            className,
+            className
           )}
           ref={ref}
           {...props}
@@ -30,7 +31,7 @@ const SelectNative = React.forwardRef<HTMLSelectElement, SelectPropsNative>(
         )}
       </div>
     );
-  },
+  }
 );
 SelectNative.displayName = "SelectNative";
 
