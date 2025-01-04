@@ -1,5 +1,6 @@
 "use client";
 
+import MCQOption from "@/components/contribute/mcq-option";
 import SimpleInput from "@/components/custom-ui/input/SimpleInput";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +14,12 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GripVertical, Plus, X } from "lucide-react";
 import React, { useState } from "react";
+import { closestCorners, DndContext } from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
 
 type Props = {};
 
@@ -64,6 +71,20 @@ export default function ContribMultipleChoice({}: Props) {
     setOptions(updatedList);
   };
 
+  const handleDragEnd = (event: any) => {
+    const { active, over } = event;
+
+    if (active.id === over.id) return;
+
+    setOptions((options) => {
+      const originalPos = options.findIndex(
+        (option) => option.id === active.id
+      );
+      const newPos = options.findIndex((option) => option.id === over.id);
+      return arrayMove(options, originalPos, newPos);
+    });
+  };
+
   return (
     <div className="flex flex-col gap-3 p-5">
       <h4 className="text-md">Add a Question</h4>
@@ -86,52 +107,49 @@ export default function ContribMultipleChoice({}: Props) {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col gap-3">
-                  <RadioGroup
-                    defaultValue="r1"
-                    style={
-                      {
-                        "--primary": "238.7 83.5% 66.7%",
-                        "--ring": "238.7 83.5% 66.7%",
-                      } as React.CSSProperties
-                    }
-                    onValueChange={(e) => console.log(e)}
+                  <DndContext
+                    collisionDetection={closestCorners}
+                    onDragEnd={handleDragEnd}
                   >
-                    {options.map((option) => {
-                      return (
-                        <div className="flex items-center gap-2">
-                          <GripVertical size={18} />
-                          <div className="border w-9 h-9 hover:bg-accent rounded-lg flex items-center justify-center">
-                            <RadioGroupItem value={option.id} id={option.id} />
-                          </div>
-                          <SimpleInput
-                            id="option-1"
-                            placeholder="Add text for option"
-                            value={option.text}
-                          />
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="gap-2"
-                            onClick={(e) => onRemoveOption(option.id)}
-                          >
-                            <X size={18} />
-                          </Button>
-                        </div>
-                      );
-                    })}
-                    <div className="flex flex-row pt-4">
-                      <div className="flex flex-row"></div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="gap-2"
-                        onClick={onAddNewOption}
+                    <RadioGroup
+                      defaultValue="r1"
+                      style={
+                        {
+                          "--primary": "238.7 83.5% 66.7%",
+                          "--ring": "238.7 83.5% 66.7%",
+                        } as React.CSSProperties
+                      }
+                      onValueChange={(e) => console.log(e)}
+                    >
+                      <SortableContext
+                        items={options}
+                        strategy={verticalListSortingStrategy}
                       >
-                        <Plus size={18} /> Add option
-                      </Button>
-                      <div></div>
-                    </div>
-                  </RadioGroup>
+                        {options.map((option) => {
+                          return (
+                            <MCQOption
+                              id={option.id}
+                              option={option}
+                              onRemoveOption={onRemoveOption}
+                              key={option.id}
+                            />
+                          );
+                        })}
+                      </SortableContext>
+                    </RadioGroup>
+                  </DndContext>
+                  <div className="flex flex-row pt-4">
+                    <div className="flex flex-row"></div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="gap-2"
+                      onClick={onAddNewOption}
+                    >
+                      <Plus size={18} /> Add option
+                    </Button>
+                    <div></div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
