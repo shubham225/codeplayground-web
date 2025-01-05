@@ -4,6 +4,7 @@ import BannerFooter from "@/components/banner-footer";
 import Link from "next/link";
 import { Highlight } from "@/components/ui/hero-highlight";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beam-with-collision";
+import ButtonStyled from "@/components/custom-ui/button/ButtonStyled";
 
 export default function Home() {
   return (

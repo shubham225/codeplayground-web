@@ -161,6 +161,7 @@ body {
     @apply text-[36px] leading-[44px];
   }
   
+  /* Loading Animation */
   .loader {
     position: absolute;
     top: 50%;
@@ -254,7 +255,6 @@ body {
     z-index: 9999; /* Ensure it's on top of everything */
   }
   
-  /* Animations */
 }
 
 /* React-Split Gutter */
