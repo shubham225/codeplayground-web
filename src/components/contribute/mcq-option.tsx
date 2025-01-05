@@ -37,7 +37,7 @@ export default function MCQOption({ id, option, onRemoveOption }: Props) {
       <SimpleInput
         id="option-1"
         placeholder="Add text for option"
-        defaultValue = {option.text}
+        value = {option.text}
         onChange={(e) => {e.preventDefault(); option.text = e.target.value}}
       />
       <Button
