@@ -67,8 +67,10 @@ export default function ContribMultipleChoice({}: Props) {
   };
 
   const onRemoveOption = (id: string) => {
+    console.log(id);
     const updatedList = options.filter((option) => option.id != id);
     setOptions(updatedList);
+    console.log(updatedList);
   };
 
   const handleDragEnd = (event: any) => {
@@ -129,6 +131,7 @@ export default function ContribMultipleChoice({}: Props) {
                           return (
                             <MCQOption
                               id={option.id}
+                              checkbox={false}
                               option={option}
                               onRemoveOption={onRemoveOption}
                               key={option.id}
@@ -161,26 +164,27 @@ export default function ContribMultipleChoice({}: Props) {
               </CardHeader>
               <CardContent>
                 <div className="flex flex-col gap-3">
-                  <div className="flex items-center gap-2">
-                    <GripVertical size={18} />
-                    <div className="border w-9 h-9 hover:bg-accent rounded-lg flex items-center justify-center">
-                      <Checkbox />
-                    </div>
-                    <SimpleInput id="option-1" placeholder="Option 1" />
-                    <Button variant="ghost" size="icon" className="gap-2">
-                      <X size={18} />
-                    </Button>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <GripVertical size={18} />
-                    <div className="border w-9 h-9 hover:bg-accent rounded-lg flex items-center justify-center">
-                      <Checkbox />
-                    </div>
-                    <SimpleInput id="option-2" placeholder="Option 2" />
-                    <Button variant="ghost" size="icon" className="gap-2">
-                      <X size={18} />
-                    </Button>
-                  </div>
+                  <DndContext
+                    collisionDetection={closestCorners}
+                    onDragEnd={handleDragEnd}
+                  >
+                    <SortableContext
+                        items={options}
+                        strategy={verticalListSortingStrategy}
+                      >
+                        {options.map((option) => {
+                          return (
+                            <MCQOption
+                              id={option.id}
+                              checkbox={true}
+                              option={option}
+                              onRemoveOption={onRemoveOption}
+                              key={option.id}
+                            />
+                          );
+                        })}
+                      </SortableContext>
+                  </DndContext>
                   <div className="flex flex-row pt-4">
                     <div className="flex flex-row"></div>
                     <Button variant="ghost" size="sm" className="gap-2">
