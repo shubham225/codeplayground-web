@@ -64,10 +64,21 @@ export default function ContribMultipleChoice({}: Props) {
       ...options,
       { id: guidGenerator(), text: "", isAnswer: false },
     ]);
+    console.log(options);
+  };
+
+  const updateOptionValue = (id: string, field: string, value: any) => {
+    let updatedList = options.map((option) => {
+      if (option.id == id) {
+        option = { ...option, [field]: value };
+      }
+      return option;
+    });
+
+    setOptions(updatedList);
   };
 
   const onRemoveOption = (id: string) => {
-    console.log(id);
     const updatedList = options.filter((option) => option.id != id);
     setOptions(updatedList);
     console.log(updatedList);
@@ -135,6 +146,7 @@ export default function ContribMultipleChoice({}: Props) {
                               option={option}
                               onRemoveOption={onRemoveOption}
                               key={option.id}
+                              updateOptionValue={updateOptionValue}
                             />
                           );
                         })}
@@ -169,25 +181,31 @@ export default function ContribMultipleChoice({}: Props) {
                     onDragEnd={handleDragEnd}
                   >
                     <SortableContext
-                        items={options}
-                        strategy={verticalListSortingStrategy}
-                      >
-                        {options.map((option) => {
-                          return (
-                            <MCQOption
-                              id={option.id}
-                              checkbox={true}
-                              option={option}
-                              onRemoveOption={onRemoveOption}
-                              key={option.id}
-                            />
-                          );
-                        })}
-                      </SortableContext>
+                      items={options}
+                      strategy={verticalListSortingStrategy}
+                    >
+                      {options.map((option) => {
+                        return (
+                          <MCQOption
+                            id={option.id}
+                            checkbox={true}
+                            option={option}
+                            onRemoveOption={onRemoveOption}
+                            key={option.id}
+                            updateOptionValue={updateOptionValue}
+                          />
+                        );
+                      })}
+                    </SortableContext>
                   </DndContext>
                   <div className="flex flex-row pt-4">
                     <div className="flex flex-row"></div>
-                    <Button variant="ghost" size="sm" className="gap-2">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="gap-2"
+                      onClick={onAddNewOption}
+                    >
                       <Plus size={18} /> Add option
                     </Button>
                     <div></div>

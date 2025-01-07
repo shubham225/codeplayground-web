@@ -14,6 +14,7 @@ type Props = {
   option: { id: string; text: string; isAnswer: boolean };
   checkbox: boolean;
   onRemoveOption: (id: string) => void;
+  updateOptionValue: (id: string, field: string, value: any) => void;
 };
 
 export default function MCQOption({
@@ -21,6 +22,7 @@ export default function MCQOption({
   option,
   checkbox,
   onRemoveOption,
+  updateOptionValue,
 }: Props) {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id });
@@ -30,22 +32,27 @@ export default function MCQOption({
     transform: CSS.Transform.toString(transform),
   };
   return (
-    <div
-      ref={setNodeRef}
-      {...attributes}
-      {...listeners}
-      style={style}
-      className="flex items-center gap-2"
-    >
-      <GripVertical size={18} />
+    <div ref={setNodeRef} style={style} className="flex items-center gap-2">
+      <GripVertical {...attributes} {...listeners} size={18} />
       <div className="border w-9 h-9 hover:bg-accent rounded-lg flex items-center justify-center">
         {checkbox ? (
-          <Checkbox id={option.id} checked={option.isAnswer} />
+          <Checkbox
+            id={option.id}
+            checked={option.isAnswer}
+            onClick={(e) => {
+              e.preventDefault();
+              updateOptionValue(option.id, "isAnswer", !option.isAnswer);
+            }}
+          />
         ) : (
           <RadioGroupItem
             checked={option.isAnswer}
             value={option.id}
             id={option.id}
+            onClick={(e) => {
+              e.preventDefault();
+              updateOptionValue(option.id, "isAnswer", !option.isAnswer);
+            }}
           />
         )}
       </div>
@@ -55,7 +62,7 @@ export default function MCQOption({
         value={option.text}
         onChange={(e) => {
           e.preventDefault();
-          option.text = e.target.value;
+          updateOptionValue(option.id, "text", e.target.value);
         }}
       />
       <Button
