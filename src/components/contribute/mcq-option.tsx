@@ -46,13 +46,12 @@ export default function MCQOption({
           />
         ) : (
           <RadioGroupItem
-            checked={option.isAnswer}
             value={option.id}
             id={option.id}
-            onClick={(e) => {
-              e.preventDefault();
-              updateOptionValue(option.id, "isAnswer", !option.isAnswer);
-            }}
+            // onClick={(e) => {
+            //   e.preventDefault();
+            //   updateOptionValue(option.id, "isAnswer", !option.isAnswer);
+            // }}
           />
         )}
       </div>

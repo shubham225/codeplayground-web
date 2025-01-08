@@ -125,7 +125,7 @@ export default function ContribMultipleChoice({}: Props) {
                     onDragEnd={handleDragEnd}
                   >
                     <RadioGroup
-                      defaultValue="r1"
+                      defaultValue={options[0].id}
                       style={
                         {
                           "--primary": "238.7 83.5% 66.7%",
