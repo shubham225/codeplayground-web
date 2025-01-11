@@ -1,50 +1,103 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { LanguagesIcon, SwatchBook } from "lucide-react";
 import React from "react";
+import { COriginal, JavaOriginal, CplusplusOriginal, JavascriptOriginal, PythonOriginal, GoOriginal, RustOriginal, KotlinOriginal, MariadbOriginalWordmark, MongodbOriginalWordmark, MysqlOriginal} from 'devicons-react';
+
 
 type Props = { setStep: React.Dispatch<React.SetStateAction<string>> };
 
 const languages = [
   {
-    id: "#123",
-    name: "Java",
+    id: "#125",
+    label: "C",
+    icon: COriginal,
+    selected: false,
+  },
+  {
+    id: "#124",
+    label: "C++",
+    icon: CplusplusOriginal,
     selected: true,
   },
   {
     id: "#124",
-    name: "C++",
+    label: "C++ 14",
+    icon: CplusplusOriginal,
+    selected: false,
+  },
+  {
+    id: "#124",
+    label: "C++ 20",
+    icon: CplusplusOriginal,
+    selected: false,
+  },
+  {
+    id: "#123",
+    label: "Java",
+    icon: JavaOriginal,
+    selected: false,
+  },
+  {
+    id: "#123",
+    label: "Java 8",
+    icon: JavaOriginal,
     selected: true,
   },
   {
-    id: "#125",
-    name: "C",
-    selected: true,
+    id: "#123",
+    label: "Java 20",
+    icon: JavaOriginal,
+    selected: false,
   },
   {
     id: "#126",
-    name: "Javascript",
+    label: "Javascript",
+    icon: JavascriptOriginal,
     selected: true,
   },
   {
     id: "#127",
-    name: "Python",
+    label: "Python",
+    icon: PythonOriginal,
     selected: true,
   },
   {
     id: "#128",
-    name: "Go",
-    selected: true,
+    label: "Go",
+    icon: GoOriginal,
+    selected: false,
   },
   {
     id: "#129",
-    name: "Haskell",
-    selected: true,
+    label: "Rust",
+    icon: RustOriginal,
+    selected: false,
   },
   {
     id: "#120",
-    name: "Rust",
-    selected: true,
+    label: "Kotlin",
+    icon: KotlinOriginal,
+    selected: false,
+  },
+  {
+    id: "#120",
+    label: "MySQL",
+    icon: MysqlOriginal,
+    selected: false,
+  },
+  {
+    id: "#120",
+    label: "MariaDB",
+    icon: MariadbOriginalWordmark,
+    selected: false,
+  },
+  {
+    id: "#120",
+    label: "MongoDB",
+    icon: MongodbOriginalWordmark,
+    selected: false,
   },
 ];
 
@@ -58,13 +111,26 @@ export default function LanguagesDetails({ setStep }: Props) {
         </h4>
         <div className="flex flex-col gap-3 pt-6">
           <h2 className="text-lg">Select Languages</h2>
-          <div className="grid grid-cols-4 gap-4">
-            {languages.map((language) => {
+          <div className="grid grid-cols-5 gap-4">
+            {languages.map((item) => {
               return (
-                <div className="flex items-center gap-2">
-                  <Checkbox id={language.id} />
-                  <Label htmlFor={language.id}>{language.name}</Label>
-                </div>
+                <div
+          key={item.id}
+          className="relative flex cursor-pointer justify-between items-center flex-row gap-4 rounded-lg border border-input p-4 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring"
+        >
+          <div className="flex items-center gap-3" >
+          <item.icon size={40} strokeWidth={2} aria-hidden="true" />
+            <Label htmlFor={item.id} >{item.label}</Label>
+          </div>
+            <div className="flex justify-between gap-2">
+            <Checkbox
+              id={item.id}
+              value={item.id}
+              className="order-1 after:absolute after:inset-0"
+              defaultChecked={item.selected}
+            />
+          </div>
+        </div>
               );
             })}
           </div>
