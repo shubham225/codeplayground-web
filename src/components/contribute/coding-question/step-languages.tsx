@@ -3,8 +3,19 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { LanguagesIcon, SwatchBook } from "lucide-react";
 import React from "react";
-import { COriginal, JavaOriginal, CplusplusOriginal, JavascriptOriginal, PythonOriginal, GoOriginal, RustOriginal, KotlinOriginal, MariadbOriginalWordmark, MongodbOriginalWordmark, MysqlOriginal} from 'devicons-react';
-
+import {
+  COriginal,
+  JavaOriginal,
+  CplusplusOriginal,
+  JavascriptOriginal,
+  PythonOriginal,
+  GoOriginal,
+  RustOriginal,
+  KotlinOriginal,
+  MariadbOriginalWordmark,
+  MongodbOriginalWordmark,
+  MysqlOriginal,
+} from "devicons-react";
 
 type Props = { setStep: React.Dispatch<React.SetStateAction<string>> };
 
@@ -16,13 +27,13 @@ const languages = [
     selected: false,
   },
   {
-    id: "#124",
+    id: "#134",
     label: "C++",
     icon: CplusplusOriginal,
     selected: true,
   },
   {
-    id: "#124",
+    id: "#132",
     label: "C++ 14",
     icon: CplusplusOriginal,
     selected: false,
@@ -40,13 +51,13 @@ const languages = [
     selected: false,
   },
   {
-    id: "#123",
+    id: "#133",
     label: "Java 8",
     icon: JavaOriginal,
     selected: true,
   },
   {
-    id: "#123",
+    id: "#135",
     label: "Java 20",
     icon: JavaOriginal,
     selected: false,
@@ -82,19 +93,19 @@ const languages = [
     selected: false,
   },
   {
-    id: "#120",
+    id: "#137",
     label: "MySQL",
     icon: MysqlOriginal,
     selected: false,
   },
   {
-    id: "#120",
+    id: "#138",
     label: "MariaDB",
     icon: MariadbOriginalWordmark,
     selected: false,
   },
   {
-    id: "#120",
+    id: "#140",
     label: "MongoDB",
     icon: MongodbOriginalWordmark,
     selected: false,
@@ -115,22 +126,22 @@ export default function LanguagesDetails({ setStep }: Props) {
             {languages.map((item) => {
               return (
                 <div
-          key={item.id}
-          className="relative flex cursor-pointer justify-between items-center flex-row gap-4 rounded-lg border border-input p-4 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring"
-        >
-          <div className="flex items-center gap-3" >
-          <item.icon size={40} strokeWidth={2} aria-hidden="true" />
-            <Label htmlFor={item.id} >{item.label}</Label>
-          </div>
-            <div className="flex justify-between gap-2">
-            <Checkbox
-              id={item.id}
-              value={item.id}
-              className="order-1 after:absolute after:inset-0"
-              defaultChecked={item.selected}
-            />
-          </div>
-        </div>
+                  key={item.id}
+                  className="relative flex cursor-pointer justify-between items-center flex-row gap-4 rounded-lg border border-input p-4 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring"
+                >
+                  <div className="flex items-center gap-3">
+                    <item.icon size={40} strokeWidth={2} aria-hidden="true" />
+                    <Label htmlFor={item.id}>{item.label}</Label>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <Checkbox
+                      id={item.id}
+                      value={item.id}
+                      className="order-1 after:absolute after:inset-0"
+                      defaultChecked={item.selected}
+                    />
+                  </div>
+                </div>
               );
             })}
           </div>

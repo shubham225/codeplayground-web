@@ -20,7 +20,7 @@ export default function ContributeCoding({}: Props) {
         <TabsList className="mb-3 h-auto gap-2 rounded-none border-b border-border bg-transparent px-0 py-1 text-foreground w-full">
           <TabsTrigger
             value="step-1"
-            className="relative w-full after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
+            className="relative w-full after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
           >
             <p className="hidden md:inline-flex text-muted-foreground pr-3">
               Step 1:
@@ -35,7 +35,7 @@ export default function ContributeCoding({}: Props) {
           </TabsTrigger>
           <TabsTrigger
             value="step-2"
-            className="relative w-full after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
+            className="relative w-full after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
           >
             <p className="hidden md:inline-flex text-muted-foreground pr-3">
               Step 2:
@@ -50,7 +50,7 @@ export default function ContributeCoding({}: Props) {
           </TabsTrigger>
           <TabsTrigger
             value="step-3"
-            className="relative w-full after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
+            className="relative w-full after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
           >
             <p className="hidden md:inline-flex text-muted-foreground pr-3">
               Step 3:
@@ -65,7 +65,7 @@ export default function ContributeCoding({}: Props) {
           </TabsTrigger>
           <TabsTrigger
             value="step-4"
-            className="relative w-full after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 hover:bg-accent hover:text-foreground data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
+            className="relative w-full after:absolute after:inset-x-0 after:bottom-0 after:-mb-1 after:h-0.5 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:after:bg-primary data-[state=active]:hover:bg-accent"
           >
             <p className="hidden md:inline-flex text-muted-foreground pr-3">
               Step 4:
