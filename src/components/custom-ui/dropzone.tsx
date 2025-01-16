@@ -12,7 +12,7 @@ export default function Dropzone() {
   return (
     <div
       {...getRootProps()}
-      className=" w-full border-dashed rounded-xl p-3 border flex justify-center items-center"
+      className="h-full w-full border-dashed rounded-xl p-3 border flex justify-center items-center"
     >
       <input {...getInputProps()} />
       {isDragActive ? (
