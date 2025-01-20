@@ -20,6 +20,8 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+import Link from "next/link";
+import StepFinish from "@/components/contribute/coding-question/step-finish";
 
 type Props = {};
 
@@ -58,6 +60,7 @@ function guidGenerator() {
 
 export default function ContribMultipleChoice({}: Props) {
   const [options, setOptions] = useState(optionsInit);
+  const [save, setSave] = useState<boolean>(false);
 
   const onAddNewOption = () => {
     setOptions((options) => [
@@ -76,6 +79,10 @@ export default function ContribMultipleChoice({}: Props) {
     });
 
     setOptions(updatedList);
+  };
+
+  const onSaveButtonClick = () => {
+    setSave(true);
   };
 
   const onRemoveOption = (id: string) => {
@@ -99,134 +106,150 @@ export default function ContribMultipleChoice({}: Props) {
   };
 
   return (
-    <div className="flex flex-col gap-3 p-5">
-      <h4 className="text-md">Add a Question</h4>
-      <div className="flex flex-col gap-4 m-5">
-        <SimpleInput id="question" label="Question" />
-        <Tabs defaultValue="single-correct">
-          <div className="flex flex-row-reverse justify-between">
-            <TabsList>
-              <TabsTrigger value="single-correct">Single Correct</TabsTrigger>
-              <TabsTrigger value="multiple-correct">
-                Multiple Correct
-              </TabsTrigger>
-              <TabsTrigger value="numerical">Numerical</TabsTrigger>
-            </TabsList>
+    <div className="m-3 border rounded-lg h-[820px]">
+      {save ? (
+        <StepFinish />
+      ) : (
+        <div className="h-full flex flex-col justify-between gap-3 p-5">
+          <div className="flex flex-col gap-4 m-5">
+            <h4 className="text-md">Add a Question</h4>
+            <SimpleInput id="question" label="Question" />
+            <Tabs defaultValue="single-correct">
+              <div className="flex flex-row-reverse justify-between">
+                <TabsList>
+                  <TabsTrigger value="single-correct">
+                    Single Correct
+                  </TabsTrigger>
+                  <TabsTrigger value="multiple-correct">
+                    Multiple Correct
+                  </TabsTrigger>
+                  <TabsTrigger value="numerical">Numerical</TabsTrigger>
+                </TabsList>
+              </div>
+              <TabsContent value="single-correct">
+                <Card>
+                  <CardHeader>
+                    <CardDescription>Options</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-col gap-3">
+                      <div className="overflow-auto h-80">
+                        <DndContext
+                          collisionDetection={closestCorners}
+                          onDragEnd={handleDragEnd}
+                        >
+                          <RadioGroup
+                            defaultValue={options[0].id}
+                            style={
+                              {
+                                "--primary": "238.7 83.5% 66.7%",
+                                "--ring": "238.7 83.5% 66.7%",
+                              } as React.CSSProperties
+                            }
+                            onValueChange={(e) => console.log(e)}
+                          >
+                            <SortableContext
+                              items={options}
+                              strategy={verticalListSortingStrategy}
+                            >
+                              {options.map((option) => {
+                                return (
+                                  <MCQOption
+                                    id={option.id}
+                                    checkbox={false}
+                                    option={option}
+                                    onRemoveOption={onRemoveOption}
+                                    key={option.id}
+                                    updateOptionValue={updateOptionValue}
+                                  />
+                                );
+                              })}
+                            </SortableContext>
+                          </RadioGroup>
+                        </DndContext>
+                      </div>
+                      <div className="flex flex-row pt-4">
+                        <div className="flex flex-row"></div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="gap-2"
+                          onClick={onAddNewOption}
+                        >
+                          <Plus size={18} /> Add option
+                        </Button>
+                        <div></div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="multiple-correct">
+                <Card>
+                  <CardHeader>
+                    <CardDescription>Options</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="flex flex-col gap-3">
+                      <div className="overflow-auto h-80">
+                        <DndContext
+                          collisionDetection={closestCorners}
+                          onDragEnd={handleDragEnd}
+                        >
+                          <SortableContext
+                            items={options}
+                            strategy={verticalListSortingStrategy}
+                          >
+                            {options.map((option) => {
+                              return (
+                                <MCQOption
+                                  id={option.id}
+                                  checkbox={true}
+                                  option={option}
+                                  onRemoveOption={onRemoveOption}
+                                  key={option.id}
+                                  updateOptionValue={updateOptionValue}
+                                />
+                              );
+                            })}
+                          </SortableContext>
+                        </DndContext>
+                      </div>
+                      <div className="flex flex-row pt-4">
+                        <div className="flex flex-row"></div>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="gap-2"
+                          onClick={onAddNewOption}
+                        >
+                          <Plus size={18} /> Add option
+                        </Button>
+                        <div></div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </TabsContent>
+              <TabsContent value="numerical">
+                <div className="max-w-96">
+                  <SimpleInput id="number-input" label="Answer" />
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
-          <TabsContent value="single-correct">
-            <Card>
-              <CardHeader>
-                <CardDescription>Options</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col gap-3">
-                  <DndContext
-                    collisionDetection={closestCorners}
-                    onDragEnd={handleDragEnd}
-                  >
-                    <RadioGroup
-                      defaultValue={options[0].id}
-                      style={
-                        {
-                          "--primary": "238.7 83.5% 66.7%",
-                          "--ring": "238.7 83.5% 66.7%",
-                        } as React.CSSProperties
-                      }
-                      onValueChange={(e) => console.log(e)}
-                    >
-                      <SortableContext
-                        items={options}
-                        strategy={verticalListSortingStrategy}
-                      >
-                        {options.map((option) => {
-                          return (
-                            <MCQOption
-                              id={option.id}
-                              checkbox={false}
-                              option={option}
-                              onRemoveOption={onRemoveOption}
-                              key={option.id}
-                              updateOptionValue={updateOptionValue}
-                            />
-                          );
-                        })}
-                      </SortableContext>
-                    </RadioGroup>
-                  </DndContext>
-                  <div className="flex flex-row pt-4">
-                    <div className="flex flex-row"></div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="gap-2"
-                      onClick={onAddNewOption}
-                    >
-                      <Plus size={18} /> Add option
-                    </Button>
-                    <div></div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="multiple-correct">
-            <Card>
-              <CardHeader>
-                <CardDescription>Options</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-col gap-3">
-                  <DndContext
-                    collisionDetection={closestCorners}
-                    onDragEnd={handleDragEnd}
-                  >
-                    <SortableContext
-                      items={options}
-                      strategy={verticalListSortingStrategy}
-                    >
-                      {options.map((option) => {
-                        return (
-                          <MCQOption
-                            id={option.id}
-                            checkbox={true}
-                            option={option}
-                            onRemoveOption={onRemoveOption}
-                            key={option.id}
-                            updateOptionValue={updateOptionValue}
-                          />
-                        );
-                      })}
-                    </SortableContext>
-                  </DndContext>
-                  <div className="flex flex-row pt-4">
-                    <div className="flex flex-row"></div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="gap-2"
-                      onClick={onAddNewOption}
-                    >
-                      <Plus size={18} /> Add option
-                    </Button>
-                    <div></div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="numerical">
-            <div className="max-w-96">
-              <SimpleInput id="number-input" label="Answer" />
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
-      <div className="flex flex-row-reverse gap-2">
-        <Button size="lg">Save</Button>
-        <Button size="lg" variant="outline">
-          Cancel
-        </Button>
-      </div>
+          <div className="flex flex-row-reverse gap-2">
+            <Button size="lg" onClick={onSaveButtonClick}>
+              Save
+            </Button>
+            <Link href={"/contribute-question"}>
+              <Button size="lg" variant="outline">
+                Cancel
+              </Button>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

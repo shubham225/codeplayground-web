@@ -95,7 +95,7 @@ export default function ContributeCoding({}: Props) {
           </TabsContent>
         </Tabs>
       ) : (
-        <StepFinish setStep={setStep} />
+        <StepFinish />
       )}
     </div>
   );

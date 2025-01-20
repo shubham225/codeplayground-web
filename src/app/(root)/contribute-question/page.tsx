@@ -54,6 +54,7 @@ export default function page({}: Props) {
             </Card>
           </Link>
 
+          {/* // TODO: Implementation
           <Link href="/contribute-question/subjective">
             <Card className="h-40 bg-transparent hover:bg-accent">
               <CardHeader>
@@ -63,7 +64,7 @@ export default function page({}: Props) {
                 </CardDescription>
               </CardHeader>
             </Card>
-          </Link>
+          </Link> */}
         </div>
       </div>
       <div className="size-full">
