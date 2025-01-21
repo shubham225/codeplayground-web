@@ -60,7 +60,7 @@ export default function CodeStubDetails({ setStep }: Props) {
         <h1 className="text-md font-semibold my-2">Function Parameters</h1>
         {parameters.map((item) => {
           return (
-            <div className="flex gap-3 items-center">
+            <div className="flex gap-3 items-center" key={item.id}>
               <div className="space-y-1 w-full">
                 <Label htmlFor="parameter-type">Parameter Type</Label>
                 <SelectNative id="parameter-type">
@@ -71,7 +71,7 @@ export default function CodeStubDetails({ setStep }: Props) {
                 </SelectNative>
               </div>
               <SimpleInput
-                id="parameter-name"
+                id={item.id}
                 label="Parameter Name"
                 placeholder="Give a name to function parameter"
               />
