@@ -26,9 +26,30 @@ const parameters = [
   // { id: "8" },
 ];
 
+function guidGenerator() {
+  var S4 = function () {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  };
+  return (
+    S4() +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    "-" +
+    S4() +
+    S4() +
+    S4()
+  );
+}
+
 export default function CodeStubDetails({ setStep }: Props) {
   const { theme } = useTheme();
   const [code, setCode] = React.useState<string>(initCode);
+  const [functionParam, setFunctionParam] = React.useState(parameters);
 
   const onCodeChange = React.useCallback(
     (value: string, viewUpdate: ViewUpdate) => {
@@ -36,6 +57,15 @@ export default function CodeStubDetails({ setStep }: Props) {
     },
     []
   );
+
+  const onAddNewParam = () => {
+    setFunctionParam((params) => [...params, { id: guidGenerator() }]);
+  };
+
+  const onRemoveParam = (id: string) => {
+    const updatedList = functionParam.filter((params) => params.id != id);
+    setFunctionParam(updatedList);
+  };
 
   return (
     <div className="p-5 flex flex-col justify-between gap-4">
@@ -58,7 +88,7 @@ export default function CodeStubDetails({ setStep }: Props) {
           </div>
         </div>
         <h1 className="text-md font-semibold my-2">Function Parameters</h1>
-        {parameters.map((item) => {
+        {functionParam.map((item) => {
           return (
             <div className="flex gap-3 items-center" key={item.id}>
               <div className="space-y-1 w-full">
@@ -75,14 +105,27 @@ export default function CodeStubDetails({ setStep }: Props) {
                 label="Parameter Name"
                 placeholder="Give a name to function parameter"
               />
-              <Button variant="ghost" size="icon" className="gap-2 mt-6 p-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="gap-2 mt-6 p-3"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onRemoveParam(item.id);
+                }}
+              >
                 <X size={18} />
               </Button>
             </div>
           );
         })}
         <div className="flex">
-          <Button variant="ghost" size="sm" className="gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="gap-2"
+            onClick={onAddNewParam}
+          >
             <Plus size={18} /> Add a function parameter
           </Button>
         </div>
@@ -94,11 +137,12 @@ export default function CodeStubDetails({ setStep }: Props) {
                 <h1 className="text-sm font-semibold">Code Preview</h1>
               </div>
             </div>
-            <div className="overflow-auto h-full">
+            <div className="overflow-auto h-52">
               <CodeMirror
                 value={code}
                 extensions={[java()]}
                 onChange={onCodeChange}
+                readOnly={true}
                 theme={theme === "light" ? vscodeLight : vscodeDark}
               />
             </div>
