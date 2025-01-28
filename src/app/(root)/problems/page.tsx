@@ -7,6 +7,7 @@ import { ProblemSummery } from "@/types";
 import { fetchAllProblems } from "@/services/problemService";
 import PageHeader from "@/components/page-header";
 import ProblemFilter from "@/components/custom-ui/filters/problem-filter";
+import MyDataTable from "@/components/custom-ui/table/datatable";
 
 type Props = {};
 
@@ -42,7 +43,7 @@ const problems = (props: Props) => {
         <div className="flex flex-row-reverse m-2">
           <ProblemFilter />
         </div>
-        <DataTable columns={columns} data={data} />
+        <MyDataTable columns={columns} data={data} />
       </div>
     </main>
   );

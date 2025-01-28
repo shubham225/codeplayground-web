@@ -7,6 +7,7 @@ import { columns } from "./questions-columns";
 import { ProblemSummery } from "@/types";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import PaginationTest from "@/components/custom-ui/pagination";
+import MyDataTable from "@/components/custom-ui/table/datatable";
 
 type Props = {};
 
@@ -32,15 +33,15 @@ const questionsData: ProblemSummery[] = [
     title: "Four Sum",
     difficulty: "HARD",
   },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
 ];
 
 export default function page({}: Props) {
@@ -64,8 +65,8 @@ export default function page({}: Props) {
           </TabsList>
         </div>
         <TabsContent value="question-management">
-          <DataTable columns={columns} data={questionsData} />
-          <PaginationTest currentPage={1} totalPages={20} />
+          {/* <DataTable columns={columns} data={questionsData} /> */}
+          <MyDataTable columns={columns} data={questionsData} />
         </TabsContent>
         <TabsContent value="user-activity">
           <div>User Activity</div>
