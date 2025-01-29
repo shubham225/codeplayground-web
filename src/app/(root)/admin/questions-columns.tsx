@@ -78,14 +78,13 @@ export const columns: ColumnDef<ProblemSummery>[] = [
   },
   {
     id: "actions",
-    header: () => <span className="sr-only">Actions</span>,
+    header: "Actions",
     cell: ({ row }) => {
       const router = useRouter();
       return (
         <div className="flex gap-2">
           <Button
-            variant="outline"
-            size="icon"
+            size="icon" variant="ghost" className="shadow-none" aria-label="Edit item"
             onClick={() => {
               console.log("Edit CLicked");
             }}
@@ -93,8 +92,7 @@ export const columns: ColumnDef<ProblemSummery>[] = [
             <Edit2 size={15} />
           </Button>
           <Button
-            variant="outline"
-            size="icon"
+            size="icon" variant="ghost" className="shadow-none" aria-label="Delete item"
             onClick={() => {
               console.log("Delete CLicked");
             }}

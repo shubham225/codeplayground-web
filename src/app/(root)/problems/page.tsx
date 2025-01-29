@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { DataTable } from "@/components/data-tables";
 import { columns } from "./columns";
 import { ProblemSummery } from "@/types";
 import { fetchAllProblems } from "@/services/problemService";
 import PageHeader from "@/components/page-header";
 import ProblemFilter from "@/components/custom-ui/filters/problem-filter";
 import MyDataTable from "@/components/custom-ui/table/datatable";
+import TableWithFilter from "@/components/custom-ui/table/table-with-filter";
+import { DataTable } from "@/components/data-tables";
 
 type Props = {};
 
@@ -43,7 +44,7 @@ const problems = (props: Props) => {
         <div className="flex flex-row-reverse m-2">
           <ProblemFilter />
         </div>
-        <MyDataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={data} />
       </div>
     </main>
   );
