@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { DataTable } from "../data-tables";
+import { DataTable } from "../custom-ui/datatable";
 import { columns } from "./result-columns";
 import { Problem, Submission } from "@/types";
 import { fetchAllSubmissions } from "@/services/problemService";

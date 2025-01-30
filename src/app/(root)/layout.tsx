@@ -3,7 +3,7 @@
 import Navigation from "@/components/navigation";
 import ProblemNavbar from "@/components/problem/problem-navbar";
 import ProfileMenu from "@/components/profile-menu";
-import ToggleMode from "@/components/toggle-mode";
+import ToggleMode from "@/components/toggle-theme";
 import { ChevronsLeftRightEllipsis } from "lucide-react";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";

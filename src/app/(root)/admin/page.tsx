@@ -1,4 +1,4 @@
-import { DataTable } from "@/components/data-tables";
+import { DataTable } from "@/components/custom-ui/datatable";
 import ContributeQuestion from "@/components/dialogs/contribute-question";
 import PageHeader from "@/components/page-header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
