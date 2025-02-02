@@ -15,7 +15,7 @@ type PaginationProps = {
   paginationItemsToDisplay?: number;
 };
 
-export default function PaginationTest({
+export default function PaginationBlock({
   currentPage,
   totalPages,
   paginationItemsToDisplay = 5,

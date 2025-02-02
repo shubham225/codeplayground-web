@@ -7,8 +7,8 @@ import { columns } from "./questions-columns";
 import { ProblemSummery } from "@/types";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import PaginationTest from "@/components/custom-ui/pagination";
-import MyDataTable from "@/components/custom-ui/table/datatable";
-import TableWithFilter from "@/components/custom-ui/table/table-with-filter";
+import { Pagination } from "@/components/ui/pagination";
+import PaginationBlock from "@/components/custom-ui/pagination";
 
 type Props = {};
 
@@ -34,15 +34,15 @@ const questionsData: ProblemSummery[] = [
     title: "Four Sum",
     difficulty: "HARD",
   },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  // { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
+  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
 ];
 
 export default function page({}: Props) {
