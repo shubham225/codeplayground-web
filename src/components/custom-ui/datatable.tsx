@@ -184,7 +184,7 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center justify-between gap-8">
         {/* Results per page */}
         <div className="flex items-center gap-3">
-          <Label htmlFor={id} className="max-sm:sr-only">
+          {/* <Label htmlFor={id} className="max-sm:sr-only">
             Rows per page
           </Label>
           <Select
@@ -203,7 +203,7 @@ export function DataTable<TData, TValue>({
                 </SelectItem>
               ))}
             </SelectContent>
-          </Select>
+          </Select> */}
         </div>
         {/* Page number information */}
 

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { capitalizeFirstLetterOfEachWord } from "@/lib/utils";
 import { ProblemSummery } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
+import { Play } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<ProblemSummery>[] = [
@@ -44,13 +45,17 @@ export const columns: ColumnDef<ProblemSummery>[] = [
       const router = useRouter();
       return (
         <Button
-          variant="default"
+          variant="secondary"
           size="sm"
           onClick={() => {
             router.push(`problems/${row.original.id}`);
           }}
         >
+          <div className="flex gap-2 items-center justify-center">
+
           Solve
+          <Play />
+          </div>
         </Button>
       );
     },

@@ -84,6 +84,20 @@ export type BackendResponse<T> = {
   payload: T;
 };
 
+export type DataType = "int" | "String" | "boolean" | "float" | "void";
+
+export type Parameter = {
+  id: string;
+  type: DataType;
+  name: string;
+};
+
+export type CodeStub = {
+  functionName: string;
+  returnType: DataType;
+  parameters: Parameter[];
+};
+
 // Interfaces
 declare interface InputFieldProps
   extends React.InputHTMLAttributes<HTMLInputElement> {

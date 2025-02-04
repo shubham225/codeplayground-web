@@ -5,26 +5,19 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { SelectNative } from "@/components/ui/select-native";
+import { generateJavaCodeStub } from "@/lib/utils";
+import { CodeStub } from "@/types";
 import { java } from "@codemirror/lang-java";
 import { vscodeDark, vscodeLight } from "@uiw/codemirror-theme-vscode";
 import CodeMirror, { ViewUpdate } from "@uiw/react-codemirror";
 import { Braces, Plus, X } from "lucide-react";
 import { useTheme } from "next-themes";
-import React from "react";
+import React, { useId } from "react";
 
 type Props = { setStep: React.Dispatch<React.SetStateAction<string>> };
 
 const initCode = "int addNumbers(int a, int b) {\n //Write your code here\n}";
-const parameters = [
-  { id: "1" },
-  { id: "2" },
-  // { id: "3" },
-  // { id: "4" },
-  // { id: "5" },
-  // { id: "6" },
-  // { id: "7" },
-  // { id: "8" },
-];
+const parameters = [{ id: "1" }, { id: "2" }];
 
 function guidGenerator() {
   var S4 = function () {
@@ -46,25 +39,85 @@ function guidGenerator() {
   );
 }
 
+const initCodeStub: CodeStub = {
+  functionName: "solve",
+  returnType: "void",
+  parameters: [],
+};
+
 export default function CodeStubDetails({ setStep }: Props) {
   const { theme } = useTheme();
-  const [code, setCode] = React.useState<string>(initCode);
-  const [functionParam, setFunctionParam] = React.useState(parameters);
+  const [code, setCode] = React.useState<string>("");
+  const [codestub, setCodestub] = React.useState<CodeStub>(initCodeStub);
 
-  const onCodeChange = React.useCallback(
-    (value: string, viewUpdate: ViewUpdate) => {
-      setCode(value);
-    },
-    []
-  );
+  React.useEffect(() => { 
+    regenerateCode()
+  }, [codestub])
+
+  const onFunctionNameChange = (e: any) => {
+    setCodestub((codestub) => ({
+      ...codestub,
+      functionName: e.target.value,
+    }));
+  };
+
+  const onReturnTypeChange = (e: any) => {
+    setCodestub((codestub) => ({
+      ...codestub,
+      returnType: e.target.value,
+    }));
+  };
 
   const onAddNewParam = () => {
-    setFunctionParam((params) => [...params, { id: guidGenerator() }]);
+    setCodestub((codestub) => ({
+      ...codestub,
+      parameters: [
+        ...codestub.parameters,
+        { id: guidGenerator(), name: ("argument" + (codestub.parameters.length+1)), type: "int" },
+      ],
+    }));
   };
 
   const onRemoveParam = (id: string) => {
-    const updatedList = functionParam.filter((params) => params.id != id);
-    setFunctionParam(updatedList);
+    const updatedList = codestub.parameters.filter((params) => params.id != id);
+
+    setCodestub((codestub) => ({
+      ...codestub,
+      parameters: updatedList,
+    }));
+  };
+
+  const onParameterTypeChange = (e: any) => {
+    const updatedList = codestub.parameters.map((parameter) => {
+      if (parameter.id == e.target.id) {
+        parameter.type = e.target.value;
+      }
+
+      return parameter;
+    });
+    setCodestub((codestub) => ({
+      ...codestub,
+      parameters: updatedList,
+    }));
+  };
+
+  const onParameterNameChange = (e: any) => {
+    const updatedList = codestub.parameters.map((parameter) => {
+      if (parameter.id == e.target.id) {
+        parameter.name = e.target.value;
+      }
+
+      return parameter;
+    });
+    setCodestub((codestub) => ({
+      ...codestub,
+      parameters: updatedList,
+    }));
+  };
+
+  const regenerateCode = () => {
+    let code = generateJavaCodeStub(codestub);
+    setCode(code);
   };
 
   return (
@@ -75,35 +128,47 @@ export default function CodeStubDetails({ setStep }: Props) {
           <SimpleInput
             id="function-name"
             label="Function Name"
+            value={codestub.functionName}
+            onChange={onFunctionNameChange}
             placeholder="Declare a function name"
           />
           <div className="space-y-1 w-full">
             <Label htmlFor="return-type">Return Type</Label>
-            <SelectNative id="return-type">
-              <option value="1">Integer</option>
-              <option value="2">Float</option>
-              <option value="3">String</option>
-              <option value="4">Boolean</option>
+            <SelectNative
+              id="return-type"
+              value={codestub.returnType}
+              onChange={onReturnTypeChange}
+            >
+              <option value="int">Integer</option>
+              <option value="float">Float</option>
+              <option value="String">String</option>
+              <option value="boolean">Boolean</option>
             </SelectNative>
           </div>
         </div>
         <h1 className="text-md font-semibold my-2">Function Parameters</h1>
-        {functionParam.map((item) => {
+        {codestub.parameters.map((item) => {
           return (
             <div className="flex gap-3 items-center" key={item.id}>
               <div className="space-y-1 w-full">
-                <Label htmlFor="parameter-type">Parameter Type</Label>
-                <SelectNative id="parameter-type">
-                  <option value="1">Integer</option>
-                  <option value="2">Float</option>
-                  <option value="3">String</option>
-                  <option value="4">Boolean</option>
+                <Label htmlFor={item.id}>Parameter Type</Label>
+                <SelectNative
+                  id={item.id}
+                  value={item.type}
+                  onChange={onParameterTypeChange}
+                >
+                  <option value="int">Integer</option>
+                  <option value="float">Float</option>
+                  <option value="String">String</option>
+                  <option value="boolean">Boolean</option>
                 </SelectNative>
               </div>
               <SimpleInput
                 id={item.id}
                 label="Parameter Name"
                 placeholder="Give a name to function parameter"
+                value={item.name}
+                onChange={onParameterNameChange}
               />
               <Button
                 variant="ghost"
@@ -141,7 +206,6 @@ export default function CodeStubDetails({ setStep }: Props) {
               <CodeMirror
                 value={code}
                 extensions={[java()]}
-                onChange={onCodeChange}
                 readOnly={true}
                 theme={theme === "light" ? vscodeLight : vscodeDark}
               />

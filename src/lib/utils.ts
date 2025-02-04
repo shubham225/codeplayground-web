@@ -1,4 +1,4 @@
-import { Code, Language } from "@/types";
+import { Code, CodeStub, Language } from "@/types";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -81,4 +81,22 @@ export function formatBytes(bytes: number): string {
 
   const gb = mb / 1024;
   return `${gb.toFixed(2)} GB`;
+}
+
+export function generateJavaCodeStub(codestub: CodeStub): string {
+  const returnType = codestub.returnType;
+  const functionName = codestub.functionName;
+  const parameters = codestub.parameters;
+
+  const paramString = parameters
+    .map((param) => `${param.type} ${param.name}`)
+    .join(", ");
+
+  const methodStub = `class Solution {
+  public ${returnType} ${functionName}(${paramString}) {
+    // TODO: Write logic here
+  }
+}`;
+
+  return methodStub;
 }

@@ -34,15 +34,6 @@ const questionsData: ProblemSummery[] = [
     title: "Four Sum",
     difficulty: "HARD",
   },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
-  { id: "", urlCode: "", status: "", title: "", difficulty: "" },
 ];
 
 export default function page({}: Props) {
