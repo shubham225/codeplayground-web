@@ -122,7 +122,7 @@ export default function CodeStubDetails({ setStep }: Props) {
 
   return (
     <div className="p-5 flex flex-col justify-between gap-4">
-      <div className="flex flex-col gap-2 h-[673px] overflow-auto">
+      <div className="flex flex-col gap-2 h-[673px] overflow-auto px-1">
         <h1 className="text-md font-semibold mb-2">Function declaration</h1>
         <div className="flex gap-3">
           <SimpleInput
@@ -199,7 +199,7 @@ export default function CodeStubDetails({ setStep }: Props) {
             <div className="rounded-t-md flex flex-col dark:bg-[#333333] bg-gray-50">
               <div className="flex gap-1 items-center p-1">
                 <Braces className="dark:text-teal-400 text-teal-500 p-1" />
-                <h1 className="text-sm font-semibold">Code Preview</h1>
+                <h1 className="text-sm font-semibold">Code Preview | Java</h1>
               </div>
             </div>
             <div className="overflow-auto h-52">
