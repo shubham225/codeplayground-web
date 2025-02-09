@@ -3,6 +3,7 @@
 import SimpleInput from "@/components/custom-ui/input/SimpleInput";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { SelectNative } from "@/components/ui/select-native";
 import { generateJavaCodeStub } from "@/lib/utils";
@@ -50,9 +51,9 @@ export default function CodeStubDetails({ setStep }: Props) {
   const [code, setCode] = React.useState<string>("");
   const [codestub, setCodestub] = React.useState<CodeStub>(initCodeStub);
 
-  React.useEffect(() => { 
-    regenerateCode()
-  }, [codestub])
+  React.useEffect(() => {
+    regenerateCode();
+  }, [codestub]);
 
   const onFunctionNameChange = (e: any) => {
     setCodestub((codestub) => ({
@@ -73,7 +74,12 @@ export default function CodeStubDetails({ setStep }: Props) {
       ...codestub,
       parameters: [
         ...codestub.parameters,
-        { id: guidGenerator(), name: ("argument" + (codestub.parameters.length+1)), type: "int" },
+        {
+          id: guidGenerator(),
+          name: "argument" + (codestub.parameters.length + 1),
+          type: "int",
+          isArray: false,
+        },
       ],
     }));
   };
@@ -109,6 +115,22 @@ export default function CodeStubDetails({ setStep }: Props) {
 
       return parameter;
     });
+    setCodestub((codestub) => ({
+      ...codestub,
+      parameters: updatedList,
+    }));
+  };
+
+  const onParameterIsArrayChange = (itemId: string, val: any) => {
+    console.log(itemId, val);
+    const updatedList = codestub.parameters.map((parameter) => {
+      if (parameter.id == itemId) {
+        parameter.isArray = val;
+      }
+
+      return parameter;
+    });
+
     setCodestub((codestub) => ({
       ...codestub,
       parameters: updatedList,
@@ -163,13 +185,27 @@ export default function CodeStubDetails({ setStep }: Props) {
                   <option value="boolean">Boolean</option>
                 </SelectNative>
               </div>
-              <SimpleInput
-                id={item.id}
-                label="Parameter Name"
-                placeholder="Give a name to function parameter"
-                value={item.name}
-                onChange={onParameterNameChange}
-              />
+              <div className="w-full flex-grow">
+                <SimpleInput
+                  id={item.id}
+                  label="Parameter Name"
+                  placeholder="Give a name to function parameter"
+                  value={item.name}
+                  onChange={onParameterNameChange}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>isArray</Label>
+                <div className="relative">
+                  <Checkbox
+                    id={"item.id"}
+                    checked={item.isArray}
+                    onCheckedChange={(val) =>
+                      onParameterIsArrayChange(item.id, val)
+                    }
+                  />
+                </div>
+              </div>
               <Button
                 variant="ghost"
                 size="icon"

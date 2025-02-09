@@ -89,7 +89,10 @@ export function generateJavaCodeStub(codestub: CodeStub): string {
   const parameters = codestub.parameters;
 
   const paramString = parameters
-    .map((param) => `${param.type} ${param.name}`)
+    .map((param) => {
+      const arrayStr = param.isArray ? "[]" : "";
+      return `${param.type}${arrayStr} ${param.name}`;
+    })
     .join(", ");
 
   const methodStub = `class Solution {

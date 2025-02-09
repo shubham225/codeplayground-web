@@ -89,6 +89,7 @@ export type DataType = "int" | "String" | "boolean" | "float" | "void";
 export type Parameter = {
   id: string;
   type: DataType;
+  isArray: boolean;
   name: string;
 };
 
