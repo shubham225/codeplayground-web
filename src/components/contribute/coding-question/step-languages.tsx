@@ -17,7 +17,11 @@ import {
   MysqlOriginal,
 } from "devicons-react";
 
-type Props = { setStep: React.Dispatch<React.SetStateAction<string>> };
+type Props = {
+  setStep: React.Dispatch<React.SetStateAction<string>>;
+  data: any;
+  setData: any;
+};
 
 const languages = [
   {
@@ -112,7 +116,8 @@ const languages = [
   },
 ];
 
-export default function LanguagesDetails({ setStep }: Props) {
+export default function LanguagesDetails({ setStep, data, setData }: Props) {
+  console.log("in lang", data);
   return (
     <div className="p-5 flex flex-col justify-between gap-4">
       <div className="flex flex-col h-[673px]">

@@ -15,7 +15,11 @@ import { Braces, Plus, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import React, { useId } from "react";
 
-type Props = { setStep: React.Dispatch<React.SetStateAction<string>> };
+type Props = {
+  setStep: React.Dispatch<React.SetStateAction<string>>;
+  data: any;
+  setData: any;
+};
 
 const initCode = "int addNumbers(int a, int b) {\n //Write your code here\n}";
 const parameters = [{ id: "1" }, { id: "2" }];
@@ -46,7 +50,7 @@ const initCodeStub: CodeStub = {
   parameters: [],
 };
 
-export default function CodeStubDetails({ setStep }: Props) {
+export default function CodeStubDetails({ setStep, data, setData }: Props) {
   const { theme } = useTheme();
   const [code, setCode] = React.useState<string>("");
   const [codestub, setCodestub] = React.useState<CodeStub>(initCodeStub);
@@ -122,7 +126,6 @@ export default function CodeStubDetails({ setStep }: Props) {
   };
 
   const onParameterIsArrayChange = (itemId: string, val: any) => {
-    console.log(itemId, val);
     const updatedList = codestub.parameters.map((parameter) => {
       if (parameter.id == itemId) {
         parameter.isArray = val;

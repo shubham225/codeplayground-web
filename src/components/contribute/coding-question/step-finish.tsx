@@ -4,9 +4,9 @@ import { BadgeCheck } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-type Props = { };
+type Props = { data: any; setData: any };
 
-export default function StepFinish({}: Props) {
+export default function StepFinish({ data, setData }: Props) {
   return (
     <div className="p-5 flex flex-col justify-between gap-4">
       <div className="flex flex-col justify-center items-center gap-3 h-[740px]">

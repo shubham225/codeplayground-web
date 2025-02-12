@@ -14,6 +14,7 @@ type Props = {};
 
 export default function ContributeCoding({}: Props) {
   const [step, setStep] = useState("step-1");
+  const [question, setQuestion] = useState({});
 
   return (
     <div className="m-3 border rounded-lg">
@@ -82,20 +83,36 @@ export default function ContributeCoding({}: Props) {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="step-1">
-            <QuestionDetails setStep={setStep} />
+            <QuestionDetails
+              setStep={setStep}
+              data={question}
+              setData={setQuestion}
+            />
           </TabsContent>
           <TabsContent value="step-2">
-            <LanguagesDetails setStep={setStep} />
+            <LanguagesDetails
+              setStep={setStep}
+              data={question}
+              setData={setQuestion}
+            />
           </TabsContent>
           <TabsContent value="step-3">
-            <CodeStubDetails setStep={setStep} />
+            <CodeStubDetails
+              setStep={setStep}
+              data={question}
+              setData={setQuestion}
+            />
           </TabsContent>
           <TabsContent value="step-4">
-            <TestCasesDetails setStep={setStep} />
+            <TestCasesDetails
+              setStep={setStep}
+              data={question}
+              setData={setQuestion}
+            />
           </TabsContent>
         </Tabs>
       ) : (
-        <StepFinish />
+        <StepFinish data={question} setData={setQuestion} />
       )}
     </div>
   );

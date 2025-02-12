@@ -11,14 +11,21 @@ import { vscodeDark, vscodeLight } from "@uiw/codemirror-theme-vscode";
 import { Button } from "@/components/ui/button";
 import { FaMarkdown } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
+import { Description } from "@radix-ui/react-toast";
 
+type Props = {
+  setStep: React.Dispatch<React.SetStateAction<string>>;
+  data: any;
+  setData: any;
+};
 
-type Props = { setStep: React.Dispatch<React.SetStateAction<string>> };
+const mdStr =
+  "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\nYou can return the answer in any order.\n\n#### Example 1:\n> **Input:** nums = [2,7,11,15], target = 9\n>\n> **Output:** [0,1]\n>\n> **Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1].\n\n#### Example 2:\n> **Input:** nums = [3,2,4], target = 6\n>\n> **Output:** [1,2]\n\n#### Constraints:\n + `2 <= nums.length <= 104`\n + `-109 <= nums[i] <= 109`\n + `-109 <= target <= 109`\n";
 
-const mdStr = "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\nYou can return the answer in any order.\n\n#### Example 1:\n> **Input:** nums = [2,7,11,15], target = 9\n>\n> **Output:** [0,1]\n>\n> **Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1].\n\n#### Example 2:\n> **Input:** nums = [3,2,4], target = 6\n>\n> **Output:** [1,2]\n\n#### Constraints:\n + `2 <= nums.length <= 104`\n + `-109 <= nums[i] <= 109`\n + `-109 <= target <= 109`\n";
-
-export default function QuestionDetails({ setStep }: Props) {
+export default function QuestionDetails({ setStep, data, setData }: Props) {
   const [markdown, setMarkdown] = useState(mdStr);
+  const [summery, setSummery] = useState("");
+  const [difficulty, setDifficulty] = useState("");
   const { theme } = useTheme();
 
   return (
@@ -28,22 +35,34 @@ export default function QuestionDetails({ setStep }: Props) {
           id="question"
           label="Question Summery"
           placeholder="Write short summery of a question"
+          value={summery}
+          onChange={(e) => {
+            e.preventDefault();
+            setSummery(e.target.value);
+          }}
         />
         <div className="flex gap-3">
           <div className="space-y-2 w-full">
             <Label htmlFor="difficulty">Difficulty</Label>
-            <SelectNative id="difficulty">
-              <option value="1">Easy</option>
-              <option value="2">Medium</option>
-              <option value="3">Hard</option>
+            <SelectNative
+              id="difficulty"
+              value={difficulty}
+              onChange={(e) => {
+                e.preventDefault();
+                setDifficulty(e.target.value);
+              }}
+            >
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
             </SelectNative>
           </div>
           <InputTags />
         </div>
         <div className="space-y-3 pt-3" data-color-mode={theme}>
           <div className="flex gap-2">
-          <Label>Problem Description</Label>
-          <FaMarkdown />
+            <Label>Problem Description</Label>
+            <FaMarkdown />
           </div>
           <MarkdownEditor
             value={markdown}
@@ -57,6 +76,12 @@ export default function QuestionDetails({ setStep }: Props) {
         <Button
           onClick={(e) => {
             e.preventDefault();
+            setData((data: any) => ({
+              ...data,
+              summery: summery,
+              difficulty: difficulty,
+              description: markdown,
+            }));
             setStep("step-2");
           }}
         >
