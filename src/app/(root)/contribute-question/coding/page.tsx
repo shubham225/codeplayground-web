@@ -16,6 +16,8 @@ export default function ContributeCoding({}: Props) {
   const [step, setStep] = useState("step-1");
   const [question, setQuestion] = useState({});
 
+  // TODO : Use Zod for question creation validations
+
   return (
     <div className="m-3 border rounded-lg">
       {step !== "finish" ? (

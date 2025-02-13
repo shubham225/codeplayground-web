@@ -55,6 +55,8 @@ export default function CodeStubDetails({ setStep, data, setData }: Props) {
   const [code, setCode] = React.useState<string>("");
   const [codestub, setCodestub] = React.useState<CodeStub>(initCodeStub);
 
+  console.log(data);
+
   React.useEffect(() => {
     regenerateCode();
   }, [codestub]);

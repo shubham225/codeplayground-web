@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { LanguagesIcon, SwatchBook } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import {
   COriginal,
   JavaOriginal,
@@ -117,7 +117,8 @@ const languages = [
 ];
 
 export default function LanguagesDetails({ setStep, data, setData }: Props) {
-  console.log("in lang", data);
+  const [selectedLangs, setSelectedLangs] = useState<string[]>([]);
+
   return (
     <div className="p-5 flex flex-col justify-between gap-4">
       <div className="flex flex-col h-[673px]">
@@ -142,6 +143,16 @@ export default function LanguagesDetails({ setStep, data, setData }: Props) {
                     <Checkbox
                       id={item.id}
                       value={item.id}
+                      onCheckedChange={(checked) => {
+                        if (checked) {
+                          setSelectedLangs((langs) => [...langs, item.label]);
+                        } else {
+                          let items = selectedLangs.filter(
+                            (lang) => lang !== item.label
+                          );
+                          setSelectedLangs(items);
+                        }
+                      }}
                       className="order-1 after:absolute after:inset-0"
                       defaultChecked={item.selected}
                     />
@@ -156,6 +167,7 @@ export default function LanguagesDetails({ setStep, data, setData }: Props) {
         <Button
           onClick={(e) => {
             e.preventDefault();
+            setData((data: any) => ({ ...data, languages: selectedLangs }));
             setStep("step-3");
           }}
         >
