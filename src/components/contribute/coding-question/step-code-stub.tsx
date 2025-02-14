@@ -55,8 +55,6 @@ export default function CodeStubDetails({ setStep, data, setData }: Props) {
   const [code, setCode] = React.useState<string>("");
   const [codestub, setCodestub] = React.useState<CodeStub>(initCodeStub);
 
-  console.log(data);
-
   React.useEffect(() => {
     regenerateCode();
   }, [codestub]);
@@ -259,6 +257,7 @@ export default function CodeStubDetails({ setStep, data, setData }: Props) {
           onClick={(e) => {
             e.preventDefault();
             setStep("step-4");
+            setData((data: any) => ({...data, codeStub: codestub}));
           }}
         >
           Next
