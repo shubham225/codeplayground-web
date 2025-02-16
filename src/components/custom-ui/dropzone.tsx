@@ -4,9 +4,12 @@ import { FileText, Upload } from "lucide-react";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-export default function Dropzone() {
-  const [testCaseFiles, setTestCaseFiles] = useState<File[]>([]);
+type Props = {
+  uploadFiles: File[];
+  setUploadFiles: React.Dispatch<React.SetStateAction<File[]>>;
+};
 
+export default function Dropzone({ uploadFiles, setUploadFiles }: Props) {
   const onDrop = useCallback((acceptedFiles: File[]) => {
     acceptedFiles.forEach((file: File) => {
       const reader = new FileReader();
@@ -21,7 +24,7 @@ export default function Dropzone() {
       console.log(file);
       reader.readAsArrayBuffer(file);
 
-      setTestCaseFiles((testcase) => [...testcase, file]);
+      setUploadFiles((testcase) => [...testcase, file]);
     });
   }, []);
 
@@ -37,8 +40,8 @@ export default function Dropzone() {
         <p>Drop the files here ...</p>
       ) : (
         <div className="flex items-center justify-center gap-6">
-          {testCaseFiles.length > 0 ? (
-            testCaseFiles.map((file) => (
+          {uploadFiles.length > 0 ? (
+            uploadFiles.map((file) => (
               <div className="flex flex-col items-center justify-center gap-3">
                 <FileText className="h-14 w-14" />
                 <p>{file.name}</p>
