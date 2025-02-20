@@ -10,6 +10,7 @@ import { useTheme } from "next-themes";
 import { vscodeDark, vscodeLight } from "@uiw/codemirror-theme-vscode";
 import { Button } from "@/components/ui/button";
 import { FaMarkdown } from "react-icons/fa";
+import { Tag } from "emblor";
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<string>>;
@@ -17,13 +18,18 @@ type Props = {
   setData: any;
 };
 
-const mdStr =
-  "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.\nYou may assume that each input would have exactly one solution, and you may not use the same element twice.\nYou can return the answer in any order.\n\n#### Example 1:\n> **Input:** nums = [2,7,11,15], target = 9\n>\n> **Output:** [0,1]\n>\n> **Explanation:** Because nums[0] + nums[1] == 9, we return [0, 1].\n\n#### Example 2:\n> **Input:** nums = [3,2,4], target = 6\n>\n> **Output:** [1,2]\n\n#### Constraints:\n + `2 <= nums.length <= 104`\n + `-109 <= nums[i] <= 109`\n + `-109 <= target <= 109`\n";
+const tagsList = [
+  {
+    id: "1",
+    text: "Java",
+  },
+];
 
 export default function QuestionDetails({ setStep, data, setData }: Props) {
   const [markdown, setMarkdown] = useState(data.description);
   const [summery, setSummery] = useState(data.summery);
   const [difficulty, setDifficulty] = useState(data.difficulty);
+  const [tags, setTags] = useState<Tag[]>(tagsList);
   const { theme } = useTheme();
 
   return (
@@ -55,7 +61,7 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
               <option value="Hard">Hard</option>
             </SelectNative>
           </div>
-          <InputTags />
+          <InputTags tags={tags} setTags={setTags} />
         </div>
         <div className="space-y-3 pt-3" data-color-mode={theme}>
           <div className="flex gap-2">
@@ -79,6 +85,7 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
               summery: summery,
               difficulty: difficulty,
               description: markdown,
+              tags: tags,
             }));
             setStep("step-2");
           }}

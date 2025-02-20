@@ -1,20 +1,18 @@
 "use client";
-// Add the following to tailwind.config.ts: "./node_modules/emblor/dist/index.mjs",
 
 import { Label } from "@/components/ui/label";
 import { Tag, TagInput } from "emblor";
 import { useId, useState } from "react";
 
-const tags = [
-  {
-    id: "1",
-    text: "Java",
-  },
-];
 
-export default function InputTags() {
+type Props = {
+  setTags: React.Dispatch<React.SetStateAction<Tag[]>>;
+  tags: Tag[];
+};
+
+
+export default function InputTags({tags, setTags} : Props) {
   const id = useId();
-  const [exampleTags, setExampleTags] = useState<Tag[]>(tags);
   const [activeTagIndex, setActiveTagIndex] = useState<number | null>(null);
 
   return (
@@ -22,9 +20,9 @@ export default function InputTags() {
       <Label htmlFor={id}>Tags</Label>
       <TagInput
         id={id}
-        tags={exampleTags}
+        tags={tags}
         setTags={(newTags) => {
-          setExampleTags(newTags);
+          setTags(newTags);
         }}
         placeholder="Add a tag"
         styleClasses={{
