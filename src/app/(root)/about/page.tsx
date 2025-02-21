@@ -13,10 +13,10 @@ export default function About({}: Props) {
 
       <div className="bg-gray-100 min-h-screen">
         {/* Header Section */}
-        <header className="bg-primary text-white text-center py-12">
+        {/* <header className="bg-primary text-white text-center py-12">
           <h1 className="text-4xl font-bold">About Our Coding Platform</h1>
           <p className="mt-2 text-lg">A place to learn, practice, and grow as a developer.</p>
-        </header>
+        </header> */}
 
         {/* Main Content */}
         <div className="max-w-6xl mx-auto px-6 py-12">

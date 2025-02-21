@@ -19,7 +19,7 @@ export default function TestCasesDetails({ setStep, data, setData }: Props) {
             upload your solution to help the candidates debug their code and see
             the expected output for their custom input.
           </h4>
-          <div className="h-48 mt-4">
+          <div className="h-48 mt-4 w-full">
             <Dropzone uploadFiles={solutions} setUploadFiles={setSolutions}/>
           </div>
         </div>

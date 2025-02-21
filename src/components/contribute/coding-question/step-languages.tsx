@@ -34,20 +34,20 @@ const languages = [
     id: "#134",
     label: "C++",
     icon: CplusplusOriginal,
-    selected: true,
+    selected: false,
   },
   {
     id: "#132",
-    label: "C++ 14",
+    label: "C++ 11",
     icon: CplusplusOriginal,
     selected: false,
   },
-  {
-    id: "#124",
-    label: "C++ 20",
-    icon: CplusplusOriginal,
-    selected: false,
-  },
+  // {
+  //   id: "#124",
+  //   label: "C++ 20",
+  //   icon: CplusplusOriginal,
+  //   selected: false,
+  // },
   {
     id: "#123",
     label: "Java",
@@ -58,25 +58,25 @@ const languages = [
     id: "#133",
     label: "Java 8",
     icon: JavaOriginal,
-    selected: true,
-  },
-  {
-    id: "#135",
-    label: "Java 20",
-    icon: JavaOriginal,
     selected: false,
   },
+  // {
+  //   id: "#135",
+  //   label: "Java 20",
+  //   icon: JavaOriginal,
+  //   selected: false,
+  // },
   {
     id: "#126",
     label: "Javascript",
     icon: JavascriptOriginal,
-    selected: true,
+    selected: false,
   },
   {
     id: "#127",
     label: "Python",
     icon: PythonOriginal,
-    selected: true,
+    selected: false,
   },
   {
     id: "#128",
@@ -96,24 +96,24 @@ const languages = [
     icon: KotlinOriginal,
     selected: false,
   },
-  {
-    id: "#137",
-    label: "MySQL",
-    icon: MysqlOriginal,
-    selected: false,
-  },
-  {
-    id: "#138",
-    label: "MariaDB",
-    icon: MariadbOriginalWordmark,
-    selected: false,
-  },
-  {
-    id: "#140",
-    label: "MongoDB",
-    icon: MongodbOriginalWordmark,
-    selected: false,
-  },
+  // {
+  //   id: "#137",
+  //   label: "MySQL",
+  //   icon: MysqlOriginal,
+  //   selected: false,
+  // },
+  // {
+  //   id: "#138",
+  //   label: "MariaDB",
+  //   icon: MariadbOriginalWordmark,
+  //   selected: false,
+  // },
+  // {
+  //   id: "#140",
+  //   label: "MongoDB",
+  //   icon: MongodbOriginalWordmark,
+  //   selected: false,
+  // },
 ];
 
 export default function LanguagesDetails({ setStep, data, setData }: Props) {
