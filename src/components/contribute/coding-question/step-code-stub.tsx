@@ -257,7 +257,7 @@ export default function CodeStubDetails({ setStep, data, setData }: Props) {
           onClick={(e) => {
             e.preventDefault();
             setStep("step-4");
-            setData((data: any) => ({...data, codeStub: codestub}));
+            setData((data: any) => ({ ...data, codeStub: codestub }));
           }}
         >
           Next

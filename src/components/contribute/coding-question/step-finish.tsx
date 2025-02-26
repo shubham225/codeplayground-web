@@ -7,7 +7,6 @@ import React from "react";
 type Props = { data: any; setData: any };
 
 export default function StepFinish({ data, setData }: Props) {
-
   console.log(data);
   return (
     <div className="p-5 flex flex-col justify-between gap-4">
