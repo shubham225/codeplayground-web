@@ -6,7 +6,6 @@ import { Code, FileCode2, HelpCircle, ScrollText } from "lucide-react";
 import QuestionDetails from "@/components/contribute/coding-question/step-question-details";
 import LanguagesDetails from "@/components/contribute/coding-question/step-languages";
 import CodeStubDetails from "@/components/contribute/coding-question/step-code-stub";
-import TestCases from "@/components/problem/test-cases";
 import TestCasesDetails from "@/components/contribute/coding-question/step-testcases";
 import StepFinish from "@/components/contribute/coding-question/step-finish";
 import { z } from "zod";
@@ -15,7 +14,7 @@ type Props = {};
 
 export default function ContributeCoding({}: Props) {
   const [step, setStep] = useState("step-1");
-  const [question, setQuestion] = useState({type: "Coding"});
+  const [question, setQuestion] = useState({ type: "Coding" });
 
   // TODO : Use Zod for question creation validations
 
