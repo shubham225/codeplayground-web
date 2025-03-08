@@ -42,7 +42,10 @@ export default function Dropzone({ uploadFiles, setUploadFiles }: Props) {
         <div className="flex items-center justify-center gap-6">
           {uploadFiles.length > 0 ? (
             uploadFiles.map((file) => (
-              <div className="flex flex-col items-center justify-center gap-3">
+              <div
+                key={file.name}
+                className="flex flex-col items-center justify-center gap-3"
+              >
                 <FileText className="h-14 w-14" />
                 <p>{file.name}</p>
               </div>

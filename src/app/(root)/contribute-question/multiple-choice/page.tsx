@@ -108,7 +108,7 @@ export default function ContribMultipleChoice({}: Props) {
   return (
     <div className="m-3 border rounded-lg h-[820px]">
       {save ? (
-        <StepFinish />
+        <StepFinish data={options} setData={setOptions} />
       ) : (
         <div className="h-full flex flex-col justify-between gap-3 p-5">
           <div className="flex flex-col gap-4 m-5">
