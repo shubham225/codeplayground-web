@@ -12,11 +12,16 @@ import { z } from "zod";
 
 type Props = {};
 
+export const questionFormSchema = z.object({
+  summery: z.string().min(2),
+});
+
 export default function ContributeCoding({}: Props) {
   const [step, setStep] = useState("step-1");
   const [question, setQuestion] = useState({ type: "Coding" });
 
   // TODO : Use Zod for question creation validations
+  
 
   return (
     <div className="m-3 border rounded-lg">
