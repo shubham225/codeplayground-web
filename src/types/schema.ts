@@ -3,6 +3,7 @@ import { z } from "zod";
 export const questionCreationSchema = z.object({
   summery: z.string().min(5),
   description: z.string().min(10),
+  type: z.enum(["MCQ", "CODING"]),
   difficulty: z.enum(["EASY", "MEDIUM", "HARD"]),
   tags: z.string().array().optional(),
   supportedLang: z.string().array().min(1),
