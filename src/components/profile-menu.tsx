@@ -70,7 +70,7 @@ export default function ProfileMenu({}: Props) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem disabled> 
+          <DropdownMenuItem disabled>
             <Users />
             <span>Submissions</span>
           </DropdownMenuItem>
