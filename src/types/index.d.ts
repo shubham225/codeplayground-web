@@ -96,6 +96,7 @@ export type Parameter = {
 export type CodeStub = {
   functionName: string;
   returnType: DataType;
+  returnisArray: boolean;
   parameters: Parameter[];
 };
 

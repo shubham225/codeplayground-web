@@ -46,8 +46,9 @@ function guidGenerator() {
 
 const initCodeStub: CodeStub = {
   functionName: "solve",
-  returnType: "void",
+  returnType: "int",
   parameters: [],
+  returnisArray: false,
 };
 
 export default function CodeStubDetails({ setStep, data, setData }: Props) {
@@ -70,6 +71,13 @@ export default function CodeStubDetails({ setStep, data, setData }: Props) {
     setCodestub((codestub) => ({
       ...codestub,
       returnType: e.target.value,
+    }));
+  };
+
+  const onReturnTypeIsArrayChange = (isArray: any) => {
+    setCodestub((codestub) => ({
+      ...codestub,
+      returnisArray: isArray,
     }));
   };
 
@@ -169,6 +177,17 @@ export default function CodeStubDetails({ setStep, data, setData }: Props) {
               <option value="String">String</option>
               <option value="boolean">Boolean</option>
             </SelectNative>
+          </div>
+
+          <div className="space-y-2">
+            <Label>isArray</Label>
+            <div className="relative">
+              <Checkbox
+                id={"item.id"}
+                checked={codestub.returnisArray}
+                onCheckedChange={(val) => onReturnTypeIsArrayChange(val)}
+              />
+            </div>
           </div>
         </div>
         <h1 className="text-md font-semibold my-2">Function Parameters</h1>

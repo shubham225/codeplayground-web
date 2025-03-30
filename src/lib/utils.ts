@@ -85,6 +85,7 @@ export function formatBytes(bytes: number): string {
 
 export function generateJavaCodeStub(codestub: CodeStub): string {
   const returnType = codestub.returnType;
+  const returnTypeIsArray = codestub.returnisArray;
   const functionName = codestub.functionName;
   const parameters = codestub.parameters;
 
@@ -96,7 +97,7 @@ export function generateJavaCodeStub(codestub: CodeStub): string {
     .join(", ");
 
   const methodStub = `class Solution {
-  public ${returnType} ${functionName}(${paramString}) {
+  public ${returnType}${returnTypeIsArray ? "[]" : ""} ${functionName}(${paramString}) {
     // TODO: Write logic here
   }
 }`;
