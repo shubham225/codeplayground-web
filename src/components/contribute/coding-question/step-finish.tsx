@@ -35,11 +35,11 @@ export default function StepFinish({ data, setData }: Props) {
           <div className="flex flex-col rounded-lg border bg-transparent p-4 w-96 h-32 text-sm">
             <div className="flex justify-between">
               <h4>Question ID:</h4>
-              <h4>#4523f524</h4>
+              <h4>#3853d3</h4>
             </div>
             <div className="flex justify-between">
               <h4>Question Summery:</h4>
-              <h4>Add two numbers</h4>
+              <h4>Two Sum</h4>
             </div>
           </div>
           <Link href={"/contribute-question"}>
