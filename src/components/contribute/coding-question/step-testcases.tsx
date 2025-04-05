@@ -1,3 +1,5 @@
+"use client"
+
 import Dropzone from "@/components/custom-ui/dropzone";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";

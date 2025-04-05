@@ -24,7 +24,7 @@ export default function AuthLayout({
         <Link href={"/"}>
           <div className="flex gap-2 items-center">
             <ChevronsLeftRightEllipsis className="text-orange-400 font-bold w-8 h-8" />
-            <h1 className="text-xl font-bold">AppName</h1>
+            <h1 className="text-xl font-bold">OnlineCoding</h1>
           </div>
         </Link>
         {path.includes("problems/") ? <ProblemNavbar /> : <Navigation />}

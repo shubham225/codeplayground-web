@@ -1,7 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import dynamic from "next/dynamic";
+const Tabs = dynamic(() => import("@/components/ui/tabs").then((mod) => mod.Tabs), { ssr: false });
+const TabsContent = dynamic(() => import("@/components/ui/tabs").then((mod) => mod.TabsContent), { ssr: false });
+const TabsList = dynamic(() => import("@/components/ui/tabs").then((mod) => mod.TabsList), { ssr: false });
+const TabsTrigger = dynamic(() => import("@/components/ui/tabs").then((mod) => mod.TabsTrigger), { ssr: false });
 import { Code, FileCode2, HelpCircle, ScrollText } from "lucide-react";
 import QuestionDetails from "@/components/contribute/coding-question/step-question-details";
 import LanguagesDetails from "@/components/contribute/coding-question/step-languages";
@@ -12,9 +17,9 @@ import { z } from "zod";
 
 type Props = {};
 
-export const questionFormSchema = z.object({
-  summery: z.string().min(2),
-});
+// const questionFormSchema = z.object({
+//   summery: z.string().min(2),
+// });
 
 export default function ContributeCoding({}: Props) {
   const [step, setStep] = useState("step-1");
