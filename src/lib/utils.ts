@@ -97,7 +97,9 @@ export function generateJavaCodeStub(codestub: CodeStub): string {
     .join(", ");
 
   const methodStub = `class Solution {
-  public ${returnType}${returnTypeIsArray ? "[]" : ""} ${functionName}(${paramString}) {
+  public ${returnType}${
+    returnTypeIsArray ? "[]" : ""
+  } ${functionName}(${paramString}) {
     // TODO: Write logic here
   }
 }`;
