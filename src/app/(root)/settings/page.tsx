@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+type Props = {};
 
 export default function page({}: Props) {
-  return (
-    <div>Settings Page</div>
-  )
+  return <div>Settings Page</div>;
 }
