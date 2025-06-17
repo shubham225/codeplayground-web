@@ -24,7 +24,7 @@ export default function Login() {
         <div className="flex flex-col gap-1 md:gap-2">
           <h1 className="text-22 lg:text-30 text-24 font-medium text-gray-900 dark:text-gray-100">
             Login to your account
-            <p className="text-16 font-normal text-gray-600 dark:text-gray-400">
+            <p className="text-sm font-medium text-muted-foreground">
               Fill the below form to login
             </p>
           </h1>
