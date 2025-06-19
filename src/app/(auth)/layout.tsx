@@ -11,7 +11,7 @@ export default function AuthLayout({
     <div className="relative flex size-full items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
       <main className="flex w-full h-full justify-between font-inter">
         {/* Image and Background */}
-        <div className="h-full w-full p-6 max-lg:hidden z-10">
+        {/* <div className="h-full w-full p-6 max-lg:hidden z-10">
           <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border bg-background md:shadow-xl">
             <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white"></p>
             <GridPattern
@@ -36,7 +36,7 @@ export default function AuthLayout({
               )}
             />
           </div>
-        </div>
+        </div> */}
 
         {/* Main Section */}
         <section className="flex items-center justify-center size-full max-sm:px-4 pt-5">
@@ -52,7 +52,7 @@ export default function AuthLayout({
         x={-1}
         y={-1}
         className={cn(
-          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)] "
+          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
         )}
       />
     </div>
