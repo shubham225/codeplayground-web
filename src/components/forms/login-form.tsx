@@ -19,7 +19,7 @@ export const loginFormSchema = z.object({
   }),
 });
 
-export default function LoginForm() {
+export default async function LoginForm() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +31,7 @@ export default function LoginForm() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof loginFormSchema>) {
+  async function onSubmit(values: z.infer<typeof loginFormSchema>) {
     setIsLoading(true);
     console.log(values);
     setIsLoading(false);
