@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useActionState, useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -9,6 +9,7 @@ import { Form } from "@/components/ui/form";
 import { KeyRound, Loader2, Mail } from "lucide-react";
 import PassowrdInput from "../custom-ui/input/PasswordInput";
 import SimpleInput from "../custom-ui/input/SimpleInput";
+import { login } from "@/actions/auth";
 
 export const loginFormSchema = z.object({
   email: z.string().min(5, {
@@ -19,9 +20,10 @@ export const loginFormSchema = z.object({
   }),
 });
 
-export default async function LoginForm() {
+export default function LoginForm() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [state, loginAction, isPending] = useActionState(login, null)
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -34,12 +36,14 @@ export default async function LoginForm() {
   async function onSubmit(values: z.infer<typeof loginFormSchema>) {
     setIsLoading(true);
     console.log(values);
+    await login();
+    console.log("logged in");
     setIsLoading(false);
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form onSubmit={form.handleSubmit(loginAction)} className="space-y-6">
         <SimpleInput
           id="email"
           label="Email"
@@ -57,8 +61,8 @@ export default async function LoginForm() {
           {...form.register("password")}
         />
         <div className="flex flex-col gap-3 pt-2">
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? (
+          <Button type="submit" disabled={isPending}>
+            {isPending ? (
               <>
                 <Loader2 size={20} className="animate-spin" /> Loading...{" "}
               </>

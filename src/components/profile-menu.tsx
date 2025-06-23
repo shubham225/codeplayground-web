@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { logout } from "@/actions/auth";
 
 type Props = {};
 
@@ -90,13 +91,11 @@ export default function ProfileMenu({}: Props) {
           <span>API</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <Link href="/login">
-          <DropdownMenuItem>
-            <LogOut />
-            <span>Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </Link>
+        <DropdownMenuItem onClick={logout}>
+          <LogOut />
+          <span>Log out</span>
+          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
