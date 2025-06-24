@@ -6,7 +6,7 @@ import ProfileMenu from "@/components/profile-menu";
 import ToggleMode from "@/components/toggle-theme";
 import { ChevronsLeftRightEllipsis } from "lucide-react";
 import Link from "next/link";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 export default function AuthLayout({
@@ -15,8 +15,6 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   const path = usePathname();
-
-  console.log(path);
 
   return (
     <main className="flex flex-col size-full">
