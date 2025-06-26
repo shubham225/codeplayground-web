@@ -36,14 +36,6 @@ import {
   PaginationItem,
 } from "../ui/pagination";
 import { Button } from "../ui/button";
-import { Label } from "../ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -94,7 +86,7 @@ export function DataTable<TData, TValue>({
                     <TableHead
                       key={header.id}
                       style={{ width: `${header.getSize()}px` }}
-                      className="h-11"
+                      className="h-11 bg-slate-100 dark:bg-inherit"
                     >
                       {header.isPlaceholder ? null : header.column.getCanSort() ? (
                         <div
