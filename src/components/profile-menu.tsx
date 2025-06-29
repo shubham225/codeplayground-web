@@ -39,10 +39,10 @@ export default function ProfileMenu({}: Props) {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-              <p className="font-medium text-sm leading-none self-start">
+              <p className="text-sm font-medium leading-none self-start">
                 Shubham Shinde
               </p>
-              <p className="text-xs leading-snug text-muted-foreground line-clamp-2 self-start">
+              <p className="text-xs font-light leading-snug text-muted-foreground line-clamp-2 self-start">
                 @shubhamshinde225
               </p>
             </div>

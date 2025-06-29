@@ -8,8 +8,8 @@ import { BackgroundBeamsWithCollision } from "@/components/ui/background-beam-wi
 export default function Home() {
   return (
     <>
-      <div className="h-full w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center p-0.5">
-        <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+      {/* <div className="h-full w-full dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-black/[0.2] relative flex items-center justify-center p-0.5"> */}
+        {/* <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div> */}
         <BackgroundBeamsWithCollision className="md:h-full bg-transparent">
           <div className="h-full flex flex-col py-6 justify-between">
             <div className="h-full flex flex-col justify-around">
@@ -39,7 +39,7 @@ export default function Home() {
             <BannerFooter />
           </div>
         </BackgroundBeamsWithCollision>
-      </div>
+      {/* </div> */}
     </>
   );
 }

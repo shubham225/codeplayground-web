@@ -14,7 +14,7 @@ export default function About({}: Props) {
         />
       </Head>
 
-      <div className="bg-gray-100 dark:bg-[#171717] min-h-screen text-gray-800 dark:text-gray-100">
+      <div className="dark:bg-[#171717] min-h-screen text-gray-800 dark:text-gray-100">
         {/* Main Content */}
         <div className="max-w-6xl mx-auto px-6 py-12">
           {/* Introduction Section */}
