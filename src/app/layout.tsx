@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Code Playground",
+  title: "CodePlayground",
   description: "online coding platform",
 };
 

@@ -46,7 +46,7 @@ export default function Navigation({ path }: PropsType) {
     <NavigationMenu>
       <NavigationMenuList>
         {navMenuItems.map((item) => (
-          <NavigationMenuItem>
+          <NavigationMenuItem key={item.href}>
             <NavigationMenuLink asChild>
               <Link
                 href={item.href}

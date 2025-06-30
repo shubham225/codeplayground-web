@@ -17,7 +17,7 @@ export default async function AuthLayout({
   children: React.ReactNode;
 }>) {
   const path = usePathname();
-  const isUserLoggedIn = true;
+  const isUserLoggedIn = false;
 
   return (
     <main className="flex flex-col size-full">
