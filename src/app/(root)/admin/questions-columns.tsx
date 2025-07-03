@@ -24,31 +24,34 @@ import { Edit2, Ellipsis, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<ProblemSummery>[] = [
-  // {
-  //   id: "select",
-  //   header: ({ table }) => (
-  //     <Checkbox
-  //       checked={
-  //         table.getIsAllPageRowsSelected() ||
-  //         (table.getIsSomePageRowsSelected() && "indeterminate")
-  //       }
-  //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-  //       aria-label="Select all"
-  //     />
-  //   ),
-  //   cell: ({ row }) => (
-  //     <Checkbox
-  //       checked={row.getIsSelected()}
-  //       onCheckedChange={(value) => row.toggleSelected(!!value)}
-  //       aria-label="Select row"
-  //     />
-  //   ),
-  //   size: 28,
-  //   enableSorting: false,
-  // },
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all rows"
+      />
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
+    size: 20,
+    enableSorting: false,
+  },
   {
     header: "Title",
     accessorKey: "title",
+    cell: ({ row }) => (
+      <div className="font-medium">{row.getValue("title")}</div>
+    ),
     size: 200,
   },
   {
@@ -82,22 +85,22 @@ export const columns: ColumnDef<ProblemSummery>[] = [
     cell: ({ row }) => {
       const router = useRouter();
       return (
-        <div className="flex gap-2">
+        <div className="flex gap-2 p-0">
           <Button
-            size="icon" variant="ghost" className="shadow-none" aria-label="Edit item"
+            size="icon" variant="ghost" className="shadow-none p-0 h-9" aria-label="Edit item"
             onClick={() => {
               console.log("Edit CLicked");
             }}
           >
-            <Edit2 size={15} />
+            <Edit2 size={10} />
           </Button>
           <Button
-            size="icon" variant="ghost" className="shadow-none" aria-label="Delete item"
+            size="icon" variant="ghost" className="shadow-none h-9" aria-label="Delete item"
             onClick={() => {
               console.log("Delete CLicked");
             }}
           >
-            <Trash2 size={16} />
+            <Trash2 size={11} />
           </Button>
         </div>
       );

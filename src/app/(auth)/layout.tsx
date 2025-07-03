@@ -1,6 +1,8 @@
 import React from "react";
 import GridPattern from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
+import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 
 export default function AuthLayout({
   children,
@@ -9,12 +11,12 @@ export default function AuthLayout({
 }>) {
   return (
     <div className="relative flex size-full items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
-      <main className="flex w-full h-full justify-between font-inter">
+      <main className="flex w-full h-full justify-between">
         {/* Image and Background */}
-        {/* <div className="h-full w-full p-6 max-lg:hidden z-10">
-          <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border bg-background md:shadow-xl">
-            <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white"></p>
-            <GridPattern
+        {/* <div className="h-full w-full max-lg:hidden z-10 p-0"> */}
+          {/* <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border bg-background md:shadow-xs"> */}
+            {/* <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white"></p> */}
+            {/* <GridPattern
               key="background-pattern"
               squares={[
                 [4, 4],
@@ -34,9 +36,9 @@ export default function AuthLayout({
                 "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
                 "inset-x-0 inset-y-[-45%] h-[200%] skew-y-12"
               )}
-            />
-          </div>
-        </div> */}
+            /> */}
+          {/* </div> */}
+        {/* </div> */}
 
         {/* Main Section */}
         <section className="flex items-center justify-center size-full max-sm:px-4 pt-5">
@@ -45,7 +47,7 @@ export default function AuthLayout({
           </div>
         </section>
       </main>
-      <GridPattern
+      {/* <GridPattern
         key="side-image-pattern"
         width={20}
         height={20}
@@ -54,7 +56,7 @@ export default function AuthLayout({
         className={cn(
           "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
         )}
-      />
+      /> */}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import PageHeader from "@/components/page-header";
 import {
   Card,
+  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -15,28 +16,28 @@ import Link from "next/link";
 type Props = {};
 
 export default function page({}: Props) {
-  const [openDialog, setOpenDialog] = useState<boolean>(false);
+  // const [openDialog, setOpenDialog] = useState<boolean>(false);
 
-  const handleContributeCodingQues: React.MouseEventHandler<
-    HTMLButtonElement
-  > = (e) => {
-    e.preventDefault();
-  };
+  // const handleContributeCodingQues: React.MouseEventHandler<
+  //   HTMLButtonElement
+  // > = (e) => {
+  //   e.preventDefault();
+  // };
 
   return (
-    <div className="p-5">
-      <PageHeader
+    <div className="h-full w-full">
+      {/* <PageHeader
         title="Contribute Question"
         subtitle="Submit your own coding problems to the platform"
-      />
-      <div className="flex flex-col gap-4 mt-14">
-        <Label className="font-bold text-xl">Select Question Type</Label>
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-4">
+      /> */}
+      {/* <Label className="font-bold text-xl">Select Question Type</Label> */}
+      <div className="flex justify-center items-center h-full">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-2">
           <Link href="/contribute-question/coding">
-            <Card className="h-40 bg-transparent hover:bg-accent">
+            <Card className="h-full hover:bg-accent">
               <CardHeader>
-                <CardTitle className="self-start">Coding</CardTitle>
-                <CardDescription className="self-start">
+                <CardTitle>Coding</CardTitle>
+                <CardDescription >
                   General purpose programming in varity of languages.
                 </CardDescription>
               </CardHeader>
@@ -44,13 +45,34 @@ export default function page({}: Props) {
           </Link>
 
           <Link href="/contribute-question/multiple-choice">
-            <Card className="h-40 bg-transparent hover:bg-accent">
+            <Card className="h-40 hover:bg-accent">
               <CardHeader>
-                <CardTitle className="self-start">Multiple Choice</CardTitle>
-                <CardDescription className="self-start">
+                <CardTitle>Multiple Choice</CardTitle>
+                <CardDescription>
                   General purpose programming in varity of languages.
                 </CardDescription>
               </CardHeader>
+            </Card>
+          </Link>
+          <Link href="/contribute-question/coding">
+            <Card className="h-full hover:bg-accent">
+              <CardHeader>
+                <CardTitle>Coding</CardTitle>
+                <CardDescription>
+                  General purpose programming in varity of languages.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
+          <Link href="/contribute-question/coding">
+            <Card className="h-40 hover:bg-accent">
+              <CardHeader>
+                <CardTitle>Coding</CardTitle>
+                <CardDescription >
+                  General purpose programming in varity of languages.
+                </CardDescription>
+              </CardHeader>
+              <CardContent></CardContent>
             </Card>
           </Link>
 
@@ -67,9 +89,9 @@ export default function page({}: Props) {
           </Link> */}
         </div>
       </div>
-      <div className="size-full">
+      {/* <div className="size-full">
         <ContributeQuestion open={openDialog} onOpenChange={setOpenDialog} />
-      </div>
+      </div> */}
     </div>
   );
 }

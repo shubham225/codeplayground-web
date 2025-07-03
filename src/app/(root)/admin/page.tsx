@@ -1,14 +1,10 @@
 import { DataTable } from "@/components/custom-ui/datatable";
-import ContributeQuestion from "@/components/dialogs/contribute-question";
 import PageHeader from "@/components/page-header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
 import { columns } from "./questions-columns";
 import { ProblemSummery } from "@/types";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import PaginationTest from "@/components/custom-ui/pagination";
-import { Pagination } from "@/components/ui/pagination";
-import PaginationBlock from "@/components/custom-ui/pagination";
+import Component from "@/components/component-test";
 
 type Props = {};
 
@@ -61,7 +57,7 @@ export default function page({}: Props) {
           {/* <MyDataTable columns={columns} data={questionsData} /> */}
         </TabsContent>
         <TabsContent value="user-activity">
-          <div>User Activity</div>
+          <Component />
         </TabsContent>
         <TabsContent value="testcase-management">
           <div>Testcase Management</div>

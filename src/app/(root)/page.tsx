@@ -11,10 +11,9 @@ import {
   JavascriptOriginal,
   PythonOriginal,
   GoOriginal,
+  LinkedinOriginal,
 } from "devicons-react";
 import { Card } from "@/components/ui/card";
-import { PointerHighlight } from "@/components/animation-effects/pointer-highlight";
-import Box from "@/components/border-box";
 
 export default function Home() {
   return (
@@ -32,7 +31,7 @@ export default function Home() {
                     initial={{ opacity: 0, filter: "blur(4px)", y: 10 }}
                     animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
                     transition={{
-                      duration: 0.3,
+                      duration: 0.2,
                       delay: index * 0.1,
                       ease: "easeInOut",
                     }}
@@ -57,7 +56,10 @@ export default function Home() {
               }}
               className="relative z-10 mx-auto border-x border-dashed p-60 max-w-6xl py-4 text-center text-lg font-normal text-neutral-600 dark:text-neutral-400"
             >
-              Practice coding problems, take timed tests, and build real skills. <span className="font-bold">Code</span><span className="text-orange-400 font-bold">Playground</span> is your all-in-one platform for becoming a confident developer.
+              Practice coding problems, take timed tests, and build real skills.{" "}
+              <span className="font-bold">Code</span>
+              <span className="text-orange-400 font-bold">Playground</span> is
+              your all-in-one platform for becoming a confident developer.
             </motion.p>
           </div>
           <div className="mx-auto max-w-6xl h-10 border-x border-dashed"></div>
@@ -89,32 +91,44 @@ export default function Home() {
               </Button>
             </Link>
           </motion.div>
+          <motion.div
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            transition={{
+              duration: 0.3,
+              delay: 1.3,
+            }}
+          >
+            {/* Left side language logos  */}
+            <Card className="absolute hidden xl:inline-flex -top-6 p-3 items-center">
+              <JavaOriginal size={30} strokeWidth={2} />
+            </Card>
 
-          {/* Left side language logos  */}
-          <Card className="absolute hidden xl:inline-flex -top-6 p-3 items-center">
-            <JavaOriginal size={30} strokeWidth={2} />
-          </Card>
+            <Card className="absolute hidden xl:inline-flex top-52 -left-20 p-3 items-center">
+              <JavascriptOriginal size={30} strokeWidth={2} />
+            </Card>
 
-          <Card className="absolute hidden xl:inline-flex top-52 -left-20 p-3 items-center">
-            <JavascriptOriginal size={30} strokeWidth={2} />
-          </Card>
+            <Card className="absolute hidden xl:inline-flex -bottom-6 p-3 items-center">
+              <CplusplusOriginal size={30} strokeWidth={2} />
+            </Card>
+            {/* Right side language logos  */}
 
-          <Card className="absolute hidden xl:inline-flex -bottom-6 p-3 items-center">
-            <CplusplusOriginal size={30} strokeWidth={2} />
-          </Card>
-          {/* Right side language logos  */}
+            <Card className="absolute hidden xl:inline-flex -top-6 right-0 p-3 items-center">
+              <COriginal size={30} strokeWidth={2} />
+            </Card>
 
-          <Card className="absolute hidden xl:inline-flex -top-6 right-0 p-3 items-center">
-            <COriginal size={30} strokeWidth={2} />
-          </Card>
+            <Card className="absolute hidden xl:inline-flex top-52 -right-20 p-3 items-center">
+              <PythonOriginal size={30} strokeWidth={2} />
+            </Card>
 
-          <Card className="absolute hidden xl:inline-flex top-52 -right-20 p-3 items-center">
-            <PythonOriginal size={30} strokeWidth={2} />
-          </Card>
-
-          <Card className="absolute hidden xl:inline-flex -bottom-6 right-0 p-3 items-center">
-            <GoOriginal size={30} strokeWidth={2} />
-          </Card>
+            <Card className="absolute hidden xl:inline-flex -bottom-6 right-0 p-3 items-center">
+              <GoOriginal size={30} strokeWidth={2} />
+            </Card>
+          </motion.div>
         </div>
       </div>
     </div>

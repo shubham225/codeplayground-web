@@ -1,6 +1,6 @@
-import React, { Children } from "react";
+import React from "react";
 
-export default function Box({
+export default function BorderBox({
   children,
 }: Readonly<{
   children: React.ReactNode;
