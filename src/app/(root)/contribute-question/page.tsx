@@ -6,92 +6,184 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import ContributeQuestion from "@/components/dialogs/contribute-question";
 import Link from "next/link";
+import Image from "next/image";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { Code2, CopyCheck, Database, MonitorSmartphone } from "lucide-react";
 
 type Props = {};
 
 export default function page({}: Props) {
-  // const [openDialog, setOpenDialog] = useState<boolean>(false);
-
-  // const handleContributeCodingQues: React.MouseEventHandler<
-  //   HTMLButtonElement
-  // > = (e) => {
-  //   e.preventDefault();
-  // };
-
   return (
     <div className="h-full w-full">
-      {/* <PageHeader
-        title="Contribute Question"
-        subtitle="Submit your own coding problems to the platform"
-      /> */}
-      {/* <Label className="font-bold text-xl">Select Question Type</Label> */}
       <div className="flex justify-center items-center h-full">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-2">
-          <Link href="/contribute-question/coding">
-            <Card className="h-full hover:bg-accent">
-              <CardHeader>
-                <CardTitle>Coding</CardTitle>
-                <CardDescription >
-                  General purpose programming in varity of languages.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
+          <Card className="w-full max-w-sm">
+            <CardHeader className="p-0">
+              <div className="relative w-full h-28 overflow-hidden">
+                <Image
+                  src="/imgs/coding.jpg"
+                  alt="Profile Picture"
+                  width={400}
+                  height={50}
+                  className="rounded-t-md overflow-clip"
+                />
+              </div>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-3 pt-3">
+              <div className="flex flex-col gap-3">
+                <h1 className="font-bold text-3xl">Coding</h1>
+                <h5 className="text-muted-foreground text-sm">
+                  Submit coding problems with input/output to test algorithm
+                  skills.
+                </h5>
+              </div>
+            </CardContent>
+            <Separator />
+            <CardFooter className="p-0">
+              <Link
+                className="w-full h-full"
+                href="/contribute-question/coding"
+              >
+                <Button
+                  variant="ghost"
+                  className="rounded-t-none w-full text-muted-foreground"
+                >
+                  <Code2 />{" "}
+                  <span className="hidden sm:inline">
+                    Create Coding Question
+                  </span>
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
 
-          <Link href="/contribute-question/multiple-choice">
-            <Card className="h-40 hover:bg-accent">
-              <CardHeader>
-                <CardTitle>Multiple Choice</CardTitle>
-                <CardDescription>
-                  General purpose programming in varity of languages.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
-          <Link href="/contribute-question/coding">
-            <Card className="h-full hover:bg-accent">
-              <CardHeader>
-                <CardTitle>Coding</CardTitle>
-                <CardDescription>
-                  General purpose programming in varity of languages.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
-          <Link href="/contribute-question/coding">
-            <Card className="h-40 hover:bg-accent">
-              <CardHeader>
-                <CardTitle>Coding</CardTitle>
-                <CardDescription >
-                  General purpose programming in varity of languages.
-                </CardDescription>
-              </CardHeader>
-              <CardContent></CardContent>
-            </Card>
-          </Link>
+          {/* MCQ */}
+          <Card className="w-full max-w-sm">
+            <CardHeader className="p-0">
+              <div className="relative w-full h-28 overflow-hidden">
+                <Image
+                  src="/imgs/multiple-choice.jpg"
+                  alt="Profile Picture"
+                  width={400}
+                  height={50}
+                  className="rounded-t-md overflow-clip"
+                />
+              </div>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-3 pt-3">
+              <div className="flex flex-col gap-3">
+                <h1 className="font-bold text-3xl">Multiple Choice</h1>
+                <h5 className="text-muted-foreground text-sm">
+                  Add multiple-choice questions with answers to assess concept
+                  clarity.
+                </h5>
+              </div>
+            </CardContent>
+            <Separator />
+            <CardFooter className="p-0">
+              <Link
+                className="w-full h-full"
+                href="/contribute-question/coding"
+              >
+                <Button
+                  variant="ghost"
+                  className="rounded-t-none w-full text-muted-foreground"
+                >
+                  <CopyCheck />{" "}
+                  <span className="hidden sm:inline">Create MCQ Question</span>
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
 
-          {/* // TODO: Implementation
-          <Link href="/contribute-question/subjective">
-            <Card className="h-40 bg-transparent hover:bg-accent">
-              <CardHeader>
-                <CardTitle className="self-start">Subjective</CardTitle>
-                <CardDescription className="self-start">
-                  General purpose programming in varity of languages.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-          </Link> */}
+          {/* Database */}
+          <Card className="w-full max-w-sm">
+            <CardHeader className="p-0">
+              <div className="relative w-full h-28 overflow-hidden">
+                <Image
+                  src="/imgs/database.png"
+                  alt="Profile Picture"
+                  width={400}
+                  height={50}
+                  className="rounded-t-md overflow-clip"
+                />
+              </div>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-3 pt-3">
+              <div className="flex flex-col gap-3">
+                <h1 className="font-bold text-3xl">Database</h1>
+                <h5 className="text-muted-foreground text-sm">
+                  Contribute SQL or schema-based questions to practice database
+                  skills.
+                </h5>
+              </div>
+            </CardContent>
+            <Separator />
+            <CardFooter className="p-0">
+              <Link
+                className="w-full h-full"
+                href="/contribute-question/coding"
+              >
+                <Button
+                  variant="ghost"
+                  className="rounded-t-none w-full text-muted-foreground"
+                >
+                  <Database />{" "}
+                  <span className="hidden sm:inline">
+                    Create Database Question
+                  </span>
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
+
+          {/* Frontend */}
+          <Card className="w-full max-w-sm">
+            <CardHeader className="p-0">
+              <div className="relative w-full h-28 overflow-hidden">
+                <Image
+                  src="/imgs/frontend.jpg"
+                  alt="Profile Picture"
+                  width={400}
+                  height={50}
+                  className="rounded-t-md overflow-clip"
+                />
+              </div>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-3 pt-3">
+              <div className="flex flex-col gap-3">
+                <h1 className="font-bold text-3xl">Frontend</h1>
+                <h5 className="text-muted-foreground text-sm">
+                  Share HTML/CSS/JS tasks to improve frontend development.
+                </h5>
+              </div>
+            </CardContent>
+            <Separator />
+            <CardFooter className="p-0">
+              <Link
+                className="w-full h-full"
+                href="/contribute-question/coding"
+              >
+                <Button
+                  variant="ghost"
+                  className="rounded-t-none w-full text-muted-foreground"
+                >
+                  <MonitorSmartphone />{" "}
+                  <span className="hidden sm:inline">
+                    Create Frontend Question
+                  </span>
+                </Button>
+              </Link>
+            </CardFooter>
+          </Card>
         </div>
       </div>
-      {/* <div className="size-full">
-        <ContributeQuestion open={openDialog} onOpenChange={setOpenDialog} />
-      </div> */}
     </div>
   );
 }
