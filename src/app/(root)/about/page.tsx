@@ -95,10 +95,10 @@ export default function About({}: Props) {
             </p>
             <div className="mt-6">
               <a
-                href="mailto:support@codingplatform.com"
+                href="mailto:support@codingplayground.com"
                 className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
               >
-                support@codingplatform.com
+                support@codingplayground.com
               </a>
             </div>
           </section>

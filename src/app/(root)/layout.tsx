@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-export default async function AuthLayout({
+export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

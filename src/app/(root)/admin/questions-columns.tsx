@@ -3,24 +3,10 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { capitalizeFirstLetterOfEachWord, cn } from "@/lib/utils";
 import { ProblemSummery } from "@/types";
-import { ColumnDef, Row } from "@tanstack/react-table";
-import { Edit2, Ellipsis, Trash2 } from "lucide-react";
+import { ColumnDef } from "@tanstack/react-table";
+import { Edit2, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export const columns: ColumnDef<ProblemSummery>[] = [
@@ -34,6 +20,7 @@ export const columns: ColumnDef<ProblemSummery>[] = [
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all rows"
+        className="border-muted-foreground"
       />
     ),
     cell: ({ row }) => (
@@ -41,6 +28,7 @@ export const columns: ColumnDef<ProblemSummery>[] = [
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
         aria-label="Select row"
+        className="border-muted-foreground"
       />
     ),
     size: 20,

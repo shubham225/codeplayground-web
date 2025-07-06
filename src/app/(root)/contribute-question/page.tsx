@@ -89,7 +89,7 @@ export default function page({}: Props) {
             <CardFooter className="p-0">
               <Link
                 className="w-full h-full"
-                href="/contribute-question/coding"
+                href="/contribute-question/multiple-choice"
               >
                 <Button
                   variant="ghost"
@@ -128,7 +128,7 @@ export default function page({}: Props) {
             <CardFooter className="p-0">
               <Link
                 className="w-full h-full"
-                href="/contribute-question/coding"
+                href="/contribute-question/database"
               >
                 <Button
                   variant="ghost"
@@ -168,7 +168,7 @@ export default function page({}: Props) {
             <CardFooter className="p-0">
               <Link
                 className="w-full h-full"
-                href="/contribute-question/coding"
+                href="/contribute-question/frontend"
               >
                 <Button
                   variant="ghost"
