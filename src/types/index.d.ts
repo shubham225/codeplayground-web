@@ -21,6 +21,7 @@ export type ExecStatus =
 export type ProblemSummery = {
   id: string;
   title: string;
+  summery: string;
   urlCode: string;
   status: Status;
   difficulty: DifficultyLevel;

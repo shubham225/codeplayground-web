@@ -11,6 +11,7 @@ import { vscodeDark, vscodeLight } from "@uiw/codemirror-theme-vscode";
 import { Button } from "@/components/ui/button";
 import { FaMarkdown } from "react-icons/fa";
 import { Tag } from "emblor";
+import Link from "next/link";
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<string>>;
@@ -76,7 +77,7 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
           />
         </div>
       </div>
-      <div className="flex flex-row-reverse">
+      <div className="flex flex-row-reverse gap-2">
         <Button
           onClick={(e) => {
             e.preventDefault();
@@ -92,6 +93,9 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
         >
           Next
         </Button>
+        <Link href={"/contribute-question"}>
+          <Button variant={"outline"}>Cancel</Button>
+        </Link>
       </div>
     </div>
   );

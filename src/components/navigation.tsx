@@ -26,10 +26,10 @@ const navMenuItems: { href: string; name: string | React.ReactNode }[] = [
     href: "/problems",
     name: "Practice",
   },
-  {
-    href: "/admin",
-    name: "Admin",
-  },
+  // {
+  //   href: "/admin",
+  //   name: "Admin",
+  // },
   {
     href: "/contribute-question",
     name: "Contribute",

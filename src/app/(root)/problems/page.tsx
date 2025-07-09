@@ -34,7 +34,7 @@ const problems = (props: Props) => {
 
   return (
     <main className="p-5">
-      <div className="flex flex-row justify-between mb-2">
+      {/* <div className="flex flex-row justify-between mb-2">
         <PageHeader
           title="Practice"
           subtitle="Browse and solve coding problems to boost your skills!"
@@ -42,7 +42,7 @@ const problems = (props: Props) => {
         <div>
           <ProblemFilter />
         </div>
-      </div>
+      </div> */}
 
       <div className="h-full flex flex-col gap-2">
         <DataTable columns={columns} data={data} />
