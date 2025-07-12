@@ -42,6 +42,7 @@ export default function LoginForm() {
   }
 
   return (
+    <div className="py-4">
     <Form {...form}>
       <form onSubmit={form.handleSubmit(loginAction)} className="space-y-6">
         <SimpleInput
@@ -72,6 +73,6 @@ export default function LoginForm() {
           </Button>
         </div>
       </form>
-    </Form>
+    </Form></div>
   );
 }

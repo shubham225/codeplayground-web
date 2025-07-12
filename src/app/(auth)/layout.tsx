@@ -3,6 +3,10 @@ import GridPattern from "@/components/ui/grid-pattern";
 import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import Logo from "@/components/app-logo";
+import Navigation from "@/components/navigation";
+import ToggleMode from "@/components/toggle-theme";
+import { Separator } from "@/components/ui/separator";
 
 export default function AuthLayout({
   children,
@@ -10,36 +14,26 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="relative flex size-full items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
-      <main className="flex w-full h-full justify-between">
-        {/* Image and Background */}
-        {/* <div className="h-full w-full max-lg:hidden z-10 p-0"> */}
-          {/* <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-xl border bg-background md:shadow-xs"> */}
-            {/* <p className="z-10 whitespace-pre-wrap text-center text-5xl font-medium tracking-tighter text-black dark:text-white"></p> */}
-            {/* <GridPattern
-              key="background-pattern"
-              squares={[
-                [4, 4],
-                [5, 1],
-                [8, 2],
-                [5, 3],
-                [5, 5],
-                [10, 10],
-                [12, 15],
-                [15, 10],
-                [10, 15],
-                [15, 10],
-                [10, 15],
-                [15, 10],
-              ]}
-              className={cn(
-                "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
-                "inset-x-0 inset-y-[-45%] h-[200%] skew-y-12"
-              )}
-            /> */}
-          {/* </div> */}
-        {/* </div> */}
+    <div className="flex flex-col size-full">
+      {/* Navbar */}
+      <nav
+        className={cn(
+          "sticky top-0 z-50 w-full bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl",
+          "backdrop-saturate-150 supports-[backdrop-filter]:bg-white/40 dark:supports-[backdrop-filter]:bg-zinc-900/40 transition-all"
+        )}
+      >
+        <div className="flex flex-row justify-between py-4 px-6 bg-transparent">
+          {/* App Logo */}
+          <Logo />
 
+          {/* Mode Toggle and Profile */}
+          <div className="gap-2 hidden lg:inline-flex items-center">
+            <ToggleMode />
+          </div>
+        </div>
+        <Separator />
+      </nav>
+      <main className="flex w-full h-full justify-between">
         {/* Main Section */}
         <section className="flex items-center justify-center size-full max-sm:px-4 pt-5">
           <div className="w-full max-w-[500px] flex-col justify-center gap-4 py-5 md:gap-5">
@@ -47,16 +41,6 @@ export default function AuthLayout({
           </div>
         </section>
       </main>
-      {/* <GridPattern
-        key="side-image-pattern"
-        width={20}
-        height={20}
-        x={-1}
-        y={-1}
-        className={cn(
-          "[mask-image:linear-gradient(to_bottom_right,white,transparent,transparent)]"
-        )}
-      /> */}
     </div>
   );
 }

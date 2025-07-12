@@ -52,12 +52,7 @@ export function DataTable<TData, TValue>({
     pageSize: 10,
   });
 
-  const [sorting, setSorting] = useState<SortingState>([
-    {
-      id: "name",
-      desc: false,
-    },
-  ]);
+  const [sorting, setSorting] = useState<SortingState>([]);
 
   const table = useReactTable({
     data,
@@ -76,7 +71,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="space-y-2">
-      <div className="overflow-hidden rounded-lg border border-border bg-background">
+      <div className="overflow-hidden rounded-md border border-border bg-background">
         <Table className="table-fixed">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
