@@ -5,6 +5,8 @@ import { CircleCheckBig, Clock } from "lucide-react";
 import { capitalizeFirstLetterOfEachWord, cn } from "@/lib/utils";
 import { Problem } from "@/types";
 import { Badge } from "@/components/ui/badge";
+import Chip from "../custom-ui/chip";
+import { getVariantForDifficulty, getVariantForStatus } from "@/lib/utils/get-variant";
 
 type Props = { problem: Problem };
 
@@ -16,28 +18,17 @@ const ProblemDescription = ({ problem, ...props }: Props) => {
       <div className="flex flex-col h-full overflow-auto">
         <h1 className="text-lg font-semibold">{problem.title}</h1>
         <div className="flex gap-2 py-2">
-          <Badge
-            variant="secondary"
-            className={cn("font-normal", {
-              "text-teal-400": problem.difficulty === "EASY",
-              "text-orange-400": problem.difficulty === "MEDIUM",
-              "text-red-500": problem.difficulty === "HARD",
-            })}
+          <Chip
+            variant={getVariantForDifficulty(problem.difficulty)}
           >
-            {capitalizeFirstLetterOfEachWord(problem.difficulty)}
-          </Badge>
-          <Badge
-            variant="secondary"
-            className={cn("font-normal", {
-              "text-blue-400": problem.status === "OPEN",
-              "text-teal-400": problem.status === "SOLVED",
-              "text-orange-400": problem.status === "PENDING",
-            })}
+            {capitalizeFirstLetterOfEachWord(problem.difficulty)}</Chip>
+          
+          <Chip
+            variant={getVariantForStatus(problem.status)}
+            className="flex gap-1"
           >
-            {problem.status === "SOLVED" && <CircleCheckBig className="p-1" />}
-            {problem.status === "PENDING" && <Clock className="p-1" />}
-            {capitalizeFirstLetterOfEachWord(problem.status)}
-          </Badge>
+            {capitalizeFirstLetterOfEachWord(problem.status)}</Chip>
+          
         </div>
         <MarkdownPreview
           wrapperElement={

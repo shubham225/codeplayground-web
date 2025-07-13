@@ -1,8 +1,10 @@
 "use client";
 
+import Chip from "@/components/custom-ui/chip";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { capitalizeFirstLetterOfEachWord, cn } from "@/lib/utils";
+import { getVariantForDifficulty, getVariantForStatus } from "@/lib/utils/get-variant";
 import { ProblemSummery } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 import { Bookmark, Play } from "lucide-react";
@@ -29,16 +31,11 @@ export const columns: ColumnDef<ProblemSummery>[] = [
     header: "Difficulty",
     cell: ({ row }) => {
       return (
-        <Badge
-          className={cn(
-            row.original.difficulty === "EASY" &&
-              "text-green-600 bg-green-100 hover:bg-green-100/80",
-            row.original.difficulty === "HARD" &&
-              "text-red-600 bg-red-100 hover:bg-red-100/80"
-          )}
+        <Chip
+          variant={getVariantForDifficulty(row.original.difficulty)}
         >
           {capitalizeFirstLetterOfEachWord(row.original.difficulty)}
-        </Badge>
+        </Chip>
       );
     },
     size: 30,
@@ -49,18 +46,11 @@ export const columns: ColumnDef<ProblemSummery>[] = [
     header: "Status",
     cell: ({ row }) => {
       return (
-        <Badge
-          className={cn(
-            row.original.status === "PENDING" &&
-              "text-blue-600 bg-blue-100 hover:bg-blue-100/80",
-            row.original.status === "OPEN" &&
-              "text-orange-600 bg-orange-100 hover:bg-orange-100/80",
-            row.original.status === "SOLVED" &&
-              "text-green-600 bg-green-100 hover:bg-green-100/80"
-          )}
+        <Chip
+          variant={getVariantForStatus(row.original.status)}
         >
           {capitalizeFirstLetterOfEachWord(row.original.status)}
-        </Badge>
+        </Chip>
       );
     },
     size: 30,
