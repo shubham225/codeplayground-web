@@ -14,7 +14,10 @@ type PropsType = { path: string };
 const navarLinkStyle = cn(
   "relative inline-flex h-10 items-center justify-center px-4 py-2 text-sm font-normal transition-colors",
   "text-accent-foreground hover:text-accent-foreground focus:text-accent-foreground",
-  " focus:text-primary"
+  " focus:text-primary",
+  // underline animation (from left)
+  "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300",
+  "hover:after:w-full"
 );
 
 const navMenuItems: { href: string; name: string | React.ReactNode }[] = [
