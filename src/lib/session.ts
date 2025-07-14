@@ -2,6 +2,8 @@ import "server-only";
 import { cookies } from "next/headers";
 import { SignJWT, jwtVerify } from "jose";
 
+export const SESSION_ID = "session-token";
+
 const secretKey =
   process.env.SESSION_SECRET || "FZhGl6DrRBb3MhsDKvwB6JMYnbMVYPjam9nIi+xJR0U=";
 const encodedKey = new TextEncoder().encode(secretKey);
@@ -9,7 +11,6 @@ const encodedKey = new TextEncoder().encode(secretKey);
 type SessionPayload = { userId: string; expiresAt: Date };
 
 export async function encrypt(payload: SessionPayload) {
-  // Request to Auth Server for auth token
   const JWTToken = new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
@@ -26,7 +27,8 @@ export async function decrypt(session: string | undefined = "") {
     });
     return payload;
   } catch (error) {
-    console.log("Failed to verify session");
+    console.log("Failed to verify session: coookie deleted ", session);
+    deleteSession();
   }
 }
 
@@ -35,7 +37,7 @@ export async function createSession(userId: string) {
   const session = await encrypt({ userId, expiresAt });
   const cookieStore = await cookies();
 
-  cookieStore.set("session", session, {
+  cookieStore.set(SESSION_ID, session, {
     httpOnly: true,
     secure: true,
     expires: expiresAt,
@@ -44,7 +46,13 @@ export async function createSession(userId: string) {
   });
 }
 
+export async function getSession() {
+  const cookieStore = await cookies();
+  const cookie = cookieStore.get(SESSION_ID)?.value;
+  return await decrypt(cookie);
+}
+
 export async function deleteSession() {
   const cookieStore = await cookies();
-  cookieStore.delete("session");
+  cookieStore.delete(SESSION_ID);
 }

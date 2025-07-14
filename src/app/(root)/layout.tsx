@@ -7,9 +7,11 @@ import ProblemNavbar from "@/components/problem/problem-navbar";
 import ProfileMenu from "@/components/profile-menu";
 import ToggleMode from "@/components/toggle-theme";
 import { Separator } from "@/components/ui/separator";
+import { isUserLoggedIn } from "@/lib/server-actions/auth";
 import { cn } from "@/lib/utils";
+import { RectangleEllipsis } from "lucide-react";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect, useState, useTransition } from "react";
 
 export default function AuthLayout({
   children,
@@ -17,7 +19,21 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   const path = usePathname();
-  const isUserLoggedIn = false;
+  const [isPending, startTransition] = useTransition();
+  const [sessionActive, setSessionActive] = useState(false);
+
+  useEffect(() => {
+    CheckUserLogin();
+  }, []);
+
+  const CheckUserLogin = async () => {
+    startTransition(async () => {
+      const loggedIn = await isUserLoggedIn();
+      setSessionActive(loggedIn);
+
+      console.log("User Logged in : ", loggedIn);
+    });
+  };
 
   return (
     <main className="flex flex-col size-full">
@@ -42,7 +58,13 @@ export default function AuthLayout({
           {/* Mode Toggle and Profile */}
           <div className="gap-2 hidden lg:inline-flex items-center">
             <ToggleMode />
-            {isUserLoggedIn ? <ProfileMenu /> : <LoginButton />}
+            {isPending ? (
+              <RectangleEllipsis />
+            ) : sessionActive ? (
+              <ProfileMenu />
+            ) : (
+              <LoginButton />
+            )}
           </div>
         </div>
         <Separator />

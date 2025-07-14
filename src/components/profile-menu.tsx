@@ -24,7 +24,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { logout } from "@/actions/auth";
+import { logout } from "@/lib/server-actions/auth";
 
 type Props = {};
 
@@ -35,7 +35,7 @@ export default function ProfileMenu({}: Props) {
         <Button variant="ghost">
           <div className="flex gap-2 items-center">
             <Avatar className="h-9 w-9">
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarImage src="/imgs/profile-pic.jpeg" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">

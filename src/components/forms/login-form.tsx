@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useActionState, useState } from "react";
+import React, { useActionState, useState, useTransition } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { Form } from "@/components/ui/form";
 import { KeyRound, Loader2, Mail } from "lucide-react";
 import PassowrdInput from "../custom-ui/input/PasswordInput";
 import SimpleInput from "../custom-ui/input/SimpleInput";
-import { login } from "@/actions/auth";
+import { login } from "@/lib/server-actions/auth";
 
 export const loginFormSchema = z.object({
   email: z.string().min(5, {
@@ -21,9 +21,18 @@ export const loginFormSchema = z.object({
 });
 
 export default function LoginForm() {
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [state, loginAction, isPending] = useActionState(login, null)
+  const [isPending, startTransition] = useTransition();
+
+  const submitAction = async (values: z.infer<typeof loginFormSchema>) => {
+    startTransition(async () => {
+      console.log(values);
+      const { error, success } = await login(values.email, values.password);
+
+      if (error) {
+        console.log(error);
+      }
+    });
+  };
 
   const form = useForm<z.infer<typeof loginFormSchema>>({
     resolver: zodResolver(loginFormSchema),
@@ -33,46 +42,39 @@ export default function LoginForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof loginFormSchema>) {
-    setIsLoading(true);
-    console.log(values);
-    await login();
-    console.log("logged in");
-    setIsLoading(false);
-  }
-
   return (
     <div className="py-4">
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(loginAction)} className="space-y-6">
-        <SimpleInput
-          id="email"
-          label="Email"
-          placeholder="Enter email address"
-          Icon={Mail}
-          message={form.formState.errors.email?.message}
-          {...form.register("email")}
-        />
-        <PassowrdInput
-          id="password"
-          label="Password"
-          placeholder="Enter Password"
-          Icon={KeyRound}
-          message={form.formState.errors.password?.message}
-          {...form.register("password")}
-        />
-        <div className="flex flex-col gap-3 pt-2">
-          <Button type="submit" disabled={isPending}>
-            {isPending ? (
-              <>
-                <Loader2 size={20} className="animate-spin" /> Loading...{" "}
-              </>
-            ) : (
-              <>Sign In</>
-            )}
-          </Button>
-        </div>
-      </form>
-    </Form></div>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(submitAction)} className="space-y-6">
+          <SimpleInput
+            id="email"
+            label="Email"
+            placeholder="Enter email address"
+            Icon={Mail}
+            message={form.formState.errors.email?.message}
+            {...form.register("email")}
+          />
+          <PassowrdInput
+            id="password"
+            label="Password"
+            placeholder="Enter Password"
+            Icon={KeyRound}
+            message={form.formState.errors.password?.message}
+            {...form.register("password")}
+          />
+          <div className="flex flex-col gap-3 pt-2">
+            <Button type="submit" disabled={isPending}>
+              {isPending ? (
+                <>
+                  <Loader2 size={20} className="animate-spin" /> Loading...{" "}
+                </>
+              ) : (
+                <>Sign In</>
+              )}
+            </Button>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 }
