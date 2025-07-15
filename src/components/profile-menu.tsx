@@ -3,13 +3,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 import {
   ChevronsUpDown,
-  Cloud,
-  LifeBuoy,
+  List,
   LogOut,
-  Plus,
   Settings,
   User,
-  Users,
 } from "lucide-react";
 
 import {
@@ -61,6 +58,10 @@ export default function ProfileMenu({}: Props) {
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
           </Link>
+          <DropdownMenuItem disabled>
+            <List />
+            <span>Submissions</span>
+          </DropdownMenuItem>
           <Link href="/settings">
             <DropdownMenuItem>
               <Settings />
@@ -70,28 +71,10 @@ export default function ProfileMenu({}: Props) {
           </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem disabled>
-            <Users />
-            <span>Submissions</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem disabled>
-            <Plus />
-            <span>New Exam</span>
-            <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem disabled>
-          <LifeBuoy />
-          <span>Support</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem disabled>
-          <Cloud />
-          <span>API</span>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={logout}>
+        <DropdownMenuItem
+          onClick={logout}
+          className="cursor-pointer focus:bg-destructive focus:text-destructive-foreground"
+        >
           <LogOut />
           <span>Log out</span>
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

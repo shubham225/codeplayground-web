@@ -9,10 +9,23 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SimpleInput from "@/components/custom-ui/input/SimpleInput";
 import { Separator } from "@/components/ui/separator";
 import MultiSelect from "@/components/custom-ui/input/multi-select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import ProfileBackground from "@/components/profile/profile-background";
 import ProfileAvatar from "@/components/profile/profile-avatar";
-import { FcCircuit, FcStart, FcVip } from "react-icons/fc";
+import {
+  CplusplusOriginal,
+  JavaOriginal,
+  JavascriptOriginal,
+  NextjsOriginal,
+  ReactOriginal,
+  TailwindcssOriginal,
+} from "devicons-react";
 
 type Props = {};
 
@@ -123,13 +136,29 @@ export default function page({}: Props) {
                   <CardHeader>
                     <CardTitle>Badges</CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="flex gap-3">
-                      <FcStart className="h-20 w-20" />
-                      <FcVip className="h-20 w-20" />
-                      <FcCircuit className="h-20 w-20" />
-                    </div>
+                  <CardContent className="flex gap-4 align-middle items-center">
+                    <Card className="p-3 items-center">
+                      <CplusplusOriginal size={30} strokeWidth={2} />
+                    </Card>
+                    <Card className="p-3 items-center">
+                      <JavaOriginal size={30} strokeWidth={2} />
+                    </Card>
+                    <Card className="p-3 items-center">
+                      <JavascriptOriginal size={30} strokeWidth={2} />
+                    </Card>
+                    <Card className="p-3 items-center">
+                      <ReactOriginal size={30} strokeWidth={2} />
+                    </Card>
+                    <Card className="p-3 items-center">
+                      <NextjsOriginal size={30} strokeWidth={2} />
+                    </Card>
+                    <Card className="p-3 items-center">
+                      <TailwindcssOriginal size={30} strokeWidth={2} />
+                    </Card>
                   </CardContent>
+                  <CardFooter>
+                    <Separator />
+                  </CardFooter>
                 </Card>
               </div>
             </div>

@@ -41,18 +41,9 @@ export default function ProfileAvatar({
         </div>
       </div>
       <div className="mt-16">
-        <Button
-          variant="default"
-          onClick={handleThumbnailClick}
-          aria-label="Change profile picture"
-        >
-          <ImagePlus
-            className="sm:-ms-1 sm:me-2"
-            size={16}
-            strokeWidth={2}
-            aria-hidden="true"
-          />
-          <span className="max-sm:sr-only">Change Profile</span>
+        <Button onClick={handleThumbnailClick}>
+          <ImagePlus />
+          Change Profile
         </Button>
         <input
           type="file"

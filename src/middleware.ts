@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "./lib/session";
 
 // 1. Specify public routes
-const publicRoutes = ["/login", "/signup", "/", "/about"];
+const publicRoutes = ["/", "/about"];
+const authRoutes = ["/login", "/signup"];
 
 export default async function middleware(request: NextRequest) {
   // 2. Check if the current route is protected or public
   const path = request.nextUrl.pathname;
-  const isPublicRoute = publicRoutes.includes(path);
+  const isAuthRoute = authRoutes.includes(path);
+  const isPublicRoute = publicRoutes.includes(path) || isAuthRoute;
 
   // 3. Decrypt the session from the cookie
   const session = await getSession();
@@ -18,7 +20,7 @@ export default async function middleware(request: NextRequest) {
   }
 
   // 5. Redirect to / if the user is authenticated
-  if (isPublicRoute && session && !request.nextUrl.pathname.startsWith("/")) {
+  if (isAuthRoute && session) {
     return NextResponse.redirect(new URL("/", request.nextUrl));
   }
 

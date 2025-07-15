@@ -9,7 +9,6 @@ import ToggleMode from "@/components/toggle-theme";
 import { Separator } from "@/components/ui/separator";
 import { isUserLoggedIn } from "@/lib/server-actions/auth";
 import { cn } from "@/lib/utils";
-import { RectangleEllipsis } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
 
@@ -58,13 +57,7 @@ export default function AuthLayout({
           {/* Mode Toggle and Profile */}
           <div className="gap-2 hidden lg:inline-flex items-center">
             <ToggleMode />
-            {isPending ? (
-              <RectangleEllipsis />
-            ) : sessionActive ? (
-              <ProfileMenu />
-            ) : (
-              <LoginButton />
-            )}
+            {sessionActive ? <ProfileMenu /> : <LoginButton />}
           </div>
         </div>
         <Separator />
