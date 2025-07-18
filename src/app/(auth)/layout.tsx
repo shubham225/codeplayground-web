@@ -7,6 +7,7 @@ import Logo from "@/components/app-logo";
 import Navigation from "@/components/navigation";
 import ToggleMode from "@/components/toggle-theme";
 import { Separator } from "@/components/ui/separator";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function AuthLayout({
   children,
@@ -37,6 +38,7 @@ export default function AuthLayout({
         {/* Main Section */}
         <section className="flex items-center justify-center size-full max-sm:px-4 pt-5">
           <div className="w-full max-w-[500px] flex-col justify-center gap-4 py-5 md:gap-5">
+            <Toaster richColors />
             {children}
           </div>
         </section>

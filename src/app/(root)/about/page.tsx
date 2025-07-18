@@ -1,4 +1,3 @@
-import Head from "next/head";
 import React from "react";
 
 type Props = {};
@@ -6,14 +5,6 @@ type Props = {};
 export default function About({}: Props) {
   return (
     <div>
-      <Head>
-        <title>About Us | Online Coding Platform</title>
-        <meta
-          name="description"
-          content="Learn more about our mission, features, and how our online coding platform helps developers."
-        />
-      </Head>
-
       <div className="dark:bg-[#171717] min-h-screen text-gray-800 dark:text-gray-100">
         {/* Main Content */}
         <div className="max-w-6xl mx-auto px-6 py-12">

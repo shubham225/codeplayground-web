@@ -24,13 +24,14 @@ export async function logout() {
 export async function login(username: string, password: string) {
   console.log("received: ", username, password);
   await new Promise((resolve) => setTimeout(resolve, 5000));
+  const result = await dummyCredentialLogin(username, password);
 
-  if (!username) {
-    return { error: "username is required", success: false };
+  if (result.success) {
+    await createSession(username);
+    redirect("/");
+  } else {
+    return result;
   }
-
-  await createSession(username);
-  redirect("/");
 }
 
 export async function isUserLoggedIn() {
@@ -38,4 +39,15 @@ export async function isUserLoggedIn() {
   const token = cookieStore.get(SESSION_ID);
 
   return !!token;
+}
+
+async function dummyCredentialLogin(username: string, password: string) {
+  if (!username) {
+    return { error: "username is required", success: false };
+  }
+
+  if (username === "shubhamshinde225@gmail.com" && password === "qwerty@123")
+    return { error: "", success: true };
+
+  return { error: "wrong credentials", success: false };
 }

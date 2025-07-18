@@ -11,6 +11,7 @@ import { isUserLoggedIn } from "@/lib/server-actions/auth";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
+import { Toaster } from "@/components/ui/sonner";
 
 export default function AuthLayout({
   children,
@@ -63,7 +64,10 @@ export default function AuthLayout({
         <Separator />
       </nav>
       {/* Page Contents */}
-      <div className="size-full">{children}</div>
+      <div className="size-full">
+        <Toaster richColors />
+        {children}
+      </div>
     </main>
   );
 }

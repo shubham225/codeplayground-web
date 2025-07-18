@@ -6,10 +6,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
-import { KeyRound, Loader2, Mail } from "lucide-react";
+import { KeyRound, Loader2, Mail, X } from "lucide-react";
 import PassowrdInput from "../custom-ui/input/PasswordInput";
 import SimpleInput from "../custom-ui/input/SimpleInput";
 import { login } from "@/lib/server-actions/auth";
+import { toast } from "sonner";
 
 export const loginFormSchema = z.object({
   email: z.string().min(5, {
@@ -29,7 +30,7 @@ export default function LoginForm() {
       const { error, success } = await login(values.email, values.password);
 
       if (error) {
-        console.log(error);
+        toast.error(error);
       }
     });
   };
