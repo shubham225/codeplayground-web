@@ -8,14 +8,15 @@ import { FaGithub } from "react-icons/fa";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { signIn, signOut } from "next-auth/react";
 
 export default function Login() {
   const handleLoginWithGoogle = (e: React.MouseEvent<HTMLElement>) => {
-    console.log("Loggin in with Google..");
+    signIn("google");
   };
 
   const handleLoginWithGitHub = (e: React.MouseEvent<HTMLElement>) => {
-    console.log("Loggin in with GitHub..");
+    signIn("github");
   };
 
   return (

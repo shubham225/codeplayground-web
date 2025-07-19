@@ -26,12 +26,13 @@ export async function login(username: string, password: string) {
   await new Promise((resolve) => setTimeout(resolve, 5000));
   const result = await dummyCredentialLogin(username, password);
 
-  if (result.success) {
-    await createSession(username);
-    redirect("/");
-  } else {
-    return result;
-  }
+  return result;
+  // if (result.success) {
+  //   await createSession(username);
+  //   // redirect("/");
+  // } else {
+  //   return result;
+  // }
 }
 
 export async function isUserLoggedIn() {
@@ -43,11 +44,23 @@ export async function isUserLoggedIn() {
 
 async function dummyCredentialLogin(username: string, password: string) {
   if (!username) {
-    return { error: "username is required", success: false };
+    return {
+      data: {},
+      error: "username is required",
+      success: false,
+    };
   }
 
   if (username === "shubhamshinde225@gmail.com" && password === "qwerty@123")
-    return { error: "", success: true };
+    return {
+      data: { username: "shubham225", name: "Shubham Shinde", id: 123456 },
+      error: "",
+      success: true,
+    };
 
-  return { error: "wrong credentials", success: false };
+  return {
+    data: {},
+    error: "wrong credentials",
+    success: false,
+  };
 }

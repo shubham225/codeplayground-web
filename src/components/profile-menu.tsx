@@ -1,13 +1,7 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-import {
-  ChevronsUpDown,
-  List,
-  LogOut,
-  Settings,
-  User,
-} from "lucide-react";
+import { ChevronsUpDown, List, LogOut, Settings, User } from "lucide-react";
 
 import {
   DropdownMenu,
@@ -21,11 +15,16 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { logout } from "@/lib/server-actions/auth";
+import { signOut } from "next-auth/react";
 
 type Props = {};
 
 export default function ProfileMenu({}: Props) {
+  const handleSignOut = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    signOut();
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="cursor-pointer">
@@ -72,7 +71,7 @@ export default function ProfileMenu({}: Props) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem
-          onClick={logout}
+          onClick={handleSignOut}
           className="cursor-pointer focus:bg-destructive focus:text-destructive-foreground"
         >
           <LogOut />

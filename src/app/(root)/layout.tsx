@@ -12,6 +12,8 @@ import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState, useTransition } from "react";
 import { Toaster } from "@/components/ui/sonner";
+import { useSession } from "next-auth/react"
+import { SessionProvider } from "next-auth/react";
 
 export default function AuthLayout({
   children,
@@ -21,6 +23,7 @@ export default function AuthLayout({
   const path = usePathname();
   const [isPending, startTransition] = useTransition();
   const [sessionActive, setSessionActive] = useState(false);
+  const { data: session, status } = useSession()
 
   useEffect(() => {
     CheckUserLogin();
@@ -36,6 +39,7 @@ export default function AuthLayout({
   };
 
   return (
+          <SessionProvider>
     <main className="flex flex-col size-full">
       {/* Navbar */}
       <nav
@@ -58,7 +62,7 @@ export default function AuthLayout({
           {/* Mode Toggle and Profile */}
           <div className="gap-2 hidden lg:inline-flex items-center">
             <ToggleMode />
-            {sessionActive ? <ProfileMenu /> : <LoginButton />}
+            {status === "authenticated" ? <ProfileMenu /> : <LoginButton />}
           </div>
         </div>
         <Separator />
@@ -68,6 +72,6 @@ export default function AuthLayout({
         <Toaster richColors />
         {children}
       </div>
-    </main>
+    </main></SessionProvider>
   );
 }
