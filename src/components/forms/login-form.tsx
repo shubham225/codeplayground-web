@@ -9,8 +9,9 @@ import { Form } from "@/components/ui/form";
 import { KeyRound, Loader2, Mail, X } from "lucide-react";
 import PassowrdInput from "../custom-ui/input/PasswordInput";
 import SimpleInput from "../custom-ui/input/SimpleInput";
-import { login } from "@/lib/server-actions/auth";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 export const loginFormSchema = z.object({
   email: z.string().min(5, {
@@ -23,14 +24,20 @@ export const loginFormSchema = z.object({
 
 export default function LoginForm() {
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
-  const submitAction = async (values: z.infer<typeof loginFormSchema>) => {
+  const submitAction = async (e: z.infer<typeof loginFormSchema>) => {
     startTransition(async () => {
-      console.log(values);
-      const { error, success } = await login(values.email, values.password);
+      const retVal = await signIn("credentials", {
+        email: e.email,
+        password: e.password,
+        redirect: false,
+      });
 
-      if (error) {
-        toast.error(error);
+      if (!retVal?.ok) {
+        toast.error(retVal?.error);
+      } else {
+        router.push("/");
       }
     });
   };

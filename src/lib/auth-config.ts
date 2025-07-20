@@ -6,28 +6,23 @@ import { login } from "./server-actions/auth";
 
 export const authConfig: NextAuthOptions = {
   providers: [
-    // CredentialsProvider({
-    //   name:"Sign In",
-    //   credentials: {
-    //   username: { label: "Username", type: "text", placeholder: "jsmith" },
-    //   password: { label: "Password", type: "password" }
-    // },
-    // async authorize(credentials, req) {
-    //   const res = await login(credentials?.username as string, credentials?.password as string);
-    //   // const res = await fetch("/your/endpoint", {
-    //   //   method: 'POST',
-    //   //   body: JSON.stringify(credentials),
-    //   //   headers: { "Content-Type": "application/json" }
-    //   // }
-
-    //   // If no error and we have user data, return it
-    //   if (res.success && res.data) {
-    //     return res.data
-    //   }
-    //   // Return null if user data could not be retrieved
-    //   return null
-    // }
-    // }),
+    CredentialsProvider({
+      name: "Sign In",
+      credentials: {
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials, req) {
+        console.log("creds: ", credentials);
+        const res = await login(
+          credentials?.email as string,
+          credentials?.password as string
+        );
+        
+        console.log("creds: ", credentials, "res", res);
+        return res;
+      },
+    }),
     GoogleProvider({
       clientId: process.env.NEXT_AUTH_GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.NEXT_AUTH_GOOGLE_CLIENT_SECRET as string,
@@ -37,4 +32,8 @@ export const authConfig: NextAuthOptions = {
       clientSecret: process.env.NEXT_AUTH_GITHUB_CLIENT_SECRET as string,
     }),
   ],
+
+  session: {
+    strategy: "jwt",
+  },
 };

@@ -27,12 +27,6 @@ export async function login(username: string, password: string) {
   const result = await dummyCredentialLogin(username, password);
 
   return result;
-  // if (result.success) {
-  //   await createSession(username);
-  //   // redirect("/");
-  // } else {
-  //   return result;
-  // }
 }
 
 export async function isUserLoggedIn() {
@@ -43,24 +37,18 @@ export async function isUserLoggedIn() {
 }
 
 async function dummyCredentialLogin(username: string, password: string) {
-  if (!username) {
-    return {
-      data: {},
-      error: "username is required",
-      success: false,
-    };
+  const user = {
+    id: "123",
+    name: "Shubham Shinde",
+    email: "shubhamshinde225@gmail.com",
+    role: "user",
+    password: "qwerty123", // don't store plain passwords in real apps
+  };
+
+  if (username === user.email && password === user.password) {
+    const { password, ...userWithoutPassword } = user;
+    return userWithoutPassword;
   }
 
-  if (username === "shubhamshinde225@gmail.com" && password === "qwerty@123")
-    return {
-      data: { username: "shubham225", name: "Shubham Shinde", id: 123456 },
-      error: "",
-      success: true,
-    };
-
-  return {
-    data: {},
-    error: "wrong credentials",
-    success: false,
-  };
+  return null;
 }
