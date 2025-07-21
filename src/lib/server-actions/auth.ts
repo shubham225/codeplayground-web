@@ -23,7 +23,7 @@ export async function logout() {
 
 export async function login(username: string, password: string) {
   console.log("received: ", username, password);
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const result = await dummyCredentialLogin(username, password);
 
   return result;
@@ -38,11 +38,13 @@ export async function isUserLoggedIn() {
 
 async function dummyCredentialLogin(username: string, password: string) {
   const user = {
-    id: "123",
+    id: "1236432793",
     name: "Shubham Shinde",
     email: "shubhamshinde225@gmail.com",
     role: "user",
-    password: "qwerty123", // don't store plain passwords in real apps
+    login: "@shubhamshinde225",
+    password: "qwerty123", 
+    image: "https://pbs.twimg.com/profile_images/874661809139073025/X8yzIhNy_400x400.jpg"
   };
 
   if (username === user.email && password === user.password) {

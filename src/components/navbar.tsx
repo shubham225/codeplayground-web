@@ -11,8 +11,6 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
-import { Loader2Icon } from "lucide-react";
-import { SidebarMenuSkeleton } from "./ui/sidebar";
 import { Skeleton } from "./ui/skeleton";
 
 type Props = {};

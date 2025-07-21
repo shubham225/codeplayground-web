@@ -4,6 +4,7 @@ import Image, { StaticImageData } from "next/image";
 import { useImageUpload } from "@/hooks/use-image-upload";
 import { Button } from "@/components/ui/button";
 import { ImagePlus } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 export default function ProfileAvatar({
   defaultImage,
@@ -14,8 +15,9 @@ export default function ProfileAvatar({
 }) {
   const { previewUrl, fileInputRef, handleThumbnailClick, handleFileChange } =
     useImageUpload();
+  const { data: session, status } = useSession();
 
-  const currentImage = previewUrl || defaultImage;
+  const currentImage = session?.user?.image || previewUrl || defaultImage;
 
   return (
     <div className="-mt-12 px-10 flex justify-between">
@@ -33,10 +35,10 @@ export default function ProfileAvatar({
         </div>
         <div className="relative mt-16 mx-2 flex flex-col gap-1">
           <p className=" text-2xl font-bold leading-none self-start">
-            Shubham Shinde
+            {session?.user?.name}
           </p>
           <p className="text-sm leading-snug text-muted-foreground line-clamp-2 self-start">
-            @{profileId}
+            {session?.user?.email}
           </p>
         </div>
       </div>

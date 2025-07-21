@@ -15,12 +15,12 @@ export default function AuthLayout({
       <SessionProvider>
         {/* Navbar */}
         <Navbar />
-      </SessionProvider>
       {/* Page Contents */}
       <div className="size-full">
         <Toaster richColors position="top-right" />
         {children}
       </div>
+      </SessionProvider>
     </main>
   );
 }

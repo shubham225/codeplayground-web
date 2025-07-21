@@ -44,7 +44,6 @@ const navMenuItems: { href: string; name: string | React.ReactNode }[] = [
 ];
 
 export default function Navigation({ path }: PropsType) {
-  console.log(path);
   return (
     <NavigationMenu>
       <NavigationMenuList>

@@ -13,13 +13,11 @@ export const authConfig: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        console.log("creds: ", credentials);
         const res = await login(
           credentials?.email as string,
           credentials?.password as string
         );
-        
-        console.log("creds: ", credentials, "res", res);
+
         return res;
       },
     }),
@@ -32,8 +30,24 @@ export const authConfig: NextAuthOptions = {
       clientSecret: process.env.NEXT_AUTH_GITHUB_CLIENT_SECRET as string,
     }),
   ],
-
   session: {
     strategy: "jwt",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+        token.role = user.role;
+        token.login = user.login;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // This fields will be added in token
+      session.user.id = token.id as string;
+      session.user.role = token.role as string;
+      session.user.login = token.login as string;
+      return session;
+    },
   },
 };

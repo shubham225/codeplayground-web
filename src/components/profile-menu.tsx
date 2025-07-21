@@ -10,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
@@ -33,15 +32,15 @@ export default function ProfileMenu({}: Props) {
         <Button variant="ghost">
           <div className="flex gap-2 items-center">
             <Avatar className="h-9 w-9">
-              <AvatarImage src={session?.user?.image || "/imgs/profile-pic.jpeg"} alt="@shadcn" />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarImage src={session?.user?.image || ""} alt="@profile" />
+              <AvatarFallback>SS</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
               <p className="text-sm font-medium leading-none self-start">
                 {session?.user?.name}
               </p>
               <p className="text-xs font-light leading-snug text-muted-foreground line-clamp-2 self-start">
-                {session?.user?.email}
+                {session?.user?.login || session?.user?.email}
               </p>
             </div>
             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -56,7 +55,6 @@ export default function ProfileMenu({}: Props) {
             <DropdownMenuItem>
               <User />
               <span>Profile</span>
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
           </Link>
           <DropdownMenuItem disabled>
@@ -67,7 +65,6 @@ export default function ProfileMenu({}: Props) {
             <DropdownMenuItem>
               <Settings />
               <span>Settings</span>
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
           </Link>
         </DropdownMenuGroup>
@@ -78,7 +75,6 @@ export default function ProfileMenu({}: Props) {
         >
           <LogOut />
           <span>Log out</span>
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -35,7 +35,7 @@ export default function LoginForm() {
       });
 
       if (!retVal?.ok) {
-        toast.error(retVal?.error);
+        toast.error("Invalid email or password.");
       } else {
         router.push("/");
       }
