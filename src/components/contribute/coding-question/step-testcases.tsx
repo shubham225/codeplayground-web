@@ -2,6 +2,7 @@
 
 import Dropzone from "@/components/custom-ui/dropzone";
 import { Button } from "@/components/ui/button";
+import { UploadedFiles } from "@/types";
 import { useState } from "react";
 import { DropZone } from "react-aria-components";
 
@@ -12,8 +13,8 @@ type Props = {
 };
 
 export default function TestCasesDetails({ setStep, data, setData }: Props) {
-  const [testcases, setTestCases] = useState<File[]>([]);
-  const [solutions, setSolutions] = useState<File[]>([]);
+  const [testcases, setTestCases] = useState<UploadedFiles[]>([]);
+  const [solutions, setSolutions] = useState<UploadedFiles[]>([]);
 
   return (
     <div className="p-5 flex flex-col justify-between gap-4">

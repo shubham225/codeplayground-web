@@ -111,3 +111,10 @@ declare interface InputFieldProps
   type?: string;
   placeholder?: string;
 }
+
+// Uploaded Files
+
+type UploadedFiles = {
+  id: string;
+  filename: string;
+};
