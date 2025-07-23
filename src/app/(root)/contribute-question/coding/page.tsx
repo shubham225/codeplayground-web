@@ -23,7 +23,7 @@ type Props = {};
 
 export default function ContributeCoding({}: Props) {
   const [step, setStep] = useState("step-1");
-  const [question, setQuestion] = useState({ type: "Coding" });
+  const [question, setQuestion] = useState<any>({ type: "Coding" });
 
   // TODO : Use Zod for question creation validations
   

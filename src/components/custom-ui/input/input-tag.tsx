@@ -1,20 +1,22 @@
 "use client";
 
 import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
 import { Tag, TagInput } from "emblor";
 import { useId, useState } from "react";
 
 type Props = {
   setTags: React.Dispatch<React.SetStateAction<Tag[]>>;
   tags: Tag[];
+  message?: string | undefined;
 };
 
-export default function InputTags({ tags, setTags }: Props) {
+export default function InputTags({ message, tags, setTags, ...props }: Props) {
   const id = useId();
   const [activeTagIndex, setActiveTagIndex] = useState<number | null>(null);
 
   return (
-    <div className="space-y-2 w-full">
+    <div className="space-y-1 w-full">
       <Label htmlFor={id}>Tags</Label>
       <TagInput
         id={id}
@@ -24,8 +26,13 @@ export default function InputTags({ tags, setTags }: Props) {
         }}
         placeholder="Add a tag"
         styleClasses={{
-          inlineTagsContainer:
+          inlineTagsContainer: cn(
             "border-input rounded-lg bg-background shadow-sm shadow-black/5 transition-shadow focus-within:border-ring focus-within:outline-none focus-within:ring-[3px] focus-within:ring-ring/20 p-1 gap-1",
+            {
+              "border-destructive/80 text-destructive focus-within:border-destructive/80 focus-within:ring-destructive/20 focus-visible:border-destructive/80 focus-visible:ring-destructive/20":
+                message,
+            }
+          ),
           input:
             "w-full min-w-[80px] focus-visible:outline-none shadow-none px-2 h-7",
           tag: {
@@ -36,7 +43,11 @@ export default function InputTags({ tags, setTags }: Props) {
         }}
         activeTagIndex={activeTagIndex}
         setActiveTagIndex={setActiveTagIndex}
+        {...props}
       />
+      <p className="text-xs text-destructive" role="alert" aria-live="polite">
+        {message}
+      </p>
     </div>
   );
 }
