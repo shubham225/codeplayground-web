@@ -2,6 +2,7 @@
 
 import Dropzone from "@/components/custom-ui/dropzone";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import { UploadedFiles } from "@/types";
 import { useState } from "react";
 import { DropZone } from "react-aria-components";
@@ -18,30 +19,28 @@ export default function TestCasesDetails({ setStep, data, setData }: Props) {
 
   return (
     <div className="p-5 flex flex-col justify-between gap-4">
-      <div className="flex flex-col gap-1 h-[673px]">
-        <div>
-          <h1 className="text-2xl font-bold">Upload Solution</h1>
-          <h4 className="text-md text-muted-foreground">
-            upload your solution to help the candidates debug their code and see
-            the expected output for their custom input.
+      <div className="grid lg:grid-cols-2 gap-4 w-full">
+        <div className="p-4 flex flex-col gap-2 items-center">
+          <h1 className="text-lg font-semibold">Upload a solution</h1>
+          <h4 className="text-sm text-muted-foreground">
+            Upload your solution to help the candidates see the expected output for their custom input.
           </h4>
-          <div className="h-48 mt-4 w-full">
+          <div className="mt-4 h-96 w-full">
             <Dropzone uploadFiles={solutions} setUploadFiles={setSolutions} />
           </div>
         </div>
-        <div className="mt-5">
-          <h1 className="text-2xl font-bold">Testcases</h1>
-          <h4 className="text-md text-muted-foreground">
+        <div className="p-4 flex flex-col gap-2 items-center ">
+          <h1 className="text-lg font-bold">Testcases</h1>
+          <h4 className="text-sm text-muted-foreground">
             A testcase consists of input values to the program and expected
             output.
           </h4>
-          <br></br>
-          <div className="h-48 mt-4">
+          <div className="mt-4 h-96 w-full">
             <Dropzone uploadFiles={testcases} setUploadFiles={setTestCases} />
           </div>
         </div>
       </div>
-      <div className="flex flex-row-reverse gap-2">
+      <div className="mt-44 flex flex-row-reverse gap-2">
         <Button
           onClick={(e) => {
             e.preventDefault();

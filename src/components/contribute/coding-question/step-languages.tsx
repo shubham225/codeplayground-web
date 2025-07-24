@@ -123,14 +123,14 @@ export default function LanguagesDetails({ setStep, data, setData }: Props) {
 
   return (
     <div className="p-5 flex flex-col justify-between gap-4">
-      <div className="flex flex-col h-[673px]">
+      <div className="flex flex-col">
         <h1 className="text-2xl font-bold">Languages</h1>
         <h4 className="text-md text-muted-foreground">
           Candidates will have option to solve problems in selected languages
         </h4>
         <div className="flex flex-col gap-3 pt-6">
           <h2 className="text-lg">Select Languages</h2>
-          <div className="grid grid-cols-5 gap-4">
+          <div className="grid xl:grid-cols-5 md:grid-cols-3 gap-4">
             {languages.map((item) => {
               return (
                 <div
@@ -165,7 +165,7 @@ export default function LanguagesDetails({ setStep, data, setData }: Props) {
           </div>
         </div>
       </div>
-      <div className="flex flex-row-reverse gap-2">
+      <div className="mt-9 md:mt-96 flex flex-row-reverse gap-2">
         <Button
           onClick={(e) => {
             e.preventDefault();

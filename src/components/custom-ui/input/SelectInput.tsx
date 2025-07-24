@@ -37,7 +37,7 @@ export default function SelectInput({
           {...props}
         >
           {options?.map((option) => (
-            <option value={option.id}>{option.text}</option>
+            <option key={option.id} value={option.id}>{option.text}</option>
           ))}
         </SelectNative>
         <p
