@@ -22,6 +22,7 @@ const contributeMenu = [
     imageSrc: "/imgs/coding.jpg",
     buttonDesc: "Create Coding Question",
     buttonIcon: Code2,
+    disabled: false,
   },
   {
     title: "Multiple Choice",
@@ -31,6 +32,7 @@ const contributeMenu = [
     imageSrc: "/imgs/multiple-choice.jpg",
     buttonDesc: "Create MCQ Question",
     buttonIcon: CopyCheck,
+    disabled: false,
   },
   {
     title: "Database",
@@ -40,6 +42,7 @@ const contributeMenu = [
     imageSrc: "/imgs/database.png",
     buttonDesc: "Create Database Question",
     buttonIcon: Database,
+    disabled: true,
   },
   {
     title: "Frontend",
@@ -48,17 +51,18 @@ const contributeMenu = [
     imageSrc: "/imgs/frontend.jpg",
     buttonDesc: "Create Frontend Question",
     buttonIcon: MonitorSmartphone,
+    disabled: true,
   },
 ];
 
 export default function page({}: Props) {
   return (
-    <div className="h-full w-full">
+    <div className="mx-auto py-14">
       <div className="flex justify-center items-center h-full">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-2">
           {contributeMenu.map((item) => {
             return (
-              <Card key={item.link} className="w-full max-w-sm">
+              <Card key={item.link} className="w-full max-w-sm rounded-lg shadow-sm">
                 <CardHeader className="p-0">
                   <div className="relative w-full h-28 overflow-hidden">
                     <Image
@@ -66,7 +70,7 @@ export default function page({}: Props) {
                       alt="Profile Picture"
                       width={400}
                       height={50}
-                      className="rounded-t-md overflow-clip"
+                      className="rounded-t-lg overflow-clip"
                     />
                   </div>
                 </CardHeader>
@@ -80,9 +84,10 @@ export default function page({}: Props) {
                 </CardContent>
                 <Separator />
                 <CardFooter className="p-0">
-                  <Link className="w-full h-full" href={item.link}>
+                  <Link className="w-full h-full" href={(item.disabled) ? "#": item.link}>
                     <Button
                       variant="ghost"
+                      disabled={item.disabled}
                       className="rounded-t-none w-full text-muted-foreground"
                     >
                       <item.buttonIcon />{" "}

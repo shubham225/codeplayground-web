@@ -74,9 +74,6 @@ export default function Dropzone({ uploadFiles, setUploadFiles }: Props) {
 
     if (!file) return;
 
-    console.log("files:", accpetedFiles);
-    console.log("file:", file);
-
     setMessage("");
 
     const formData = new FormData();
@@ -96,8 +93,10 @@ export default function Dropzone({ uploadFiles, setUploadFiles }: Props) {
       if (xhr.status === 200) {
         setProgress(100);
         setUploaded(true);
-        setMessage(`✅ File uploaded successfully! [id: ${xhrResponse.payload.id}]`);
-        console.log("✅ File uploaded successfully!", xhrResponse.payload);
+        setMessage(
+          `✅ File uploaded successfully! [id: ${xhrResponse.payload.id}]`
+        );
+        setUploadFiles((files) => [...files, xhrResponse.payload]);
       } else {
         setProgress(0);
         setUploaded(false);
@@ -190,7 +189,15 @@ export default function Dropzone({ uploadFiles, setUploadFiles }: Props) {
               />
             </div>
           ))}
-          <div className={cn("text-xs italic", {"text-destructive" : !uploaded}, {"text-green-500" : uploaded})}>{message}</div>
+          <div
+            className={cn(
+              "text-xs italic",
+              { "text-destructive": !uploaded },
+              { "text-green-500": uploaded }
+            )}
+          >
+            {message}
+          </div>
         </div>
       )}
     </div>

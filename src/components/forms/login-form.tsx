@@ -9,9 +9,9 @@ import { Form } from "@/components/ui/form";
 import { KeyRound, Loader2, Mail, X } from "lucide-react";
 import PassowrdInput from "../custom-ui/input/PasswordInput";
 import SimpleInput from "../custom-ui/input/SimpleInput";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
 
 export const loginFormSchema = z.object({
   email: z.string().min(5, {
@@ -70,6 +70,7 @@ export default function LoginForm() {
             message={form.formState.errors.password?.message}
             {...form.register("password")}
           />
+          
           <div className="flex flex-col gap-3 pt-2">
             <Button type="submit" disabled={isPending}>
               {isPending ? (

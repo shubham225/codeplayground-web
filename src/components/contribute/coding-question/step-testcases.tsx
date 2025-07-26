@@ -1,11 +1,9 @@
-"use client"
+"use client";
 
 import Dropzone from "@/components/custom-ui/dropzone";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import { UploadedFiles } from "@/types";
 import { useState } from "react";
-import { DropZone } from "react-aria-components";
 
 type Props = {
   setStep: React.Dispatch<React.SetStateAction<string>>;
@@ -23,7 +21,8 @@ export default function TestCasesDetails({ setStep, data, setData }: Props) {
         <div className="p-4 flex flex-col gap-2 items-center">
           <h1 className="text-lg font-semibold">Upload a solution</h1>
           <h4 className="text-sm text-muted-foreground">
-            Upload your solution to help the candidates see the expected output for their custom input.
+            Upload your solution to help the candidates see the expected output
+            for their custom input.
           </h4>
           <div className="mt-4 h-96 w-full">
             <Dropzone uploadFiles={solutions} setUploadFiles={setSolutions} />

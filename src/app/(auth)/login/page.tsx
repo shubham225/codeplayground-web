@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { signIn } from "next-auth/react";
-import Logo from "@/components/app-logo";
 
 export default function Login() {
   const handleLoginWithGoogle = (e: React.MouseEvent<HTMLElement>) => {
@@ -21,12 +20,13 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col gap-3 bg-card p-12 rounded-lg shadow-md border">
-      <header className="flex flex-col gap-2 md:gap-2 items-center">
-        <span className="text-teal-500 font-bold text-2xl md:text-3xl leading-tight mr-1">
-            {"{ }"}
-          </span>
-        <h1 className="text-xl lg:text-2xl text-24 font-medium text-gray-900 dark:text-gray-100">
+    <div className="flex flex-col gap-3 p-12 rounded-lg md:bg-card md:shadow-md md:border">
+      <header className="flex flex-col gap-2 items-center">
+        <span className="font-bold text-3xl leading-tight mr-1">
+          <span className="">{"{"}</span>
+          <span className="text-orange-500">{" }"}</span>
+        </span>
+        <h1 className="text-xl lg:text-2xl font-medium text-gray-900 dark:text-gray-100">
           Login to Account
         </h1>
         <p className="text-xs font-light text-muted-foreground">
@@ -67,9 +67,10 @@ export default function Login() {
         <p className="text-14 font-medium text-gray-600 dark:text-gray-400">
           Don't have an account?
         </p>
+        {" "}
         <Link
           href="/signup"
-          className="text-14 cursor-pointer font-medium text-blue-500"
+          className="text-14 cursor-pointer font-medium hover:underline text-blue-500"
         >
           Sign up
         </Link>

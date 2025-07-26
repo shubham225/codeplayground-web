@@ -1,99 +1,55 @@
-import React from "react";
+import { Button } from "@/components/ui/button";
+import { Code2, BrainCog, Users2, Trophy } from "lucide-react";
 
-type Props = {};
-
-export default function About({}: Props) {
+export default function AboutPage() {
   return (
-    <div>
-      <div className="dark:bg-[#171717] min-h-screen text-gray-800 dark:text-gray-100">
-        {/* Main Content */}
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          {/* Introduction Section */}
-          <section className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold">
-              What is Our Platform?
-            </h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              Our online coding platform offers a powerful space for programmers
-              to improve their skills, prepare for job interviews, and
-              participate in coding challenges. Whether you are a beginner or an
-              experienced developer, we have something for you!
-            </p>
-          </section>
+    <div className="max-w-5xl mx-auto px-6 py-14">
+      <section className="text-center mb-16">
+        <h1 className="text-4xl font-bold mb-4">About Our Platform</h1>
+        <p className="text-lg text-muted-foreground">
+          Empowering future developers with the tools to learn, create, and excel in coding.
+        </p>
+      </section>
 
-          {/* Features Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-semibold text-center">
-              Key Features
-            </h2>
-            <div className="grid md:grid-cols-3 gap-6 mt-6">
-              {[
-                ["🔥 Solve Challenges", "Practice coding problems in different categories and difficulty levels."],
-                ["⚡ Real-Time Execution", "Run your code instantly in multiple programming languages."],
-                ["📊 Track Progress", "Monitor your growth, improve your problem-solving skills, and analyze solutions."],
-                ["🏆 Competitive Programming", "Train for coding competitions and improve your ranking."],
-                ["💬 Community Support", "Discuss solutions, share knowledge, and grow with others."],
-                ["🚀 Interview Preparation", "Get ready for FAANG and top tech job interviews with real coding problems."]
-              ].map(([title, desc], index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-[#1e1e1e] p-6 rounded-lg shadow-md"
-                >
-                  <h3 className="text-xl font-semibold">{title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mt-2">{desc}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Mission Section */}
-          <section className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold">Our Mission</h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              We are dedicated to helping developers sharpen their skills and
-              succeed in technical interviews. Our goal is to make coding
-              practice accessible to everyone and build a strong developer
-              community.
-            </p>
-          </section>
-
-          {/* How It Works Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl font-semibold text-center">How It Works</h2>
-            <div className="grid md:grid-cols-4 gap-6 mt-6">
-              {[
-                ["📝 Sign Up", "Create an account to start solving coding challenges."],
-                ["🔍 Choose Problems", "Select coding problems based on difficulty and topics."],
-                ["💻 Write Code", "Use our online code editor to write and test your solutions."],
-                ["🏁 Submit & Learn", "Get instant feedback, learn from solutions, and improve."]
-              ].map(([title, desc], index) => (
-                <div
-                  key={index}
-                  className="bg-white dark:bg-[#1e1e1e] p-6 rounded-lg shadow-md text-center"
-                >
-                  <h3 className="text-xl font-semibold">{title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mt-2">{desc}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Contact Section */}
-          <section className="text-center">
-            <h2 className="text-3xl font-semibold">Get In Touch</h2>
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-              Have questions? Want to collaborate? Reach out to us!
-            </p>
-            <div className="mt-6">
-              <a
-                href="mailto:support@codingplayground.com"
-                className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-              >
-                support@codingplayground.com
-              </a>
-            </div>
-          </section>
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="p-6 rounded-lg shadow-md border">
+          <Code2 className="text-blue-600 w-8 h-8 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Create Coding Questions</h2>
+          <p className="text-muted-foreground">
+            Build your own custom coding problems with test cases, hints, and detailed solutions. Ideal for instructors, mentors, and learners.
+          </p>
         </div>
+
+        <div className="p-6 rounded-lg shadow-md border">
+          <BrainCog className="text-purple-600 w-8 h-8 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Design MCQs</h2>
+          <p className="text-muted-foreground">
+            Add multiple-choice questions with rich explanations to test theoretical knowledge and core concepts.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-lg shadow-md border">
+          <Users2 className="text-green-600 w-8 h-8 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Collaborative Learning</h2>
+          <p className="text-muted-foreground">
+            Connect with a community of passionate coders. Share questions, challenge peers, and grow together.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-lg shadow-md border">
+          <Trophy className="text-yellow-600 w-8 h-8 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Practice & Compete</h2>
+          <p className="text-muted-foreground">
+            Solve real-world coding problems. Track your progress, earn badges, and climb the leaderboard.
+          </p>
+        </div>
+      </section>
+
+      <div className="mt-16 text-center">
+        <h3 className="text-2xl font-semibold mb-4">Join Us on the Journey</h3>
+        <p className="text-muted-foreground mb-6">
+          Whether you're a beginner or a seasoned developer, our platform is designed to support your learning and challenge your skills.
+        </p>
       </div>
     </div>
   );

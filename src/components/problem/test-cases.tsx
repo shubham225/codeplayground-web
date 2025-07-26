@@ -10,7 +10,7 @@ import { CodeLangDetails, Problem, TestExecution } from "@/types";
 import { ExecReq, SubmitReq } from "@/types/api";
 import { Check, Loader2, SquareCheck, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import Link from "next/link";
@@ -229,7 +229,6 @@ const TestCases = ({ problem, codeInfo, ...props }: Props) => {
           </div>
         </div>
       </footer>
-      <ToastContainer />
     </div>
   );
 };

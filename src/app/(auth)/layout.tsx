@@ -1,15 +1,20 @@
+"use client"
+
 import React from "react";
 import { cn } from "@/lib/utils";
 import Logo from "@/components/app-logo";
 import ToggleMode from "@/components/toggle-theme";
 import { Separator } from "@/components/ui/separator";
-import { Toaster } from "@/components/ui/sonner";
+import { ToastContainer } from "react-toastify";
+import { useTheme } from "next-themes";
 
 export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const theme = useTheme();
+
   return (
     <div className="flex flex-col size-full">
       {/* Navbar */}
@@ -34,8 +39,8 @@ export default function AuthLayout({
         {/* Main Section */}
         <section className="flex items-center justify-center size-full max-sm:px-4 pt-5">
           <div className="w-full max-w-[500px] flex-col justify-center gap-4 py-5 md:gap-5">
-            <Toaster richColors position="top-right" />
             {children}
+            <ToastContainer theme={theme.theme} position="bottom-left" />
           </div>
         </section>
       </main>

@@ -10,7 +10,6 @@ import { CodeLangDetails, Problem } from "@/types";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Split from "react-split";
-import "react-toastify/dist/ReactToastify.css";
 
 type Props = {};
 
