@@ -22,9 +22,11 @@ export default function Login() {
   return (
     <div className="flex flex-col gap-3 p-12 rounded-lg md:bg-card md:shadow-md md:border">
       <header className="flex flex-col gap-2 items-center">
-        <span className="font-bold text-3xl leading-tight mr-1">
-          <span className="">{"{"}</span>
-          <span className="text-orange-500">{" }"}</span>
+        <span className="font-bold text-3xl leading-tight h-14 w-14 flex justify-center bg-slate-50 border shadow-sm p-2 rounded-xl">
+          <div className="">
+            <span className="text-black">{"{"}</span>
+            <span className="text-orange-500">{" }"}</span>
+          </div>
         </span>
         <h1 className="text-xl lg:text-2xl font-medium text-gray-900 dark:text-gray-100">
           Login to Account
@@ -66,8 +68,7 @@ export default function Login() {
       <footer className="flex justify-center gap-1">
         <p className="text-14 font-medium text-gray-600 dark:text-gray-400">
           Don't have an account?
-        </p>
-        {" "}
+        </p>{" "}
         <Link
           href="/signup"
           className="text-14 cursor-pointer font-medium hover:underline text-blue-500"

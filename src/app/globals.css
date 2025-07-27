@@ -3,10 +3,8 @@
 @tailwind utilities;
 
 body {
-  font-family: GeistSans, Arial, Helvetica, sans-serif;
+  font-family: GeistSans, Arial, Helvetica, sans-serif, monospace;
 }
-
-
 
 @layer base {
   :root {

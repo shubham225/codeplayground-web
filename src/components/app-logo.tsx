@@ -5,14 +5,14 @@ export default function Logo() {
   return (
     <div className="flex items-center">
       <Link href={"/"}>
-        <div className="flex font-bold text-left">
+        <div className="flex font-bold text-left align-baseline">
           <span className="text-teal-500 text-2xl md:text-2xl leading-tight mr-1">
             {"{ }"}
           </span>
-          <div className=" hidden sm:flex sm:flex-col text-xl leading-none">
+          <div className=" hidden sm:flex sm:flex-col text-lg leading-none font-mono">
             Code
-            <span className="block text-orange-400 text-sm leading-none ">
-              Playground
+            <span className="block text-orange-400 text-xs leading-none font-sans font-medium">
+              Playground<span className="animate-blink">_</span>
             </span>
           </div>
         </div>

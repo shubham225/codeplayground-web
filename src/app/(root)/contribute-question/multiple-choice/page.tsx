@@ -13,7 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { GripVertical, Plus, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { closestCorners, DndContext } from "@dnd-kit/core";
 import {
   arrayMove,
@@ -59,7 +59,10 @@ function guidGenerator() {
 }
 
 export default function ContribMultipleChoice({}: Props) {
+  const [queData, setQueData] = useState({});
+  const [question, setQuestion] = useState<string>("");
   const [options, setOptions] = useState(optionsInit);
+  const [questionType, setQuestionType] = useState<string>("MULTIPLE_CORRECT");
   const [save, setSave] = useState<boolean>(false);
 
   const onAddNewOption = () => {
@@ -82,7 +85,13 @@ export default function ContribMultipleChoice({}: Props) {
   };
 
   const onSaveButtonClick = () => {
+    setQueData({
+      question: question,
+      options: options,
+      type: questionType
+    })
     setSave(true);
+    console.log(queData)
   };
 
   const onRemoveOption = (id: string) => {
@@ -108,12 +117,20 @@ export default function ContribMultipleChoice({}: Props) {
   return (
     <div className="m-3 border rounded-lg h-[820px]">
       {save ? (
-        <StepFinish data={options} setData={setOptions} />
+        <StepFinish data={queData} setData={setQueData} />
       ) : (
         <div className="h-full flex flex-col justify-between gap-3 p-5">
           <div className="flex flex-col gap-4 m-5">
             <h4 className="text-md">Add a Question</h4>
-            <SimpleInput id="question" label="Question" />
+            <SimpleInput
+              id="question"
+              label="Question"
+              value={question}
+              onChange={(e) => {
+                e.preventDefault();
+                setQuestion(e.target.value);
+              }}
+            />
             <Tabs defaultValue="single-correct">
               <div className="flex flex-row-reverse justify-between">
                 <TabsList>
@@ -233,7 +250,17 @@ export default function ContribMultipleChoice({}: Props) {
               </TabsContent>
               <TabsContent value="numerical">
                 <div className="max-w-96">
-                  <SimpleInput id="number-input" label="Answer" />
+                  <SimpleInput
+                    id="number-input"
+                    label="Answer"
+                    value={options[0] || 0}
+                    onChange={(e) => {
+                      e.preventDefault();
+                      setOptions([
+                        { id: "dummy", text: e.target.value, isAnswer: true },
+                      ]);
+                    }}
+                  />
                 </div>
               </TabsContent>
             </Tabs>

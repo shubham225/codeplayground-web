@@ -13,10 +13,11 @@ import {
   GoOriginal,
 } from "devicons-react";
 import { Card } from "@/components/ui/card";
+import BorderBox from "@/components/border-box";
 
 export default function Home() {
   return (
-    <div className="px-4 py-10 md:py-20">
+    <div className="px-4 py-10 h-full md:py-20 ">
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="mx-auto max-w-6xl h-10 border-x border-dashed"></div>
         <div className="mx-auto max-w-7xl border-y border-dashed flex justify-center ">
@@ -56,8 +57,10 @@ export default function Home() {
           >
             Practice coding problems, take timed tests, and build real skills.{" "}
             <span className="font-bold">Code</span>
-            <span className="text-orange-400 font-bold">Playground</span> is
-            your all-in-one platform for becoming a confident developer.
+            <span className="text-orange-400 font-bold">
+              Playground<span className="animate-blink">_</span>
+            </span>{" "}
+            is your all-in-one platform for becoming a confident developer.
           </motion.p>
         </div>
         <div className="mx-auto max-w-6xl h-10 border-x border-dashed"></div>
@@ -128,6 +131,25 @@ export default function Home() {
           </Card>
         </motion.div>
       </div>
+      <motion.div
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.3,
+          delay: 1.8,
+        }}
+        className="relative w-full text-center py-14 "
+      >
+        {/* Feature Badge */}
+        <BorderBox>
+          <span className="font-bold">NEW:</span> Improved UI for a modern
+          coding experience
+        </BorderBox>
+      </motion.div>
     </div>
   );
 }
