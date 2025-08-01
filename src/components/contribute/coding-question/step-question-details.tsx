@@ -12,8 +12,6 @@ import { FaMarkdown } from "react-icons/fa";
 import { Tag } from "emblor";
 import Link from "next/link";
 import * as z from "zod";
-import { Description } from "@radix-ui/react-toast";
-import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import SelectInput from "@/components/custom-ui/input/SelectInput";
 import InputTags from "@/components/custom-ui/input/input-tag";
@@ -89,7 +87,7 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
 
       setData((data: any) => ({
         ...data,
-        step1Data,
+        ...step1Data,
       }));
 
       setStep("step-2");

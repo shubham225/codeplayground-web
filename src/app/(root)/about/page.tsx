@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-5xl mx-auto px-6 py-14">
       <section className="text-center mb-16">
-        <h1 className="text-4xl font-bold mb-4">About Our Platform</h1>
+        <h1 className="text-4xl font-bold mb-4">About the Platform</h1>
         <p className="text-lg text-muted-foreground">
           Empowering future developers with the tools to learn, create, and excel in coding.
         </p>
@@ -48,7 +48,7 @@ export default function AboutPage() {
       <div className="mt-16 text-center">
         <h3 className="text-2xl font-semibold mb-4">Join Us on the Journey</h3>
         <p className="text-muted-foreground mb-6">
-          Whether you're a beginner or a seasoned developer, our platform is designed to support your learning and challenge your skills.
+          Whether you&apos;re a beginner or a seasoned developer, our platform is designed to support your learning and challenge your skills.
         </p>
       </div>
     </div>

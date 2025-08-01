@@ -39,7 +39,7 @@ let optionsInit = [
 ];
 
 function guidGenerator() {
-  var S4 = function () {
+  let S4 = function () {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
   };
   return (
@@ -253,7 +253,7 @@ export default function ContribMultipleChoice({}: Props) {
                   <SimpleInput
                     id="number-input"
                     label="Answer"
-                    value={options[0] || 0}
+                    value={options[0].text || 0}
                     onChange={(e) => {
                       e.preventDefault();
                       setOptions([
