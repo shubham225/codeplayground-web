@@ -51,7 +51,7 @@ This repository hosts the frontend for a **Online Coding Platform**, built with 
    ```
 
 
-## Screenshots
+<!-- ## Screenshots
 *Problem Window*
 ![Login Page](./screenshots/problem-window.png)
 *Compiling Code*
@@ -61,7 +61,27 @@ This repository hosts the frontend for a **Online Coding Platform**, built with 
 *Testcase Passed*
 ![Login Page](./screenshots/testcase-passed.png)
 *Dark Mode*
-![Login Page](./screenshots/dark-mode.png)
+![Login Page](./screenshots/dark-mode.png) -->
+
+## 📸 Screenshots
+
+### 🔐 Login Page
+![Login Page](./screenshots/login-page.png)
+
+### 🏠 Home Page
+![Home Page](./screenshots/home-page.png)
+
+### 🤝 Contribute Problems Page
+![Contribute Page](./screenshots/contribute-page.png)
+
+### 🧩 Problems Page
+![Problems Page](./screenshots/problems-page.png)
+
+### 💻 Coding Problem Page
+![Coding Problem Page](./screenshots/coding-problem-page.png)
+
+### 🌙 Dark Mode
+![Dark Mode](./screenshots/dark-mode.png)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
