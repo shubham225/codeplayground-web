@@ -1,8 +1,19 @@
-# Online Coding Platform Frontend
+# Code Playground ![Frontend](https://img.shields.io/badge/%7B%7D-frontend-green?style=flat-square)
+
+![Next.js](https://img.shields.io/badge/Built%20with-Next.js-000?logo=next.js&logoColor=white&style=flat)
+![Tailwind CSS](https://img.shields.io/badge/Styled%20with-Tailwind_CSS-38bdf8?logo=tailwind-css&logoColor=white&style=flat)
+![shadcn/ui](https://img.shields.io/badge/UI-shadcn.dev-9f7aea?style=flat)
+![Yarn](https://img.shields.io/badge/Package%20Manager-Yarn-2C8EBB?logo=yarn&style=flat)
+![License](https://img.shields.io/github/license/shubham225/online-coding-platform-frontend?style=flat)
+
+**CodePlayground_** is a sleek, responsive coding platform built with **Next.js**, **Tailwind CSS**, and **shadcn**. It allows users to browse coding problems, view problem statements, write and run code in real-time, and contribute new problems. It’s designed to feel intuitive and efficient, like popular platforms such as LeetCode or HackerRank.
+
+---
+<!-- # Online Coding Platform Frontend
 
 This repository hosts the frontend for a **Online Coding Platform**, built with **Next.js**, **Tailwind CSS**, and **shadcn**. The platform provides a seamless user interface for solving coding problems, viewing problem statements, and executing code in real-time.
 
----
+--- -->
 
 ## Features
 
@@ -15,14 +26,14 @@ This repository hosts the frontend for a **Online Coding Platform**, built with 
 
 ---
 
-## Tech Stack
+<!-- ## Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **Component Library**: [shadcn](https://shadcn.dev/)
 - **Package Manager**: npm or yarn
 
----
+--- -->
 
 ## Installation
 

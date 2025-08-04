@@ -6,8 +6,8 @@ import { ThemeProvider } from "@/providers/theme-provider";
 
 
 export const metadata: Metadata = {
-  title: "CodePlayground",
-  description: "online coding platform",
+  title: "CodePlayground_",
+  description: "Online coding platform",
 };
 
 export default function RootLayout({
