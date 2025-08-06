@@ -11,6 +11,7 @@ type Props = {};
 const questionsData: ProblemSummery[] = [
   {
     id: "344utvyb-4rhbhfj",
+    summery: "",
     urlCode: "two-sum",
     status: "OPEN",
     title: "Two Sum",
@@ -18,6 +19,7 @@ const questionsData: ProblemSummery[] = [
   },
   {
     id: "344utvyb-4rhbhfj",
+    summery: "",
     urlCode: "search-insert-position",
     status: "PENDING",
     title: "Search Insert Position",
@@ -25,6 +27,7 @@ const questionsData: ProblemSummery[] = [
   },
   {
     id: "344utvyb-4rhbhfj",
+    summery: "",
     urlCode: "four-sum",
     status: "SOLVED",
     title: "Four Sum",

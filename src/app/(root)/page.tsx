@@ -10,7 +10,7 @@ import {
   CplusplusOriginal,
   JavascriptOriginal,
   PythonOriginal,
-  GoOriginal,
+  MariadbOriginal,
 } from "devicons-react";
 import { Card } from "@/components/ui/card";
 import BorderBox from "@/components/border-box";
@@ -127,7 +127,7 @@ export default function Home() {
           </Card>
 
           <Card className="absolute hidden 2xl:inline-flex -bottom-6 right-0 p-3 items-center">
-            <GoOriginal size={30} strokeWidth={2} />
+            <MariadbOriginal size={30} strokeWidth={2} />
           </Card>
         </motion.div>
       </div>

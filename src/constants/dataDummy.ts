@@ -97,12 +97,14 @@ export const dummyProblemSummery: ProblemSummery[] = [
   {
     id: "344utvyb-4rhbhfj",
     urlCode: "two-sum",
+    summery: "",
     status: "OPEN",
     title: "Two Sum",
     difficulty: "MEDIUM",
   },
   {
     id: "344utvyb-4rhbhfj",
+    summery: "",
     urlCode: "search-insert-position",
     status: "PENDING",
     title: "Search Insert Position",
@@ -110,6 +112,7 @@ export const dummyProblemSummery: ProblemSummery[] = [
   },
   {
     id: "344utvyb-4rhbhfj",
+    summery: "",
     urlCode: "four-sum",
     status: "SOLVED",
     title: "Four Sum",
