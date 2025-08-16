@@ -67,7 +67,7 @@ export default function Login() {
 
       <footer className="flex justify-center gap-1">
         <p className="text-14 font-medium text-gray-600 dark:text-gray-400">
-          Don't have an account?
+          Don&apos;t have an account?
         </p>{" "}
         <Link
           href="/signup"

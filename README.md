@@ -6,19 +6,18 @@
 ![Yarn](https://img.shields.io/badge/Package_Manager-Yarn-2C8EBB?logo=yarn&style=flat)
 ![License](https://img.shields.io/github/license/shubham225/online-coding-platform-frontend?style=flat)
 
-**CodePlayground_** is a sleek, responsive coding platform built with **Next.js**, **Tailwind CSS**, and **shadcn**. It allows users to browse coding problems, view problem statements, write and run code in real-time, and contribute new problems. It’s designed to feel intuitive and efficient, like popular platforms such as LeetCode or HackerRank.
+**CodePlayground_** is a sleek, responsive coding platform built with **Next.js**, **Tailwind CSS**, and **shadcn**. It allows users to browse coding problems, view problem statements, write and run code in real-time, and contribute new problems.
+> 🖥️ This is the **frontend** for [CodePlayground Service](https://github.com/shubham225/codeplayground-service), the backend that powers authentication, problem management, and code execution.
 
 
-## Features
+## ✨ Features
 
-- **Next.js Framework**: Fast, scalable, and optimized for server-side rendering and static site generation.
-- **Tailwind CSS**: Utility-first CSS framework for creating responsive and modern designs.
-- **shadcn**: A robust component library to speed up UI development with accessible and customizable components.
-- **Responsive Design**: Fully responsive and works seamlessly on all device sizes.
-- **Code Execution Support**: Real-time feedback and execution of user-submitted code.
-- **Secure Code Execution**: Utilizes **Docker** containers to execute user-submitted code in an isolated and secure environment, ensuring safety and preventing unauthorized access to system resources.
+- **Next.js Framework** ⚡ – Fast, scalable, and optimized for server-side rendering & static site generation.
+- **Tailwind CSS** 🎨 – Utility-first CSS framework for modern responsive designs.
+- **shadcn** 🛠 – Accessible & customizable UI components for rapid development.
+- **Responsive Design** 📱 – Works seamlessly across all devices.
 
-## Installation
+## 📥 Installation
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v14+ recommended)
@@ -44,31 +43,32 @@
    http://localhost:3000
    ```
 
-## User Interface
+## 🖼 User Interface
 
-### 🔐 Login Page
+### 🔐 Login Page  
 ![Login Page](./screenshots/login-page.png)
 
-### 🏠 Home Page
+### 🏠 Home Page  
 ![Home Page](./screenshots/home-page.png)
 
-### 🤝 Contribute Problems Page
+### 🤝 Contribute Problems Page  
 ![Contribute Page](./screenshots/contribute-page.png)
 
-### 🧩 Problems Page
+### 🧩 Problems Page  
 ![Problems Page](./screenshots/problems-page.png)
 
-### 💻 Coding Problem Page
+### 💻 Coding Problem Page  
 ![Coding Problem Page](./screenshots/coding-problem-page.png)
 
-### 🌙 Dark Mode
+### 🌙 Dark Mode  
 ![Dark Mode](./screenshots/dark-mode.png)
 
-## License
+
+## 📜 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
 
-## Acknowledgments
+## 🙌 Acknowledgments
 
 - Built using [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [shadcn](https://ui.shadcn.com/).
 - Inspired by the simplicity and functionality of platforms like [LeetCode](https://leetcode.com/).
