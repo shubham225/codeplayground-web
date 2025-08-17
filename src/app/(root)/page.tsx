@@ -15,6 +15,7 @@ import {
 import { Card } from "@/components/ui/card";
 import BorderBox from "@/components/border-box";
 import TerminalCard from "@/components/animation-effects/terminal-card";
+import EditorCard from "@/components/animation-effects/editor-card";
 
 export default function Home() {
   return (
@@ -154,9 +155,14 @@ export default function Home() {
         </motion.div>
       </div>
 
-      <div className="flex justify-center mt-1.5 p-0 h-52 overflow-clip">
-        <TerminalCard />
-      </div>
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 1.9 }}
+        className="flex justify-center mt-1.5 p-0 h-52 overflow-hidden"
+      >
+        <EditorCard />
+      </motion.div>
     </div>
   );
 }
