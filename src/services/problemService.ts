@@ -41,7 +41,7 @@ export async function fetchCodeByUserProblemId(
 ): Promise<Code[]> {
   try {
     const response = await apiClient.get<BackendResponse<Code[]>>(
-      `/userProblems/${userProblemId}/code`
+      `/activeProblems/${userProblemId}/code`
     );
 
     return response.data.payload;
@@ -56,7 +56,7 @@ export async function fetchAllSubmissions(
 ): Promise<Submission[]> {
   try {
     const response = await apiClient.get<BackendResponse<Submission[]>>(
-      `/userProblems/${userProblemId}/submissions`
+      `/activeProblems/${userProblemId}/submissions`
     );
 
     return response.data.payload;
@@ -72,7 +72,7 @@ export async function submitAndCompileCode(
 ): Promise<SubmitResponse> {
   try {
     const response = await apiClient.post<BackendResponse<SubmitResponse>>(
-      `/actions/submit`,
+      `/submissions`,
       submitRequest
     );
 
@@ -88,7 +88,7 @@ export async function submitAndExecuteCode(
 ): Promise<SubmitResponse> {
   try {
     const response = await apiClient.post<BackendResponse<SubmitResponse>>(
-      `/actions/execute`,
+      `/submissions/execute`,
       execRequest
     );
 
