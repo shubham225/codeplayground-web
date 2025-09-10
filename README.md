@@ -45,22 +45,22 @@
 
 ## 🖼 User Interface
 
-### 🔐 Login Page  
+### Login Page  
 ![Login Page](./screenshots/login-page.png)
 
-### 🏠 Home Page  
+### Home Page  
 ![Home Page](./screenshots/home-page.png)
 
-### 🤝 Contribute Problems Page  
+### Contribute Problems Page  
 ![Contribute Page](./screenshots/contribute-page.png)
 
-### 🧩 Problems Page  
+### Problems Page  
 ![Problems Page](./screenshots/problems-page.png)
 
-### 💻 Coding Problem Page  
+### Coding Problem Page  
 ![Coding Problem Page](./screenshots/coding-problem-page.png)
 
-### 🌙 Dark Mode  
+### Dark Mode  
 ![Dark Mode](./screenshots/dark-mode.png)
 
 
