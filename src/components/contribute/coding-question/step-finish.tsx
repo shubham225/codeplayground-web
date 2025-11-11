@@ -1,6 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { createProblem } from "@/services/problemService";
+import { set } from "date-fns";
 import { BadgeCheck, Loader2Icon } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -9,13 +11,22 @@ type Props = { data: any; setData: any };
 
 export default function StepFinish({ data, setData }: Props) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [response, setResponse] = useState<any>({});
+  const hasCreated = React.useRef(false);
 
   useEffect(() => {
     setIsLoading(true);
-    setTimeout(() => {
-      console.log(data);
-      setIsLoading(false);
-    }, 2000);
+
+    if (hasCreated.current) return;
+    hasCreated.current = true;
+
+    const createtNewProblem = async () => {
+          const response = await createProblem(data);
+          setResponse(response);
+          setIsLoading(false);
+        };
+    
+        createtNewProblem();
   }, []);
 
   return (
@@ -35,11 +46,11 @@ export default function StepFinish({ data, setData }: Props) {
           <div className="flex flex-col rounded-lg border bg-transparent p-4 w-96 h-32 text-sm">
             <div className="flex justify-between">
               <h4>Question ID:</h4>
-              <h4>#3853d3</h4>
+              <h4>{response?.id?.slice(-12)}</h4>
             </div>
             <div className="flex justify-between">
               <h4>Question Summery:</h4>
-              <h4>Two Sum</h4>
+              <h4>{response?.title}</h4>
             </div>
           </div>
           <Link href={"/contribute-question"}>

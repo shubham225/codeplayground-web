@@ -98,3 +98,20 @@ export async function submitAndExecuteCode(
     throw error;
   }
 }
+
+
+export async function createProblem(
+  problemReq: any
+): Promise<any> {
+  try {
+    const response = await apiClient.post<BackendResponse<any>>(
+      `/problems`,
+      problemReq
+    );
+
+    return response.data.payload;
+  } catch (error) {
+    console.error("Failed to create a problem:", error);
+    throw error;
+  }
+}

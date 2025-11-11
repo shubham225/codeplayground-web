@@ -35,31 +35,31 @@ const TagSchema = z.object({
 });
 
 const questionDetailsData = z.object({
-  summery: z.string().min(3),
+  title: z.string().min(3),
   difficulty: z.string(),
   tags: z.array(TagSchema).min(1),
-  description: z.string().min(10),
+  descriptionMd: z.string().min(10),
 });
 
 const selectOptions = [
   {
-    id: "Easy",
+    id: "EASY",
     text: "Easy",
   },
   {
-    id: "Medium",
+    id: "MEDIUM",
     text: "Medium",
   },
   {
-    id: "Hard",
+    id: "HARD",
     text: "Hard",
   },
 ];
 
 export default function QuestionDetails({ setStep, data, setData }: Props) {
-  const [markdown, setMarkdown] = useState(data.description);
-  const [summery, setSummery] = useState(data.summery);
-  const [difficulty, setDifficulty] = useState(data.difficulty || "Easy");
+  const [markdown, setMarkdown] = useState(data.descriptionMd);
+  const [title, setTitle] = useState(data.title);
+  const [difficulty, setDifficulty] = useState(data.difficulty || "EASY");
   const [errors, setErrors] = useState<any>({});
   const [tags, setTags] = useState<Tag[]>(tagsList);
   const { theme } = useTheme();
@@ -77,9 +77,9 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
     e.preventDefault();
     try {
       const step1Data = {
-        summery: summery,
+        title: title,
         difficulty: difficulty,
-        description: markdown,
+        descriptionMd: markdown,
         tags: tags,
       };
 
@@ -106,12 +106,12 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
           id="question"
           label="Question Summery"
           placeholder="Write short summery of a question"
-          value={summery}
-          message={errors?.summery}
+          value={title}
+          message={errors?.title}
           onChange={(e) => {
             e.preventDefault();
-            setSummery(e.target.value);
-            resetError("summery");
+            setTitle(e.target.value);
+            resetError("title");
           }}
         />
 
@@ -149,13 +149,13 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
               "border border-input rounded-lg bg-background shadow-sm shadow-black/5 transition-shadow focus-within:border-ring focus-within:outline-none focus-within:ring-[3px] focus-within:ring-ring/20 p-1 gap-1",
               {
                 "border border-destructive/80 text-destructive focus-within:border-destructive/80 focus-within:ring-destructive/20 focus-visible:border-destructive/80 focus-visible:ring-destructive/20":
-                  errors?.description,
+                  errors?.descriptionMd,
               }
             )}
             height="450px"
             onChange={(value, viewUpdate) => {
               setMarkdown(value);
-              resetError("description");
+              resetError("descriptionMd");
             }}
             theme={theme === "light" ? vscodeLight : vscodeDark}
           />
@@ -164,7 +164,7 @@ export default function QuestionDetails({ setStep, data, setData }: Props) {
             role="alert"
             aria-live="polite"
           >
-            {errors?.description}
+            {errors?.descriptionMd}
           </p>
         </div>
       </div>
