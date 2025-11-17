@@ -3,7 +3,7 @@
 import Chip from "@/components/custom-ui/chip";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { capitalizeFirstLetterOfEachWord, cn } from "@/lib/utils";
+import { capitalizeFirstLetterOfEachWord, cn, truncateString } from "@/lib/utils";
 import { getVariantForDifficulty, getVariantForStatus } from "@/lib/utils/get-variant";
 import { ProblemSummery } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
@@ -19,7 +19,7 @@ export const columns: ColumnDef<ProblemSummery>[] = [
         <div className="flex flex-col gap-1">
           <h1 className="text-normal font-semibold">{row.original.title}</h1>
           <h5 className="text-xm text-muted-foreground font-light">
-            {row.original.summery}
+            {truncateString(row.original.summery)}
           </h5>
         </div>
       );

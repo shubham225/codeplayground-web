@@ -106,3 +106,7 @@ export function generateJavaCodeStub(codestub: CodeStub): string {
 
   return methodStub;
 }
+
+export function truncateString(str: string, max = 100) {
+  return str.length > max ? str.slice(0, max) + "..." : str;
+}
