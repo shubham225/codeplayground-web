@@ -14,7 +14,7 @@
 
 - **Next.js Framework** ⚡ – Fast, scalable, and optimized for server-side rendering & static site generation.
 - **Tailwind CSS** 🎨 – Utility-first CSS framework for modern responsive designs.
-- **shadcn** 🛠 – Accessible & customizable UI components for rapid development.
+- **Shadcn** 🛠 – Accessible & customizable UI components for rapid development.
 - **Responsive Design** 📱 – Works seamlessly across all devices.
 
 ## 📥 Installation
