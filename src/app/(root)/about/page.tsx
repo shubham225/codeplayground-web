@@ -44,13 +44,6 @@ export default function AboutPage() {
           </p>
         </div>
       </section>
-
-      <div className="mt-16 text-center">
-        <h3 className="text-2xl font-semibold mb-4">Join Us on the Journey</h3>
-        <p className="text-muted-foreground mb-6">
-          Whether you&apos;re a beginner or a seasoned developer, our platform is designed to support your learning and challenge your skills.
-        </p>
-      </div>
     </div>
   );
 }
